@@ -1,0 +1,22 @@
+{
+  "name": "Label",
+  "purpose": "Provides a consistent, readable form label contract that works across text inputs, switches, and future field controls.",
+  "whenToUse": [
+    "Use for visible field labels and other short control descriptors.",
+    "Use the required indicator instead of inventing custom form label patterns."
+  ],
+  "whenNotToUse": [
+    "Do not use Label as a page heading or paragraph wrapper.",
+    "Do not hide the label when the field still needs an accessible description."
+  ],
+  "variants": {
+    "size": ["sm", "md", "lg"],
+    "tone": ["default", "muted", "danger"],
+    "required": [true, false]
+  },
+  "states": ["default", "required", "optional"],
+  "accessibilityRequirements": [
+    "Keep labels visible for most form controls so the screen reads clearly for sighted and assistive-technology users.",
+    "If a visible label cannot be shown, ensure the target control exposes an equivalent accessibility label."
+  ]
+}

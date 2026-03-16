@@ -1,0 +1,48 @@
+{
+  "name": "fresh-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev:playground",
+    "dev:all": "turbo run dev --parallel --continue",
+    "dev:playground": "npm run dev --workspace @fresh/expo-playground",
+    "dev:playground:web": "npm run web --workspace @fresh/expo-playground",
+    "dev:playground:android": "npm run android --workspace @fresh/expo-playground",
+    "dev:playground:ios": "npm run ios --workspace @fresh/expo-playground",
+    "dev:storybook": "npm run dev --workspace @fresh/storybook-native",
+    "dev:storybook:android": "npm run android --workspace @fresh/storybook-native",
+    "dev:storybook:ios": "npm run ios --workspace @fresh/storybook-native",
+    "native:playground": "npm run native:sync --workspace @fresh/expo-playground",
+    "native:storybook": "npm run native:sync --workspace @fresh/storybook-native",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "turbo run clean && rimraf node_modules"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.1.2",
+    "@types/react-test-renderer": "^19.1.0",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^15.15.0",
+    "prettier": "^3.5.3",
+    "react-test-renderer": "^19.1.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.4.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.1",
+    "vitest": "^3.0.9"
+  }
+}

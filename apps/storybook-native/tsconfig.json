@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "App.tsx",
+    "index.ts",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "global.d.ts",
+    "nativewind-env.d.ts",
+    "../../react-native-classname.d.ts"
+  ]
+}

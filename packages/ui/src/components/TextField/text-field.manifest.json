@@ -1,0 +1,22 @@
+{
+  "name": "TextField",
+  "purpose": "Captures a short text value with built-in labeling, help, error, and accessory support.",
+  "whenToUse": [
+    "Use for single-line text entry where a label and helper text should stay visually consistent.",
+    "Use when forms need built-in focus, disabled, and error styling tied to semantic tokens."
+  ],
+  "whenNotToUse": [
+    "Do not use for long-form input or rich text.",
+    "Do not place ad hoc validation visuals around TextField; use its errorMessage and helperText API."
+  ],
+  "variants": {
+    "size": ["sm", "md", "lg"]
+  },
+  "states": ["default", "focused", "filled", "disabled", "error"],
+  "accessibilityRequirements": [
+    "Always provide a visible label or accessibilityLabel.",
+    "Expose validation messages through text that assistive technologies can announce.",
+    "Do not rely on placeholder text as the only field description.",
+    "Append required meaning through copy or accessibilityLabel instead of color alone."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Card",
+  "purpose": "Groups related content into a reusable surface with design-system spacing, border, and elevation rules.",
+  "whenToUse": [
+    "Use to group related information or actions into a single semantic surface.",
+    "Use the provided CardHeader, CardContent, and CardFooter slots to keep layouts predictable."
+  ],
+  "whenNotToUse": [
+    "Do not use Card as a generic spacing wrapper when Box or Stack is enough.",
+    "Do not add ad hoc borders and shadows around custom frames when Card variants already cover the surface need."
+  ],
+  "variants": {
+    "variant": ["outlined", "elevated", "subtle"],
+    "padding": ["sm", "md", "lg"]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Ensure grouped content remains readable in both light and dark themes.",
+    "Provide accessible labels on interactive elements placed inside the card.",
+    "Do not use Card as the only cue for hierarchy; maintain heading and body structure."
+  ]
+}

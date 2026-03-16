@@ -1,0 +1,20 @@
+{
+  "name": "AspectRatio",
+  "purpose": "Reserves a predictable media frame so imagery and rich previews stay stable across device sizes.",
+  "whenToUse": [
+    "Use for thumbnails, media cards, charts, or preview areas that need a consistent frame.",
+    "Use when the surrounding layout should remain stable before the child content loads."
+  ],
+  "whenNotToUse": [
+    "Do not use when content height should grow naturally from text or dynamic children.",
+    "Do not wrap every card in AspectRatio unless the visual contract truly depends on a fixed media shape."
+  ],
+  "variants": {
+    "radius": ["none", "sm", "md", "lg", "xl", "2xl"]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Treat the container as layout structure; accessible meaning should come from the child content.",
+    "Ensure images or charts inside the frame expose their own labels when they convey important meaning."
+  ]
+}

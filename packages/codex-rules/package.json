@@ -1,0 +1,19 @@
+{
+  "name": "@fresh/codex-rules",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./component-rules": "./component-rules.md",
+    "./screen-recipes": "./screen-recipes.md",
+    "./anti-patterns": "./anti-patterns.md"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --config ../../vitest.config.ts packages/codex-rules/src --passWithNoTests"
+  }
+}

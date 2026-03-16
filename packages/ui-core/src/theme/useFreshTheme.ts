@@ -1,0 +1,1 @@
+export { useFreshTheme } from './FreshThemeProvider';

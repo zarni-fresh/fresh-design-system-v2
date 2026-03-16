@@ -1,0 +1,22 @@
+{
+  "name": "Switch",
+  "purpose": "Toggles a persistent on or off setting with a compact control that works across native platforms and desktop web.",
+  "whenToUse": [
+    "Use for immediate boolean preferences or settings that can be changed inline.",
+    "Pair with a visible Label so the setting meaning is unambiguous."
+  ],
+  "whenNotToUse": [
+    "Do not use for mutually exclusive multi-choice selection; use Radio Group or Select instead.",
+    "Do not use when the action needs confirmation before it should take effect."
+  ],
+  "variants": {
+    "tone": ["accent", "success", "warning", "danger"],
+    "size": ["sm", "md"],
+    "disabled": [true, false]
+  },
+  "states": ["off", "on", "disabled"],
+  "accessibilityRequirements": [
+    "Always provide a visible label or explicit accessibility label describing what the switch controls.",
+    "Expose the checked and disabled states through accessibilityState."
+  ]
+}

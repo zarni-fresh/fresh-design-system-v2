@@ -1,0 +1,22 @@
+{
+  "name": "Skeleton",
+  "purpose": "Provides stable loading placeholders so screens can preserve structure before data arrives.",
+  "whenToUse": [
+    "Use when the final component layout is known but content has not loaded yet.",
+    "Use circle skeletons for avatar placeholders and line skeletons for text."
+  ],
+  "whenNotToUse": [
+    "Do not use skeletons when a short inline spinner or immediate optimistic update is clearer.",
+    "Do not leave long-running flows in a skeleton state without other status feedback."
+  ],
+  "variants": {
+    "shape": ["line", "block", "circle"],
+    "size": ["sm", "md", "lg"],
+    "tone": ["default", "subtle"]
+  },
+  "states": ["default", "loading"],
+  "accessibilityRequirements": [
+    "Treat skeletons as decorative loading structure so they do not add noisy announcements.",
+    "Pair skeleton states with other context when loading lasts long enough to need explanation."
+  ]
+}

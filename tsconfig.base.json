@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@fresh/tokens": ["packages/tokens/src/index.ts"],
+      "@fresh/tokens/nativewind": ["packages/tokens/src/nativewind.ts"],
+      "@fresh/ui-core": ["packages/ui-core/src/index.ts"],
+      "@fresh/ui": ["packages/ui/src/index.ts"],
+      "@fresh/ui/manifests": ["packages/ui/src/manifests/index.ts"],
+      "@fresh/codex-rules": ["packages/codex-rules/src/index.ts"]
+    },
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "types": ["node", "vitest/globals"]
+  }
+}

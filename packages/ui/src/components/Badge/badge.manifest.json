@@ -1,0 +1,23 @@
+{
+  "name": "Badge",
+  "purpose": "Labels compact status, metadata, or categorical information using approved semantic tones.",
+  "whenToUse": [
+    "Use for compact status communication such as state, category, or priority.",
+    "Use when semantic emphasis needs to stay consistent with the token system."
+  ],
+  "whenNotToUse": [
+    "Do not use as a button or tap target.",
+    "Do not introduce custom color chips when an existing Badge tone already communicates the status."
+  ],
+  "variants": {
+    "variant": ["neutral", "accent", "success", "warning", "danger"],
+    "emphasis": ["solid", "subtle", "outline"],
+    "size": ["sm", "md"]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Do not rely on color alone for meaning; pair Badge with readable label text.",
+    "Keep badge copy concise so it is understandable when announced by assistive technology.",
+    "Do not turn Badge into an interactive control."
+  ]
+}

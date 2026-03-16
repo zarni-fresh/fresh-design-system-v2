@@ -1,0 +1,24 @@
+{
+  "name": "Button",
+  "purpose": "Triggers a clear user action with the design system's default action hierarchy.",
+  "whenToUse": [
+    "Use for primary or secondary actions that should feel consistent across product surfaces.",
+    "Use when the action needs built-in loading, disabled, and icon support."
+  ],
+  "whenNotToUse": [
+    "Do not use for navigation rows or inline text links.",
+    "Do not create one-off action surfaces when a Button variant already communicates intent."
+  ],
+  "variants": {
+    "variant": ["primary", "secondary", "outline", "ghost", "destructive"],
+    "size": ["sm", "md", "lg"],
+    "fullWidth": [true, false]
+  },
+  "states": ["default", "hovered", "focused", "pressed", "disabled", "loading"],
+  "accessibilityRequirements": [
+    "Always provide a clear action label.",
+    "Preserve disabled and busy states through accessibilityState.",
+    "Do not rely on color alone to explain destructive intent.",
+    "Keep the hit target comfortably tappable on both mobile and desktop web."
+  ]
+}

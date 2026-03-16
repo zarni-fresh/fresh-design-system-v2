@@ -1,0 +1,22 @@
+{
+  "name": "Separator",
+  "purpose": "Creates low-noise visual separation between related sections, rows, or panel regions.",
+  "whenToUse": [
+    "Use to separate dense content groups inside cards, sheets, or menus.",
+    "Use a vertical separator only when two adjacent regions benefit from a visual divider."
+  ],
+  "whenNotToUse": [
+    "Do not stack separators where spacing alone already provides enough structure.",
+    "Do not use separators as decorative flourishes unrelated to hierarchy."
+  ],
+  "variants": {
+    "orientation": ["horizontal", "vertical"],
+    "emphasis": ["subtle", "default", "strong"],
+    "decorative": [true, false]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Treat separators as decorative by default so assistive technologies do not announce meaningless structure.",
+    "If a separator conveys meaningful grouping, pair it with nearby headings or labels instead of relying on the line alone."
+  ]
+}

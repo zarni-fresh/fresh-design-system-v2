@@ -1,0 +1,22 @@
+{
+  "name": "Avatar",
+  "purpose": "Represents a person, workspace, or system actor with a stable, token-driven identity surface.",
+  "whenToUse": [
+    "Use for people, agents, or workspaces when a compact identity marker helps scanning.",
+    "Use fallback initials when imagery is missing or unreliable."
+  ],
+  "whenNotToUse": [
+    "Do not use decorative avatars for generic status or branding when a Badge or Icon is clearer.",
+    "Do not rely on remote images alone without a readable fallback."
+  ],
+  "variants": {
+    "size": ["sm", "md", "lg", "xl"],
+    "shape": ["circle", "rounded"],
+    "tone": ["neutral", "accent"]
+  },
+  "states": ["default", "image", "fallback"],
+  "accessibilityRequirements": [
+    "Provide an alt or accessibility label when the avatar conveys identity that matters to the task.",
+    "Use decorative mode only when nearby text already conveys the same identity."
+  ]
+}

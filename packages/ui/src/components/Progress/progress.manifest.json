@@ -1,0 +1,22 @@
+{
+  "name": "Progress",
+  "purpose": "Communicates completion or advancement through a clear, token-driven progress bar.",
+  "whenToUse": [
+    "Use when a task, upload, migration, or checklist has measurable progress worth surfacing.",
+    "Use a value label when the numeric percentage helps clarify state."
+  ],
+  "whenNotToUse": [
+    "Do not use for binary success or failure states that a Badge or Alert communicates more clearly.",
+    "Do not fake precise progress when the system only knows coarse loading states."
+  ],
+  "variants": {
+    "variant": ["neutral", "accent", "success", "warning", "danger"],
+    "size": ["sm", "md", "lg"],
+    "showValueLabel": [true, false]
+  },
+  "states": ["default", "complete", "warning", "danger"],
+  "accessibilityRequirements": [
+    "Expose current, minimum, and maximum values through accessibilityValue.",
+    "Provide a label when the meaning of the progress bar is not obvious from nearby copy."
+  ]
+}
