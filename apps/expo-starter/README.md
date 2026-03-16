@@ -3,6 +3,10 @@
 This app is the recommended starting point for engineers who want to build a new Expo
 surface with the Fresh design system.
 
+It also includes a worked Drugbook pilot example so the team can see how a real
+product surface should use shared components first while keeping product-specific
+patterns local.
+
 ## What It Is For
 
 - a clean baseline app structure

@@ -13,6 +13,9 @@ The goal is to show how the team should:
 - keep product-specific UI out of the shared library unless it is truly reusable
 - identify the right follow-up shared work
 
+A runnable version of this simulation now lives in
+[`apps/expo-starter/App.tsx`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/expo-starter/App.tsx).
+
 ## Example Scenario
 
 Drugbook needs a mobile-first screen for selecting a product, choosing quantity and
