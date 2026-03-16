@@ -1,7 +1,8 @@
 # Component Rules
 
-Use `@fresh/ui` first. Reach for `@fresh/ui-core` only when a shared higher-level
-component does not yet exist.
+Use `@fresh/recipes` first for prototype and screen-level composition. Reach for
+`@fresh/ui` for shared reusable components, then `@fresh/ui-core` only when the higher
+layers do not fit.
 
 Visual baseline:
 
@@ -10,9 +11,9 @@ Visual baseline:
 
 ## Rules
 
-1. Prefer approved shared components such as `Button`, `TextField`, `Card`, `Badge`,
-   `Label`, `Switch`, `Progress`, `Avatar`, `Separator`, `Skeleton`, and
-   `AspectRatio` over one-off compositions.
+1. Prefer approved recipe blocks first for polished prototypes, then approved shared
+   components such as `Button`, `TextField`, `Card`, `Badge`, `Label`, `Switch`,
+   `Progress`, `Avatar`, `Separator`, `Skeleton`, and `AspectRatio`.
 2. If a screen needs a pattern more than once, propose a new shared component instead
    of duplicating layout locally.
 3. Use semantic token intent, not raw color names, to decide tone and hierarchy.
@@ -35,6 +36,8 @@ Visual baseline:
   cross-product, product-specific, or primitive.
 - Shared component implementation should follow:
   approved board -> code -> manifest -> stories/examples -> tests -> Expo validation.
+- When changing look and feel or interaction details, check `@fresh/shadcn-reference`
+  first and document any allowed adaptation or deviation.
 
 ## Existing Component Defaults
 

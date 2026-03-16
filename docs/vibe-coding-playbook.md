@@ -24,9 +24,10 @@ for a concrete PM-to-engineering flow.
 2. Read the root [`AGENTS.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/AGENTS.md).
 3. Use the copy-paste prompt in
    [`canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
-4. Prefer `@fresh/ui` components first.
-5. Only drop to `@fresh/ui-core` when a shared component does not fit.
-6. If a pattern is missing and repeated, propose it as shared work instead of
+4. Prefer `@fresh/recipes` for prototype screens and polished screen blocks.
+5. Prefer `@fresh/ui` for reusable shared components.
+6. Only drop to `@fresh/ui-core` when the higher layers do not fit.
+7. If a pattern is missing and repeated, propose it as shared work instead of
    improvising it inline.
 
 ## Recommended Default Stack

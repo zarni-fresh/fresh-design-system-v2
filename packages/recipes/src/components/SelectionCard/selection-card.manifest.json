@@ -1,0 +1,22 @@
+{
+  "name": "SelectionCard",
+  "purpose": "Provides a higher-level selectable surface for prototypes and app flows that need visually polished option cards.",
+  "whenToUse": [
+    "Use when a prototype needs product, batch, or option cards with status, metadata, and an optional action.",
+    "Use to prototype repeated selection patterns before deciding whether a lower-level shared component should be promoted."
+  ],
+  "whenNotToUse": [
+    "Do not use for simple static text sections where a plain Card is enough.",
+    "Do not automatically promote every product-specific selection shape into the shared component layer."
+  ],
+  "variants": {
+    "tone": ["default", "accent"],
+    "selected": [true, false],
+    "recommended": [true, false]
+  },
+  "states": ["default", "selected", "recommended"],
+  "accessibilityRequirements": [
+    "If the card includes an action, ensure the action label clearly explains the outcome.",
+    "Do not rely on color alone to communicate selected state."
+  ]
+}

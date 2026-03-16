@@ -3,6 +3,7 @@
 ## Product Extraction Recipe
 
 - Start from approved or in-review design boards, not from screenshots alone.
+- Check `@fresh/recipes` before rebuilding a polished section from raw components.
 - Identify which parts of the screen are already shared components.
 - Separate product-specific shells from cross-product structure before implementing.
 - Prefer extracting one stable shared pattern at a time rather than porting a whole

@@ -3,7 +3,7 @@
 ## Purpose
 
 This document simulates how a Fresh product manager and engineer should use this repo
-together when vibe coding a real product surface.
+together when vibe coding a real product surface through the new recipe lane.
 
 The example product is Drugbook. The goal is not to fully implement Drugbook here.
 The goal is to show how the team should:

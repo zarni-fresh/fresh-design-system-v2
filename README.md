@@ -20,6 +20,8 @@ The current expansion roadmap tracks the official shadcn catalog as a target tax
 while reinterpreting components natively for React Native and Expo. See
 [`docs/shadcn-taxonomy.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/shadcn-taxonomy.md)
 for the full matrix and rollout plan.
+Strict shadcn parity and the new prototype lane are documented in
+[`docs/prototype-architecture.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/prototype-architecture.md).
 
 The visual baseline is documented separately in
 [`docs/visual-recipe.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/visual-recipe.md)
@@ -61,6 +63,8 @@ apps/
   expo-starter/        Team starter app for new Fresh-based app work
   storybook-native/    Lightweight Storybook scaffold for focused component review
 packages/
+  shadcn-reference/    Strict shadcn parity specs, mappings, and adaptation rules
+  recipes/             Higher-level prototype blocks and polished composition recipes
   tokens/              Raw and semantic tokens, plus NativeWind preset helpers
   ui-core/             Native primitives, theming, utility helpers, and variants
   ui/                  Branded components, examples, stories, tests, manifests
@@ -107,6 +111,17 @@ design/                Pencil board index, handoff checklist, companion exports
 - Captures generation rules, repeatable screen recipes, and anti-patterns
 - Gives coding agents a local rulebook to follow before inventing new UI
 
+### `@fresh/shadcn-reference`
+
+- Holds typed shadcn parity specs and adaptation rules
+- Provides a strict reference contract without importing web-only runtime code
+
+### `@fresh/recipes`
+
+- Provides the prototype lane for polished higher-level blocks
+- Gives PMs, designers, and engineers a better prompting surface than raw components
+- Bridges approved design patterns into reusable screen-level code
+
 ## Design Workflow
 
 1. Explore or align visually in Pencil for foundations, product extractions, and new
@@ -124,12 +139,14 @@ design/                Pencil board index, handoff checklist, companion exports
 ## How Engineers Should Use It
 
 1. Check the approved board registry before adding a new shared pattern.
-2. Prefer `@fresh/ui` components first.
-3. If a higher-level component does not exist, compose with `@fresh/ui-core`.
+2. Prefer `@fresh/recipes` for prototyping and screen-level composition.
+3. Prefer `@fresh/ui` for reusable shared components.
+4. If a higher-level component does not exist, compose with `@fresh/ui-core`.
 4. Never hardcode visual values in product code. Pull intent from semantic tokens.
 5. If a pattern repeats across products or is explicitly approved, add a shared
    component instead of copying inline layout.
-6. Validate meaningful UI changes in the Expo playground first, then on desktop web.
+6. Use `@fresh/shadcn-reference` to validate parity decisions instead of guessing.
+7. Validate meaningful UI changes in the Expo playground first, then on desktop web.
 
 ## How AI Agents Should Use It
 
@@ -138,10 +155,12 @@ design/                Pencil board index, handoff checklist, companion exports
 2. Check
    [`design/board-index.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/design/board-index.md)
    before inventing a new shared component or changing major visual anatomy.
-3. Use manifest JSON files in `packages/ui/src/components/*/*.manifest.json` to choose
-   the right component.
-4. Prefer examples and stories as training signals for default composition patterns.
-5. Propose a shared component when the current library cannot express a repeated
+3. Use `@fresh/shadcn-reference` to understand strict parity expectations before
+   inventing visual or interaction changes.
+4. Use manifest JSON files in `packages/ui/src/components/*/*.manifest.json` and
+   `packages/recipes/src/components/*/*.manifest.json` to choose the right layer.
+5. Prefer examples and stories as training signals for default composition patterns.
+6. Propose a shared component when the current library cannot express a repeated
    product need, but do not promote product-specific UI into the shared system without
    approval.
 

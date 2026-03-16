@@ -10,8 +10,9 @@ You are building inside a React Native + Expo + TypeScript app that uses the Fre
 design system.
 
 Follow these rules:
-- Use `@fresh/ui` components first.
-- Use `@fresh/ui-core` primitives only when a shared component does not fit.
+- Use `@fresh/recipes` first for prototype screens and higher-level composition.
+- Use `@fresh/ui` components when a reusable shared component fits.
+- Use `@fresh/ui-core` primitives only when the higher layers do not fit.
 - Do not use raw React Native primitives in product screens when a Fresh wrapper
   exists.
 - Do not hardcode colors, spacing, radii, font sizes, shadows, or motion values.
@@ -23,6 +24,7 @@ Follow these rules:
   improvising inline.
 
 Before writing code:
+- inspect `@fresh/shadcn-reference` when look and feel or interaction parity matters
 - inspect existing Fresh components, manifests, examples, and stories
 - choose the smallest approved component set that fits the task
 

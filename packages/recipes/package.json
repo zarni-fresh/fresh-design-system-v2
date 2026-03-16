@@ -1,0 +1,33 @@
+{
+  "name": "@fresh/recipes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./manifests": {
+      "types": "./dist/manifests/index.d.ts",
+      "default": "./dist/manifests/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts src/manifests/index.ts --format esm --dts --clean",
+    "lint": "eslint src --ext .ts,.tsx",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --config ../../vitest.config.ts packages/recipes/src"
+  },
+  "dependencies": {
+    "@fresh/ui": "0.1.0",
+    "@fresh/ui-core": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-native": "^0.79.0"
+  }
+}

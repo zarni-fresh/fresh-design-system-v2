@@ -13,7 +13,8 @@ Primary environment:
 
 ## Non-Negotiable Rules
 
-1. Use only approved components from `@fresh/ui` or primitives from `@fresh/ui-core`.
+1. For prototyping and screen composition, use approved blocks from `@fresh/recipes`
+   first. For shared reusable component work, use `@fresh/ui`, then `@fresh/ui-core`.
 2. Do not use raw React Native primitives in product screens when a wrapper exists.
 3. Do not hardcode hex colors, spacing values, radii, font sizes, motion timings, or
    shadow values outside `@fresh/tokens`.
@@ -37,14 +38,17 @@ Primary environment:
 
 ## Working Pattern
 
-1. Start in `@fresh/ui` and use existing component manifests to decide fit.
-2. Check `design/board-index.md` for approved anatomy before changing a shared pattern.
-3. Drop to `@fresh/ui-core` only when a shared primitive composition is still needed.
-4. If neither layer fits a repeated product need, propose a new shared component before
+1. Check `design/board-index.md` for approved anatomy before changing a shared pattern.
+2. For prototypes, start in `@fresh/recipes`.
+3. For shared reusable components, start in `@fresh/ui`.
+4. Drop to `@fresh/ui-core` only when a shared primitive composition is still needed.
+5. Use `@fresh/shadcn-reference` to validate parity targets and allowed platform
+   adaptations before changing look and feel.
+6. If neither layer fits a repeated product need, propose a new shared component before
    shipping the screen.
-5. When component APIs change, update stories, examples, tests, docs, and manifests in
-   the same change.
-6. Validate user-facing changes in the Expo playground before treating them as done.
+7. When component or recipe APIs change, update stories, examples, tests, docs, and
+   manifests in the same change.
+8. Validate user-facing changes in the Expo playground before treating them as done.
 
 ## Default Component Choices
 
@@ -89,13 +93,16 @@ Primary environment:
 ## Package Map
 
 - `packages/tokens`: raw and semantic token authority
+- `packages/shadcn-reference`: strict shadcn parity specs and adaptation rules
+- `packages/recipes`: prototype lane and polished screen blocks
 - `packages/ui-core`: native primitives, theming, and utilities
 - `packages/ui`: branded component layer and manifest registry
 - `packages/codex-rules`: agent guidance and anti-patterns
 
 ## Guardrails For Generated UI
 
-- Default to `Button`, `TextField`, `Card`, and `Badge` before inventing a new pattern.
+- Default to `@fresh/recipes` when building prototype screens. Drop to `Button`,
+  `TextField`, `Card`, and `Badge` when composing lower-level shared UI.
 - Prefer the approved foundational set before planning a new shared abstraction:
   `AspectRatio`, `Avatar`, `Badge`, `Button`, `Card`, `Label`, `Progress`,
   `Separator`, `Skeleton`, `Switch`, `TextField`.
@@ -108,5 +115,6 @@ Primary environment:
 - Keep visual tone crisp, modern, and brand-neutral until official brand tokens land.
 - Use exported variant option arrays and manifests as the preferred source for allowed
   states and variants when generating code.
+- Treat `@fresh/shadcn-reference` as strict parity guidance, not a runtime dependency.
 - When a requested shadcn pattern is not approved yet, check
   `docs/shadcn-taxonomy.md` before improvising a new cross-platform component.

@@ -1,0 +1,20 @@
+{
+  "name": "SummaryCard",
+  "purpose": "Provides a recipe-level grouped totals surface with polished hierarchy and a clear next step.",
+  "whenToUse": [
+    "Use when a prototype or product flow needs grouped line items and a summary action.",
+    "Use when totals, review steps, or grouped metadata should feel more intentional than a plain list."
+  ],
+  "whenNotToUse": [
+    "Do not use for long tables or dense financial screens that need a full data table pattern.",
+    "Do not use when a simple paragraph or one-line summary would be clearer."
+  ],
+  "variants": {
+    "tone": ["default", "accent", "warning"]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Keep summary labels and values concise and readable.",
+    "Ensure primary actions clearly describe the next step."
+  ]
+}

@@ -2,6 +2,13 @@ import { type ReactNode, useState } from 'react';
 import { SafeAreaView, ScrollView, useWindowDimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {
+  PageHeader,
+  SectionHeader,
+  SelectionCard,
+  StickyActionFooter,
+  SummaryCard,
+} from '@fresh/recipes';
+import {
   Avatar,
   Badge,
   Button,
@@ -37,88 +44,25 @@ const BulletRow = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const SectionHeading = ({
-  description,
-  eyebrow,
-  title,
-}: {
-  description: string;
-  eyebrow: string;
-  title: string;
-}) => (
-  <Stack gap={1.5}>
-    <Text size="sm" tone="muted" weight="medium">
-      {eyebrow}
-    </Text>
-    <Text size="2xl" weight="bold">
-      {title}
-    </Text>
-    <Text tone="muted">{description}</Text>
-  </Stack>
-);
-
-const SummaryRow = ({
-  label,
-  value,
-  strong = false,
-}: {
-  label: string;
-  strong?: boolean;
-  value: string;
-}) => (
-  <Stack align="center" direction="horizontal" justify="space-between">
-    <Text tone={strong ? 'default' : 'muted'} weight={strong ? 'semibold' : 'regular'}>
-      {label}
-    </Text>
-    <Text weight={strong ? 'semibold' : 'medium'}>{value}</Text>
-  </Stack>
-);
-
 const DrugbookProductSelectionCard = () => {
-  const { theme } = useFreshTheme();
-
   return (
-    <Card variant="elevated">
-      <CardHeader>
-        <Stack align="center" direction="horizontal" gap={3}>
-          <Box
-            style={{
-              alignItems: 'center',
-              backgroundColor: theme.color.surface.accent,
-              borderColor: theme.color.border.accent,
-              borderRadius: theme.radius.lg,
-              borderWidth: 1,
-              height: 56,
-              justifyContent: 'center',
-              width: 56,
-            }}
-          >
-            <Avatar fallbackLabel="Drugbook" size="sm" tone="accent" />
-          </Box>
-          <Stack gap={1} style={{ flex: 1 }}>
-            <Stack direction="horizontal" gap={2} wrap>
-              <Badge label="Selected product" size="sm" variant="accent" />
-              <Badge label="In stock" size="sm" variant="success" />
-            </Stack>
-            <CardTitle>Botulinum toxin 50U</CardTitle>
-            <CardDescription>Injectable vial · SKU DB-204 · Prescriber-only supply</CardDescription>
-          </Stack>
-        </Stack>
-      </CardHeader>
-      <CardContent>
-        <Stack gap={3}>
-          <Text tone="muted">
-            This local Drugbook card stays product-specific for now, but it still composes only
-            approved Fresh primitives and shared components.
-          </Text>
-          <Stack direction="horizontal" gap={2} wrap>
-            <Badge emphasis="outline" label="Cold chain" size="sm" variant="neutral" />
-            <Badge emphasis="outline" label="Batch tracked" size="sm" variant="neutral" />
-            <Badge emphasis="outline" label="Clinic ready" size="sm" variant="neutral" />
-          </Stack>
-        </Stack>
-      </CardContent>
-    </Card>
+    <SelectionCard
+      badges={[
+        { label: 'Selected product', variant: 'accent' },
+        { label: 'In stock', variant: 'success' },
+      ]}
+      description="Injectable vial · SKU DB-204 · Prescriber-only supply"
+      helperText="This uses the recipe lane to reach a more polished prototype block without pretending the whole Drugbook flow is already a shared component."
+      media={<Avatar fallbackLabel="Drugbook" size="sm" tone="accent" />}
+      metadata={[
+        { label: 'Cold chain' },
+        { label: 'Batch tracked' },
+        { label: 'Clinic ready' },
+      ]}
+      selected
+      title="Botulinum toxin 50U"
+      tone="accent"
+    />
   );
 };
 
@@ -171,31 +115,20 @@ const DrugbookBatchOptionCard = ({
   selected?: boolean;
   title: string;
 }) => (
-  <Card variant={selected ? 'elevated' : 'outlined'}>
-    <CardHeader>
-      <Stack direction="horizontal" gap={2} wrap>
-        {recommended ? <Badge label="Recommended" size="sm" variant="accent" /> : null}
-        {selected ? <Badge label="Selected" size="sm" variant="success" /> : null}
-      </Stack>
-      <CardTitle>{title}</CardTitle>
-      <CardDescription>{detail}</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <Stack align="center" direction="horizontal" gap={3} justify="space-between">
-        <Text size="sm" tone="muted" style={{ flex: 1 }}>
-          Keep batch selection local to Drugbook until a reusable supply-selection pattern appears
-          in another product.
-        </Text>
-        <Button
-          disabled={selected}
-          label={selected ? 'Selected' : 'Select batch'}
-          onPress={onSelect}
-          size="sm"
-          variant={selected ? 'secondary' : 'outline'}
-        />
-      </Stack>
-    </CardContent>
-  </Card>
+  <SelectionCard
+    action={{
+      disabled: selected,
+      label: selected ? 'Selected' : 'Select batch',
+      onPress: onSelect,
+      size: 'sm',
+      variant: selected ? 'secondary' : 'outline',
+    }}
+    description={detail}
+    helperText="This remains product-local today, but the recipe component gives it a stronger prototype-quality baseline."
+    recommended={recommended}
+    selected={selected}
+    title={title}
+  />
 );
 
 const DrugbookSummaryCard = ({
@@ -211,27 +144,20 @@ const DrugbookSummaryCard = ({
   const total = subtotal + handling;
 
   return (
-    <Card variant="subtle">
-      <CardHeader>
-        <Badge label="Product-local summary" size="sm" variant="warning" />
-        <CardTitle>Review before continuing</CardTitle>
-        <CardDescription>
-          The summary stays local today, but it should still look calm, structured, and
-          deterministic.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Stack gap={3}>
-          <SummaryRow label="Selected batch" value={batchLabel} />
-          <SummaryRow label="Quantity" value={`${quantity} vials`} />
-          <SummaryRow label="Subtotal" value={`$${subtotal}`} />
-          <SummaryRow label="Cold-chain handling" value={`$${handling}`} />
-          <Separator />
-          <SummaryRow label="Estimated total" strong value={`$${total}`} />
-          <Button fullWidth label="Continue to review" trailingIcon="chevron-right" />
-        </Stack>
-      </CardContent>
-    </Card>
+    <SummaryCard
+      badges={[{ label: 'Product-local summary', variant: 'warning' }]}
+      description="The summary stays local today, but it now uses a reusable recipe block so the prototype reads closer to a polished product surface."
+      primaryAction={{ fullWidth: true, label: 'Continue to review', trailingIcon: 'chevron-right' }}
+      rows={[
+        { label: 'Selected batch', value: batchLabel },
+        { label: 'Quantity', value: `${quantity} vials` },
+        { label: 'Subtotal', value: `$${subtotal}` },
+        { label: 'Cold-chain handling', value: `$${handling}` },
+        { emphasis: 'strong', label: 'Estimated total', value: `$${total}` },
+      ]}
+      title="Review before continuing"
+      tone="warning"
+    />
   );
 };
 
@@ -468,8 +394,12 @@ const StarterScreen = ({
           </Card>
 
           <Stack gap={4}>
-            <SectionHeading
-              description="This is a concrete example of how a PM brief and an engineer implementation should flow through Fresh without over-promoting product-specific UI."
+            <PageHeader
+              badges={[
+                { label: 'Drugbook', variant: 'accent' },
+                { label: 'Recipe lane', variant: 'success' },
+              ]}
+              description="This is the actual prototype lane: recipe-level blocks create a more polished starting point, while product-specific patterns still stay local until they are proven reusable."
               eyebrow="Worked example"
               title="Drugbook pilot using the Fresh starter"
             />
@@ -481,30 +411,28 @@ const StarterScreen = ({
                   flex: 1.1,
                 }}
               >
-                <Card variant="elevated">
-                  <CardHeader>
-                    <Stack direction="horizontal" gap={2} wrap>
-                      <Badge label="Drugbook" variant="accent" />
-                      <Badge label="PM brief translated" variant="neutral" />
-                      <Badge label="Engineer-ready" variant="success" />
-                    </Stack>
-                    <CardTitle>Select product and batch</CardTitle>
-                    <CardDescription>
-                      Review the selected product, adjust quantity, choose a batch, and continue
-                      with one clear primary action.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                <PageHeader
+                  actions={[
+                    { label: 'Save draft', variant: 'secondary' },
+                    { label: 'Continue', trailingIcon: 'chevron-right' },
+                  ]}
+                  badges={[
+                    { label: 'PM brief translated', variant: 'neutral' },
+                    { label: 'Engineer-ready', variant: 'success' },
+                  ]}
+                  density="compact"
+                  description="Review the selected product, adjust quantity, choose a batch, and continue with one clear primary action."
+                  title="Select product and batch"
+                />
 
                 <DrugbookProductSelectionCard />
 
                 <Card variant="outlined">
                   <CardHeader>
-                    <CardTitle>Quantity</CardTitle>
-                    <CardDescription>
-                      This row stays local for now because a generalized stepper pattern is not yet
-                      approved.
-                    </CardDescription>
+                    <SectionHeader
+                      description="This row stays local for now because a generalized stepper pattern is not yet approved."
+                      title="Quantity"
+                    />
                   </CardHeader>
                   <CardContent>
                     <DrugbookQuantityStepper
@@ -521,11 +449,10 @@ const StarterScreen = ({
 
                 <Card variant="outlined">
                   <CardHeader>
-                    <CardTitle>Batch options</CardTitle>
-                    <CardDescription>
-                      These options are product-local, but the surrounding composition still uses
-                      shared Fresh surfaces and actions.
-                    </CardDescription>
+                    <SectionHeader
+                      description="These options are product-local, but the surrounding composition now uses the recipe lane instead of raw cards alone."
+                      title="Batch options"
+                    />
                   </CardHeader>
                   <CardContent>
                     <Stack gap={3}>
@@ -548,11 +475,12 @@ const StarterScreen = ({
 
                 <DrugbookSummaryCard batchLabel={selectedBatchLabel} quantity={drugbookQuantity} />
 
-                <Stack direction="horizontal" gap={2} wrap>
-                  <Button label="Back" variant="ghost" />
-                  <Button label="Save draft" variant="secondary" />
-                  <Button fullWidth label="Continue to next step" trailingIcon="chevron-right" />
-                </Stack>
+                <StickyActionFooter
+                  caption="Recipe-level action footers give prototypes a stronger bottom action treatment before a full production shell exists."
+                  primaryAction={{ label: 'Continue to next step', trailingIcon: 'chevron-right' }}
+                  secondaryAction={{ label: 'Save draft', variant: 'secondary' }}
+                  tertiaryAction={{ label: 'Back', variant: 'ghost' }}
+                />
               </Stack>
 
               <Stack

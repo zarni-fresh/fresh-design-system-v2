@@ -7,6 +7,10 @@ It also includes a worked Drugbook pilot example so the team can see how a real
 product surface should use shared components first while keeping product-specific
 patterns local.
 
+The pilot now uses `@fresh/recipes` as the prototype lane above `@fresh/ui`, which is
+the intended workflow for higher-fidelity prompting and faster design-to-code
+alignment.
+
 ## What It Is For
 
 - a clean baseline app structure

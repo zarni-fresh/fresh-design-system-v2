@@ -30,12 +30,13 @@ Use Pencil boards intentionally:
 3. Decide whether the pattern is:
    shared cross-product, product-specific, or primitive.
 4. If shared or foundational, use `design/handoff-checklist.md` to translate it into:
-   tokens, component APIs, manifests, stories, examples, tests, and docs.
+   recipes, tokens, component APIs, manifests, stories, examples, tests, and docs.
 5. Implement in code.
 6. Validate in Expo playground and, when helpful, Storybook.
 
 ## Promotion Rules
 
+- Prototype-grade screen blocks belong in `@fresh/recipes`.
 - Shared components belong in `@fresh/ui`.
 - Primitive building blocks and theme plumbing belong in `@fresh/ui-core`.
 - Product-specific patterns should stay outside the shared component layer until they

@@ -1,0 +1,20 @@
+{
+  "name": "PageHeader",
+  "purpose": "Provides a polished top-of-screen framing block for prototype and app screens built from the Fresh recipe layer.",
+  "whenToUse": [
+    "Use when a screen needs title, description, badges, and actions in a consistent high-level header.",
+    "Use for prototypes and app surfaces where the design system should provide stronger composition guidance than raw primitives."
+  ],
+  "whenNotToUse": [
+    "Do not use for tiny section labels inside dense cards.",
+    "Do not use when a plain Text heading is enough and no structured screen framing is needed."
+  ],
+  "variants": {
+    "density": ["comfortable", "compact"]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Ensure action buttons in the header have clear accessible labels when the visible copy is ambiguous.",
+    "Keep the title text concise so it reads well on both mobile and desktop web."
+  ]
+}

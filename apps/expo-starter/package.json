@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.5",
+    "@fresh/recipes": "0.1.0",
     "@fresh/tokens": "0.1.0",
     "@fresh/ui": "0.1.0",
     "@fresh/ui-core": "0.1.0",

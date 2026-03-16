@@ -1,0 +1,21 @@
+{
+  "name": "StickyActionFooter",
+  "purpose": "Provides a recipe-level bottom action block for polished prototypes and guided product flows.",
+  "whenToUse": [
+    "Use when a screen needs a stronger final action area than a loose row of buttons.",
+    "Use in prototype flows where the bottom action treatment should be deliberate and repeatable."
+  ],
+  "whenNotToUse": [
+    "Do not use when the screen only needs one inline action inside existing content.",
+    "Do not treat it as a production navigation shell until the pattern is approved across products."
+  ],
+  "variants": {
+    "secondaryAction": [true, false],
+    "tertiaryAction": [true, false]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Ensure the primary action label clearly describes the next step.",
+    "Do not rely on footer position alone to communicate action priority."
+  ]
+}

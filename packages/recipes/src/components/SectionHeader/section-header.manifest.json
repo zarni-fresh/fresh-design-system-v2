@@ -1,0 +1,20 @@
+{
+  "name": "SectionHeader",
+  "purpose": "Provides a reusable recipe-level section heading for grouped prototype content and polished screen composition.",
+  "whenToUse": [
+    "Use when a screen has repeated grouped sections that should share the same hierarchy and spacing.",
+    "Use for recipe-driven prototypes before deciding whether a lower-level shared component is needed."
+  ],
+  "whenNotToUse": [
+    "Do not use as a replacement for a page-level header.",
+    "Do not wrap every card title with SectionHeader when a plain CardTitle is enough."
+  ],
+  "variants": {
+    "density": ["md", "sm"]
+  },
+  "states": ["default"],
+  "accessibilityRequirements": [
+    "Keep headings concise and readable.",
+    "If trailing content is interactive, ensure it has its own accessibility labels."
+  ]
+}
