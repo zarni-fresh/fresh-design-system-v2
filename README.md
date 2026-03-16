@@ -35,6 +35,8 @@ The team onboarding path lives in
 [`docs/vibe-coding-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/vibe-coding-playbook.md)
 and
 [`docs/canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
+There is also a worked example using Drugbook in
+[`docs/drugbook-simulation.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/drugbook-simulation.md).
 
 The official baseline is Expo. The primary working environment is
 `apps/expo-playground`, with Expo development builds as the serious mobile baseline and

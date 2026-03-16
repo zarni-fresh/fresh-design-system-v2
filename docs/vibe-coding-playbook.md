@@ -13,6 +13,10 @@ Use this repo as the canonical contract for:
 - agent rules
 - examples, stories, and manifests
 
+See the worked example in
+[`drugbook-simulation.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/drugbook-simulation.md)
+for a concrete PM-to-engineering flow.
+
 ## Golden Path
 
 1. Start from the Expo starter app in
