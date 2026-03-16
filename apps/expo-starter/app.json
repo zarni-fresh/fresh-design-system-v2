@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Fresh App Starter",
+    "slug": "fresh-design-system-starter",
+    "scheme": "fresh-starter",
+    "version": "0.1.0",
+    "orientation": "default",
+    "platforms": ["ios", "android", "web"],
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.freshdesignsystemstarter"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.anonymous.freshdesignsystemstarter"
+    }
+  }
+}

@@ -31,6 +31,10 @@ and the active board registry lives in
 [`design/board-index.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/design/board-index.md).
 The first engineering-facing promotion backlog lives in
 [`docs/component-promotion-roadmap.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/component-promotion-roadmap.md).
+The team onboarding path lives in
+[`docs/vibe-coding-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/vibe-coding-playbook.md)
+and
+[`docs/canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
 
 The official baseline is Expo. The primary working environment is
 `apps/expo-playground`, with Expo development builds as the serious mobile baseline and
@@ -52,6 +56,7 @@ desktop web support for fast review.
 ```text
 apps/
   expo-playground/     Main Expo playground for dev builds and desktop web review
+  expo-starter/        Team starter app for new Fresh-based app work
   storybook-native/    Lightweight Storybook scaffold for focused component review
 packages/
   tokens/              Raw and semantic tokens, plus NativeWind preset helpers
@@ -155,6 +160,18 @@ Open the playground on desktop web:
 
 ```bash
 npm run dev:playground:web
+```
+
+Start the team starter app:
+
+```bash
+npm run dev:starter
+```
+
+Open the starter app on desktop web:
+
+```bash
+npm run dev:starter:web
 ```
 
 Open the lightweight Storybook scaffold:
