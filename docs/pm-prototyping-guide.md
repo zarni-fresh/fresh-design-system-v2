@@ -75,13 +75,13 @@ Name it something descriptive, like `prototype/patient-intake-flow` or
 
 #### 3. Open the blank starter
 
-Open `apps/blank-starter/App.tsx` in your editor. This is your canvas. It comes
+Open `apps/starter/App.tsx` in your editor. This is your canvas. It comes
 pre-wired with a PageHeader, Card, TextField, and Button to show you the pattern.
 
 #### 4. Run it
 
 ```bash
-npm run dev:blank:web
+npm run dev:starter:web
 ```
 
 This opens a browser preview. Changes you save in `App.tsx` appear immediately.
@@ -89,7 +89,7 @@ This opens a browser preview. Changes you save in `App.tsx` appear immediately.
 To preview on mobile instead:
 
 ```bash
-npm run dev:blank
+npm run dev:starter
 ```
 
 #### 5. Build your screens
@@ -175,7 +175,7 @@ We evaluated two approaches and recommend Option A for most prototyping work.
 
 ### Option A: Work in this repo (recommended)
 
-Clone the Fresh Design System repo and build your prototype in `apps/blank-starter`.
+Clone the Fresh Design System repo and build your prototype in `apps/starter`.
 
 **Pros:**
 

@@ -14,7 +14,7 @@ The goal is to show how the team should:
 - identify the right follow-up shared work
 
 A runnable version of this simulation now lives in
-[`apps/expo-starter/App.tsx`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/expo-starter/App.tsx).
+[`apps/drugbook/App.tsx`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/drugbook/App.tsx).
 
 ## Example Scenario
 

@@ -21,7 +21,7 @@
 ## Runtime Baseline
 
 - Treat Expo development builds as the main device workflow.
-- Use `apps/expo-playground` as the canonical validation surface.
+- Use `apps/starter` as the canonical validation surface.
 - Keep Storybook light and focused on component browsing, not as the primary source of
   truth.
 

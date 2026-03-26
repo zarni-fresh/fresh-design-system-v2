@@ -4,7 +4,7 @@ This repository is the canonical source of truth for Fresh React Native UI.
 
 Primary environment:
 
-- `apps/expo-playground` is the default working environment.
+- `apps/starter` is the default working environment.
 - Expo development builds are the serious device baseline.
 - Desktop web support is required, but implementation remains mobile-first.
 - Preserve the visual recipe in `docs/visual-recipe.md`.

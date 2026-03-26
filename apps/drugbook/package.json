@@ -1,5 +1,5 @@
 {
-  "name": "@fresh-ds/expo-playground",
+  "name": "@fresh-ds/drugbook",
   "version": "0.1.0",
   "private": true,
   "main": "index.ts",
@@ -11,12 +11,13 @@
     "ios": "expo run:ios",
     "web": "expo start --web --clear",
     "build": "expo export --platform all --output-dir dist",
-    "lint": "eslint . --ext .ts,.tsx,.js",
+    "lint": "eslint App.tsx index.ts metro.config.js babel.config.js tailwind.config.ts --ext .ts,.tsx,.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run --config ../../vitest.config.ts apps/expo-playground --passWithNoTests"
+    "test": "vitest run --config ../../vitest.config.ts apps/drugbook --passWithNoTests"
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.5",
+    "@fresh-ds/recipes": "0.1.0",
     "@fresh-ds/tokens": "0.1.0",
     "@fresh-ds/ui": "0.1.0",
     "@fresh-ds/ui-core": "0.1.0",

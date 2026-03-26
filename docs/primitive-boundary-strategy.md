@@ -201,8 +201,8 @@ If a third-party or platform-specific exception is needed:
 
 Before changing shared primitives, recipes, or core visual defaults, validate:
 
-- `apps/expo-playground`
-- `apps/expo-starter`
+- `apps/starter`
+- `apps/drugbook`
 - relevant Storybook stories
 - the targeted product extraction example if one exists
 

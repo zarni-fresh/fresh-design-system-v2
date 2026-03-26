@@ -114,7 +114,7 @@ and generates equivalent LiveView template code.
 
 2. **Prototype is committed and shared.** The engineer receives a branch (or PR)
    containing real component usage — not a screenshot. They can run the prototype
-   locally (`npm run dev:blank:web`) and inspect every component, prop, and layout
+   locally (`npm run dev:starter:web`) and inspect every component, prop, and layout
    decision.
 
 3. **Engineer translates to production.** Using the component mapping and shared

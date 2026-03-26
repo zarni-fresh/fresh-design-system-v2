@@ -20,7 +20,7 @@ for a concrete PM-to-engineering flow.
 ## Golden Path
 
 1. Start from the Expo starter app in
-   [`apps/expo-starter`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/expo-starter).
+   [`apps/drugbook`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/drugbook).
 2. Read the root [`AGENTS.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/AGENTS.md).
 3. Start with the universal first prompt in
    [`starting-prompt-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/starting-prompt-playbook.md).

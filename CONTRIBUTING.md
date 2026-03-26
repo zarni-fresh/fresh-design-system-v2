@@ -57,7 +57,7 @@ Every new component must include:
 ```bash
 npm install
 npm run dev
-npm run dev:playground:web
+npm run dev:starter:web
 npm run lint
 npm run typecheck
 npm run test
@@ -67,8 +67,8 @@ npm run build
 Use focused commands when iterating on a specific surface:
 
 ```bash
-npm run dev:playground
-npm run dev:playground:web
-npm run dev:storybook
+npm run dev:starter
+npm run dev:starter:web
+npm run dev:drugbook
 npm run native:playground
 ```

@@ -12,9 +12,7 @@ prototype here, and **engineers** who translate those prototypes into production
 git clone git@github.com:zarni-fresh/fresh-design-system-v2.git
 cd fresh-design-system
 npm install
-npm run dev:blank:web        # Blank starter (prototyping canvas)
-npm run dev:playground:web   # Component playground
-npm run dev:starter:web      # Drugbook example app
+npm run dev:starter:web      # Start prototyping (desktop web)
 ```
 
 ## Who Is This For?
@@ -30,10 +28,8 @@ npm run dev:starter:web      # Drugbook example app
 
 ```text
 apps/
-  blank-starter/       Minimal template for new prototypes (start here)
-  expo-playground/     Component playground for dev builds and desktop web
-  expo-starter/        Drugbook example app showing a full workflow
-  storybook-native/    Lightweight Storybook for focused component review
+  starter/       Prototyping canvas — start here
+  drugbook/      Reference example app (Drugbook workflow)
 packages/
   tokens/              Raw and semantic tokens, NativeWind preset
   ui-core/             Primitives (Box, Text, Stack, Icon, Pressable), theming
@@ -84,20 +80,13 @@ workflow including the three-level translation layer.
 ```bash
 npm install
 
-# Prototyping
-npm run dev:blank              # Blank starter (mobile)
-npm run dev:blank:web          # Blank starter (desktop web)
+# Prototyping canvas
+npm run dev:starter              # Mobile
+npm run dev:starter:web          # Desktop web
 
-# Development
-npm run dev                    # Expo playground (mobile)
-npm run dev:playground:web     # Expo playground (desktop web)
-
-# Example app
-npm run dev:starter            # Drugbook example (mobile)
-npm run dev:starter:web        # Drugbook example (desktop web)
-
-# Storybook
-npm run dev:storybook          # Component browser
+# Drugbook reference example
+npm run dev:drugbook             # Mobile
+npm run dev:drugbook:web         # Desktop web
 
 # Quality checks
 npm run build

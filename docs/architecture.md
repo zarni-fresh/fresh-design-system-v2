@@ -12,7 +12,7 @@
 - Tokens: neutral placeholder values for v1
 - Visual tone: modern SaaS, crisp, brand-neutral
 - Storybook: light scaffold from day one
-- Primary runtime: `apps/expo-playground`
+- Primary runtime: `apps/starter`
 - Pencil: primary visual review surface, never implementation authority
 - Package namespaces: `@fresh-ds/tokens`, `@fresh-ds/ui-core`, `@fresh-ds/ui`
 
@@ -23,8 +23,8 @@ The repo is designed around one source of truth:
 1. `@fresh-ds/tokens` defines raw and semantic values.
 2. `@fresh-ds/ui-core` defines React Native primitives and theme plumbing.
 3. `@fresh-ds/ui` defines branded shared components and manifests.
-4. `apps/expo-playground` is where components are exercised as real UI.
-5. `apps/storybook-native` exists for light component browsing, not as the primary
+4. `apps/starter` is where components are exercised as real UI.
+5. `apps/storybook` exists for light component browsing, not as the primary
    authority.
 
 ## Cross-Functional Operating Model

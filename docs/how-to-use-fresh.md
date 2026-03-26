@@ -211,7 +211,7 @@ inside this repo.
 
 That means:
 
-- copy from `apps/expo-starter`
+- copy from `apps/drugbook`
 - or fork/clone the repo and build from there
 - or use the repo as the source workspace while the design system is still evolving
 
@@ -239,7 +239,7 @@ If someone on the team wants to build a new screen, tell them to do this:
    canvas.
 2. Clone the repo.
 3. Run `npm install`.
-4. Start `apps/expo-starter`.
+4. Start `apps/drugbook`.
 5. Read [`docs/canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
 6. Start with [`docs/starting-prompt-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/starting-prompt-playbook.md).
 7. Ask the coding agent to inspect `@fresh-ds/recipes` first.
@@ -317,7 +317,7 @@ When sharing this repo with engineering, point them to this exact order:
 3. [`AGENTS.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/AGENTS.md)
 4. [`docs/vibe-coding-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/vibe-coding-playbook.md)
 5. [`docs/canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md)
-6. [`apps/expo-starter`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/expo-starter)
+6. [`apps/drugbook`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/drugbook)
 
 ## Short Version
 

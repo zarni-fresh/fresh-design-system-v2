@@ -1,5 +1,5 @@
 {
-  "name": "@fresh-ds/blank-starter",
+  "name": "@fresh-ds/starter",
   "version": "0.1.0",
   "private": true,
   "main": "index.ts",
@@ -13,7 +13,7 @@
     "build": "expo export --platform all --output-dir dist",
     "lint": "eslint App.tsx index.ts metro.config.js babel.config.js tailwind.config.ts --ext .ts,.tsx,.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run --config ../../vitest.config.ts apps/blank-starter --passWithNoTests"
+    "test": "vitest run --config ../../vitest.config.ts apps/starter --passWithNoTests"
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.5",
