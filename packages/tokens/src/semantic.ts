@@ -163,10 +163,10 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
       },
       action: {
         primary: {
-          background: rawColorTokens.neutral[900],
-          backgroundHover: rawColorTokens.neutral[800],
-          backgroundPressed: rawColorTokens.neutral[700],
-          border: rawColorTokens.neutral[900],
+          background: rawColorTokens.brand[600],
+          backgroundHover: rawColorTokens.brand[700],
+          backgroundPressed: rawColorTokens.brand[800],
+          border: rawColorTokens.brand[600],
           foreground: rawColorTokens.neutral[0],
         },
         secondary: {
@@ -288,11 +288,11 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
       },
       action: {
         primary: {
-          background: rawColorTokens.neutral[0],
-          backgroundHover: rawColorTokens.neutral[100],
-          backgroundPressed: rawColorTokens.neutral[200],
-          border: rawColorTokens.neutral[0],
-          foreground: rawColorTokens.neutral[950],
+          background: rawColorTokens.brand[500],
+          backgroundHover: rawColorTokens.brand[400],
+          backgroundPressed: rawColorTokens.brand[300],
+          border: rawColorTokens.brand[500],
+          foreground: rawColorTokens.neutral[0],
         },
         secondary: {
           background: rawColorTokens.neutral[800],
