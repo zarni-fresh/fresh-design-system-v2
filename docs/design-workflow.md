@@ -43,9 +43,9 @@ Use design boards intentionally:
 
 ## Promotion Rules
 
-- Prototype-grade screen blocks belong in `@fresh/recipes`.
-- Shared components belong in `@fresh/ui`.
-- Primitive building blocks and theme plumbing belong in `@fresh/ui-core`.
+- Prototype-grade screen blocks belong in `@fresh-ds/recipes`.
+- Shared components belong in `@fresh-ds/ui`.
+- Primitive building blocks and theme plumbing belong in `@fresh-ds/ui-core`.
 - Product-specific patterns should stay outside the shared component layer until they
   are repeated enough to justify promotion.
 - Third-party UI packages should only appear behind those shared layers, never in

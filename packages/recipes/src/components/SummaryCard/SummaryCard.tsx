@@ -1,5 +1,5 @@
-import { Button, Card, Separator } from '@fresh/ui';
-import { Stack, Text } from '@fresh/ui-core';
+import { Button, Card, Separator } from '@fresh-ds/ui';
+import { Stack, Text } from '@fresh-ds/ui-core';
 import { renderRecipeBadges } from '../../lib/render';
 import type { RecipeAction, RecipeBadge, RecipeSummaryRow } from '../../lib/types';
 

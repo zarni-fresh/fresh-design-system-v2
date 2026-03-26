@@ -12,7 +12,7 @@ export type InteractionParity = {
 };
 
 export type FreshMapping = {
-  package: '@fresh/ui' | '@fresh/recipes' | '@fresh/ui-core';
+  package: '@fresh-ds/ui' | '@fresh-ds/recipes' | '@fresh-ds/ui-core';
   component: string;
   layer: 'component' | 'recipe' | 'primitive';
 };

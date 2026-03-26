@@ -12,9 +12,9 @@ Use this checklist when moving an approved Pencil board into the codebase.
 ## Code Translation
 
 - Tokens are updated only if the board changes the visual system itself.
-- Prototype-grade screen blocks can go into `@fresh/recipes`.
-- Shared primitives go into `@fresh/ui-core`.
-- Shared components go into `@fresh/ui`.
+- Prototype-grade screen blocks can go into `@fresh-ds/recipes`.
+- Shared primitives go into `@fresh-ds/ui-core`.
+- Shared components go into `@fresh-ds/ui`.
 - Product-specific patterns stay out of the shared library unless explicitly promoted.
 
 ## Required Shared Component Outputs

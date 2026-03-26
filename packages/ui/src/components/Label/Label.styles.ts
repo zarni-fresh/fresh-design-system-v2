@@ -1,6 +1,6 @@
-import type { SemanticTheme } from '@fresh/tokens';
-import { cva } from '@fresh/ui-core';
-import type { TextProps } from '@fresh/ui-core';
+import type { SemanticTheme } from '@fresh-ds/tokens';
+import { cva } from '@fresh-ds/ui-core';
+import type { TextProps } from '@fresh-ds/ui-core';
 
 export const labelSizeOptions = ['sm', 'md', 'lg'] as const;
 export const labelToneOptions = ['default', 'muted', 'danger'] as const;

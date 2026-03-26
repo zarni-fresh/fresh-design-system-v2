@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef } from 'react';
-import { Box, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   getProgressMetrics,
   getProgressPalette,

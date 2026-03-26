@@ -17,18 +17,18 @@ The stricter boundary model that governs those lanes is documented in
 
 Use the system in this order:
 
-1. `@fresh/shadcn-reference`
+1. `@fresh-ds/shadcn-reference`
    Reference only. Defines taxonomy, visual parity targets, interaction expectations,
    platform adaptations, and intentional deviations.
-2. `@fresh/recipes`
+2. `@fresh-ds/recipes`
    Runtime prototype blocks for higher-fidelity composition such as `PageHeader`,
    `SelectionCard`, and `SummaryCard`.
-3. `@fresh/ui`
+3. `@fresh-ds/ui`
    Shared reusable components such as `Button`, `Card`, `Badge`, `TextField`, and
    `Switch`.
-4. `@fresh/ui-core`
+4. `@fresh-ds/ui-core`
    Primitive building blocks such as `Stack`, `Box`, `Text`, and `Pressable`.
-5. `@fresh/tokens`
+5. `@fresh-ds/tokens`
    Visual authority for color, spacing, radius, typography, elevation, and motion.
 
 ## Core Rule
@@ -48,7 +48,7 @@ That means:
 Low-level design-system components alone are not enough for strong prompt-driven
 prototyping.
 
-`@fresh/recipes` exists to provide:
+`@fresh-ds/recipes` exists to provide:
 
 - stronger visual defaults
 - better screen-level composition
@@ -65,10 +65,10 @@ prototyping.
 
 ## How Engineers Should Use It
 
-1. Check `@fresh/recipes` first for prototype-oriented screen blocks.
-2. Drop to `@fresh/ui` for shared component work.
-3. Drop to `@fresh/ui-core` only when the higher layers do not fit.
-4. Use `@fresh/shadcn-reference` to validate visual and interaction parity when making
+1. Check `@fresh-ds/recipes` first for prototype-oriented screen blocks.
+2. Drop to `@fresh-ds/ui` for shared component work.
+3. Drop to `@fresh-ds/ui-core` only when the higher layers do not fit.
+4. Use `@fresh-ds/shadcn-reference` to validate visual and interaction parity when making
    changes to shared components or recipes.
 5. If a change belongs behind a shared boundary, do not solve it in product screens.
 

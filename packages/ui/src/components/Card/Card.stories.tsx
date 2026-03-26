@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 import { CardExamples } from './Card.examples';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './Card';
-import { Text } from '@fresh/ui-core';
+import { Text } from '@fresh-ds/ui-core';
 
 export default {
   title: 'Components/Card',

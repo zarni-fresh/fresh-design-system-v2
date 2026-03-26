@@ -6,7 +6,7 @@ React Native component system instead of attempting a literal web port.
 ## Current Approved Mappings
 
 - `Input` -> `TextField`
-- `Typography` -> `@fresh/ui-core/Text` plus documented content recipes
+- `Typography` -> `@fresh-ds/ui-core/Text` plus documented content recipes
 - `Sonner` -> future `Toast` system, not a separate duplicate abstraction
 
 ## Current Approved Foundational Set

@@ -9,7 +9,7 @@ This file tracks active and approved design boards that inform the shared system
 - Status: in review
 - Purpose: visual foundations, token direction, semantic roles, and theme comparison
 - Expected repo outputs:
-  `@fresh/tokens`, `docs/visual-recipe.md`, shared component styling decisions
+  `@fresh-ds/tokens`, `docs/visual-recipe.md`, shared component styling decisions
 
 ### `Drugbook Extracted Components`
 

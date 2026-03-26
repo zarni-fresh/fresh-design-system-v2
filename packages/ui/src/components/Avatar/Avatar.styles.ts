@@ -1,5 +1,5 @@
-import type { SemanticTheme } from '@fresh/tokens';
-import type { TextProps } from '@fresh/ui-core';
+import type { SemanticTheme } from '@fresh-ds/tokens';
+import type { TextProps } from '@fresh-ds/ui-core';
 
 export const avatarShapeOptions = ['circle', 'rounded'] as const;
 export const avatarSizeOptions = ['sm', 'md', 'lg', 'xl'] as const;

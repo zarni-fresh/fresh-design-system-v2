@@ -1,5 +1,5 @@
-import { Badge, Button } from '@fresh/ui';
-import { Stack } from '@fresh/ui-core';
+import { Badge, Button } from '@fresh-ds/ui';
+import { Stack } from '@fresh-ds/ui-core';
 import type { RecipeAction, RecipeBadge } from './types';
 
 export const renderRecipeBadges = (badges?: RecipeBadge[]) => {

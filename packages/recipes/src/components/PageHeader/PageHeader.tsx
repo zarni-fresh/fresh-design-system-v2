@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Box, type BoxProps, Icon, Pressable, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, type BoxProps, Icon, Pressable, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import { renderRecipeActions, renderRecipeBadges } from '../../lib/render';
 import type { RecipeAction, RecipeBadge } from '../../lib/types';
 

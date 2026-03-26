@@ -1,6 +1,6 @@
 import { Badge } from '../Badge/Badge';
 import { TextField } from './TextField';
-import { Stack } from '@fresh/ui-core';
+import { Stack } from '@fresh-ds/ui-core';
 
 export const TextFieldExamples = () => {
   return (

@@ -1,4 +1,4 @@
-import { Badge } from '@fresh/ui';
+import { Badge } from '@fresh-ds/ui';
 import { SectionHeader } from './SectionHeader';
 
 export const SectionHeaderExamples = () => (

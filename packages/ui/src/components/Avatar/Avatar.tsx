@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 import { Image, type ImageSourcePropType, type ImageStyle, type StyleProp } from 'react-native';
-import { Box, Text, type TextProps, useFreshTheme } from '@fresh/ui-core';
+import { Box, Text, type TextProps, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   getAvatarMetrics,
   getAvatarPalette,

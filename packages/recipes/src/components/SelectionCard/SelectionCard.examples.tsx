@@ -1,4 +1,4 @@
-import { Box, Icon, useFreshTheme } from '@fresh/ui-core';
+import { Box, Icon, useFreshTheme } from '@fresh-ds/ui-core';
 import { SelectionCard } from './SelectionCard';
 
 const SelectionCardExampleContent = () => {

@@ -21,9 +21,9 @@ as the serious mobile baseline and desktop web as the fast secondary validation 
 
 ## Before You Add A New Pattern
 
-1. Check whether the pattern already exists in `@fresh/ui`.
+1. Check whether the pattern already exists in `@fresh-ds/ui`.
 2. Check whether there is an approved component board covering the anatomy.
-3. If not, check whether a reusable composition with `@fresh/ui-core` is enough.
+3. If not, check whether a reusable composition with `@fresh-ds/ui-core` is enough.
 4. If the need will repeat across products or is approved as canonical, add a shared
    component instead of shipping local screen markup.
 5. If it is still product-specific, keep it in product code and build it from shared

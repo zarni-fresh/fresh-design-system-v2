@@ -1,6 +1,6 @@
 import TestRenderer from 'react-test-renderer';
-import { FreshThemeProvider } from '@fresh/ui-core';
-import { getSemanticTheme } from '@fresh/tokens';
+import { FreshThemeProvider } from '@fresh-ds/ui-core';
+import { getSemanticTheme } from '@fresh-ds/tokens';
 import { Avatar } from './Avatar';
 
 describe('Avatar', () => {

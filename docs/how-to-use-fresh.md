@@ -242,11 +242,11 @@ If someone on the team wants to build a new screen, tell them to do this:
 4. Start `apps/expo-starter`.
 5. Read [`docs/canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
 6. Start with [`docs/starting-prompt-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/starting-prompt-playbook.md).
-7. Ask the coding agent to inspect `@fresh/recipes` first.
+7. Ask the coding agent to inspect `@fresh-ds/recipes` first.
 8. Build the screen using:
-   - `@fresh/recipes` first
-   - then `@fresh/ui`
-   - then `@fresh/ui-core` only if needed
+   - `@fresh-ds/recipes` first
+   - then `@fresh-ds/ui`
+   - then `@fresh-ds/ui-core` only if needed
 9. Validate on mobile and desktop web.
 10. If they needed to invent a repeated new pattern, log it for promotion into the
     shared system.
@@ -298,7 +298,7 @@ Bad:
 
 Good:
 
-- “Use `@fresh/recipes` first, then `@fresh/ui`, then `@fresh/ui-core`”
+- “Use `@fresh-ds/recipes` first, then `@fresh-ds/ui`, then `@fresh-ds/ui-core`”
 - “Do not hardcode visual values”
 - “Keep it mobile-first and desktop-web safe”
 - “Use approved Fresh patterns only”
@@ -323,8 +323,8 @@ When sharing this repo with engineering, point them to this exact order:
 
 If someone only remembers one thing, it should be this:
 
-- use `@fresh/recipes` first for screens
-- use `@fresh/ui` for shared components
-- use `@fresh/ui-core` only when needed
+- use `@fresh-ds/recipes` first for screens
+- use `@fresh-ds/ui` for shared components
+- use `@fresh-ds/ui-core` only when needed
 - do not hardcode visual styling
 - start from the starter app, not from a blank file

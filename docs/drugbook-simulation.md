@@ -79,8 +79,8 @@ design system.
 
 Follow these rules:
 
-- Use `@fresh/ui` components first.
-- Use `@fresh/ui-core` primitives only when a shared component does not fit.
+- Use `@fresh-ds/ui` components first.
+- Use `@fresh-ds/ui-core` primitives only when a shared component does not fit.
 - Do not use raw React Native primitives in product screens when a Fresh wrapper
   exists.
 - Do not hardcode colors, spacing, radii, font sizes, shadows, or motion values.
@@ -127,7 +127,7 @@ The engineer should first inspect:
 - [`docs/component-promotion-roadmap.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/component-promotion-roadmap.md)
 - [`docs/vibe-coding-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/vibe-coding-playbook.md)
 
-Then the engineer should check what already exists in `@fresh/ui`:
+Then the engineer should check what already exists in `@fresh-ds/ui`:
 
 - `Button`
 - `Card`
@@ -215,9 +215,9 @@ The engineer should create temporary Drugbook-local components such as:
 
 Those local components should still use:
 
-- `@fresh/ui` for actions, cards, badges, labels, separators
-- `@fresh/ui-core` for layout and low-level composition
-- `@fresh/tokens` indirectly through semantic theme usage
+- `@fresh-ds/ui` for actions, cards, badges, labels, separators
+- `@fresh-ds/ui-core` for layout and low-level composition
+- `@fresh-ds/tokens` indirectly through semantic theme usage
 
 They should not introduce:
 
@@ -252,9 +252,9 @@ Kept these patterns product-local for now:
 
 Shared component follow-up recommendations:
 
-- PageHeader should likely be promoted into @fresh/ui
-- SectionHeader should likely be promoted into @fresh/ui
-- IconButton should likely be promoted into @fresh/ui
+- PageHeader should likely be promoted into @fresh-ds/ui
+- SectionHeader should likely be promoted into @fresh-ds/ui
+- IconButton should likely be promoted into @fresh-ds/ui
 - StickyActionFooter should remain a recipe until it is repeated elsewhere
 ```
 

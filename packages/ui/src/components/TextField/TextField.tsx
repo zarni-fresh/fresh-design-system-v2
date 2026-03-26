@@ -10,7 +10,7 @@ import {
   getInputPalette,
   resolveSpace,
   useFreshTheme,
-} from '@fresh/ui-core';
+} from '@fresh-ds/ui-core';
 import { Label } from '../Label/Label';
 import {
   getTextFieldMetrics,

@@ -1,4 +1,4 @@
-import type { RawTokens, SemanticTheme } from '@fresh/tokens';
+import type { RawTokens, SemanticTheme } from '@fresh-ds/tokens';
 
 export type TextTone =
   | 'default'

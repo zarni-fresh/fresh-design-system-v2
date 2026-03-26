@@ -20,9 +20,9 @@ Workflow:
 
 Follow these rules:
 
-- Use `@fresh/recipes` first for prototype screens and higher-level composition.
-- Use `@fresh/ui` components when a reusable shared component fits.
-- Use `@fresh/ui-core` primitives only when the higher layers do not fit.
+- Use `@fresh-ds/recipes` first for prototype screens and higher-level composition.
+- Use `@fresh-ds/ui` components when a reusable shared component fits.
+- Use `@fresh-ds/ui-core` primitives only when the higher layers do not fit.
 - Do not use raw React Native primitives in product screens when a Fresh wrapper
   exists.
 - Do not hardcode colors, spacing, radii, font sizes, shadows, or motion values.
@@ -38,7 +38,7 @@ Before writing code:
 
 - inspect `AGENTS.md`
 - inspect `docs/how-to-use-fresh.md`
-- inspect `@fresh/shadcn-reference` when look and feel or interaction parity matters
+- inspect `@fresh-ds/shadcn-reference` when look and feel or interaction parity matters
 - inspect existing Fresh components, manifests, examples, and stories
 - choose the smallest approved component set that fits the task
 

@@ -19,7 +19,7 @@ The first prompt should always say:
 - this work is inside the Fresh Design System workflow
 - the source screen or approved canvas exists
 - the agent must inspect Fresh first
-- the agent must use `@fresh/recipes` first, then `@fresh/ui`, then `@fresh/ui-core`
+- the agent must use `@fresh-ds/recipes` first, then `@fresh-ds/ui`, then `@fresh-ds/ui-core`
 - the agent must not hardcode visual values
 
 ## Universal First Prompt
@@ -42,14 +42,14 @@ Before writing code:
 - inspect `docs/how-to-use-fresh.md`
 - inspect `docs/canonical-agent-prompt.md`
 - inspect the approved screen or canvas context I provide
-- inspect existing components in `@fresh/recipes` and `@fresh/ui`
-- inspect `@fresh/shadcn-reference` when look, feel, or interaction parity matters
+- inspect existing components in `@fresh-ds/recipes` and `@fresh-ds/ui`
+- inspect `@fresh-ds/shadcn-reference` when look, feel, or interaction parity matters
 
 Rules:
 
-- use `@fresh/recipes` first for screen-level composition
-- use `@fresh/ui` for reusable shared components
-- use `@fresh/ui-core` only when the higher layers do not fit
+- use `@fresh-ds/recipes` first for screen-level composition
+- use `@fresh-ds/ui` for reusable shared components
+- use `@fresh-ds/ui-core` only when the higher layers do not fit
 - do not use raw React Native primitives in product screens when a Fresh wrapper exists
 - do not hardcode colors, spacing, radii, font sizes, shadows, or motion values
 - keep the implementation mobile-first, but make it work on desktop web too
@@ -74,7 +74,7 @@ What I want from you:
 If someone wants the shortest version possible, use this:
 
 ```md
-Inspect Fresh first, then build this screen from the approved canvas using `@fresh/recipes` first, `@fresh/ui` second, and `@fresh/ui-core` only if needed; keep it mobile-first, desktop-web safe, accessible, dark-mode ready, and do not hardcode visual values or collapse spacing.
+Inspect Fresh first, then build this screen from the approved canvas using `@fresh-ds/recipes` first, `@fresh-ds/ui` second, and `@fresh-ds/ui-core` only if needed; keep it mobile-first, desktop-web safe, accessible, dark-mode ready, and do not hardcode visual values or collapse spacing.
 ```
 
 ## What To Fill In
@@ -114,7 +114,7 @@ This gets much better results.
 After the first screen lands, use follow-ups like:
 
 - “Refine the spacing and hierarchy to better match the approved canvas.”
-- “Keep the same screen, but promote any repeated local pattern into `@fresh/recipes`
+- “Keep the same screen, but promote any repeated local pattern into `@fresh-ds/recipes`
   if justified.”
 - “Add loading, empty, and error states without changing the approved visual
   direction.”
@@ -140,6 +140,6 @@ The safest universal starting instruction is:
 
 - inspect Fresh first
 - start from the approved canvas
-- use `@fresh/recipes`, then `@fresh/ui`, then `@fresh/ui-core`
+- use `@fresh-ds/recipes`, then `@fresh-ds/ui`, then `@fresh-ds/ui-core`
 - do not hardcode visual values
 - keep spacing, accessibility, and dark mode on-system

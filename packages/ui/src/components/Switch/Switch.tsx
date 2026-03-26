@@ -1,6 +1,6 @@
 import { forwardRef, type ComponentPropsWithoutRef, type ElementRef } from 'react';
 import { Switch as RNSwitch } from 'react-native';
-import { useControllableState, useFreshTheme } from '@fresh/ui-core';
+import { useControllableState, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   getSwitchPalette,
   getSwitchScale,

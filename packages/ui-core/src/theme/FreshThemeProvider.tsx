@@ -1,4 +1,4 @@
-import { getSemanticTheme, type SemanticTheme, type ThemeMode } from '@fresh/tokens';
+import { getSemanticTheme, type SemanticTheme, type ThemeMode } from '@fresh-ds/tokens';
 import { createContext, type PropsWithChildren, useContext } from 'react';
 import { useColorScheme } from 'react-native';
 

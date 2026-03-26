@@ -16,7 +16,7 @@ import {
   Text,
   type VariantProps,
   useFreshTheme,
-} from '@fresh/ui-core';
+} from '@fresh-ds/ui-core';
 import {
   buttonLayout,
   getButtonMetrics,

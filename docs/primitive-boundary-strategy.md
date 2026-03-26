@@ -41,10 +41,10 @@ Standardize the runtime boundaries without freezing useful product iteration.
 
 The key move is:
 
-- keep `@fresh/ui-core` as the only primitive runtime boundary
-- keep `@fresh/ui` as the only shared component boundary
-- keep `@fresh/recipes` as the prototype and screen-block boundary
-- use `@fresh/shadcn-reference` as the strict reference system for look, feel, and
+- keep `@fresh-ds/ui-core` as the only primitive runtime boundary
+- keep `@fresh-ds/ui` as the only shared component boundary
+- keep `@fresh-ds/recipes` as the prototype and screen-block boundary
+- use `@fresh-ds/shadcn-reference` as the strict reference system for look, feel, and
   interaction intent
 - treat direct raw React Native or third-party UI usage in product screens as
   migration debt unless explicitly approved
@@ -53,19 +53,19 @@ The key move is:
 
 ### Default reference foundation
 
-Use `@fresh/shadcn-reference` as the default reference contract for taxonomy, visual
+Use `@fresh-ds/shadcn-reference` as the default reference contract for taxonomy, visual
 parity targets, and interaction expectations.
 
 This is not a runtime dependency.
 
 ### Default runtime foundation
 
-Use `@fresh/ui-core` plus `@fresh/ui` as the default runtime foundation for all shared
+Use `@fresh-ds/ui-core` plus `@fresh-ds/ui` as the default runtime foundation for all shared
 UI.
 
 ### Prototype boundary
 
-Use `@fresh/recipes` for higher-fidelity prototype blocks and screen-level composition.
+Use `@fresh-ds/recipes` for higher-fidelity prototype blocks and screen-level composition.
 
 ### Approved exceptions
 
@@ -110,7 +110,7 @@ These qualities should not depend on whether an internal implementation changed.
 
 Location:
 
-- `@fresh/shadcn-reference`
+- `@fresh-ds/shadcn-reference`
 
 Responsibilities:
 
@@ -123,7 +123,7 @@ Responsibilities:
 
 Location:
 
-- `@fresh/recipes`
+- `@fresh-ds/recipes`
 
 Responsibilities:
 
@@ -136,7 +136,7 @@ Responsibilities:
 
 Location:
 
-- `@fresh/ui`
+- `@fresh-ds/ui`
 
 Responsibilities:
 
@@ -149,7 +149,7 @@ Responsibilities:
 
 Location:
 
-- `@fresh/ui-core`
+- `@fresh-ds/ui-core`
 
 Responsibilities:
 
@@ -162,7 +162,7 @@ Responsibilities:
 
 Location:
 
-- `@fresh/tokens`
+- `@fresh-ds/tokens`
 
 Responsibilities:
 
@@ -194,7 +194,7 @@ When a new pattern is needed:
 If a third-party or platform-specific exception is needed:
 
 - document the reason
-- keep it hidden behind `@fresh/ui-core`, `@fresh/ui`, or `@fresh/recipes`
+- keep it hidden behind `@fresh-ds/ui-core`, `@fresh-ds/ui`, or `@fresh-ds/recipes`
 - avoid exposing implementation-specific APIs to product code
 
 ## Regression Protection
@@ -257,10 +257,10 @@ Engineering should preserve product craft while moving patterns inward.
 
 Agents should:
 
-1. treat `@fresh/ui-core` as the only primitive runtime boundary
-2. treat `@fresh/ui` as the only shared component boundary
-3. treat `@fresh/recipes` as the default prototype extraction boundary
-4. use `@fresh/shadcn-reference` before changing look, feel, or interaction semantics
+1. treat `@fresh-ds/ui-core` as the only primitive runtime boundary
+2. treat `@fresh-ds/ui` as the only shared component boundary
+3. treat `@fresh-ds/recipes` as the default prototype extraction boundary
+4. use `@fresh-ds/shadcn-reference` before changing look, feel, or interaction semantics
 5. avoid direct third-party UI usage in product code
 6. preserve approved visual output during internal migrations
 7. validate the starter and playground after shared-boundary changes
@@ -270,14 +270,14 @@ Agents should:
 This strategy is successful when:
 
 - product screens keep their intended craft while the shared system gets stricter
-- product code mostly depends on `@fresh/recipes` and `@fresh/ui`, not raw primitives
+- product code mostly depends on `@fresh-ds/recipes` and `@fresh-ds/ui`, not raw primitives
 - shared runtime decisions stay hidden behind package boundaries
 - promotion work is incremental rather than disruptive
 - engineering and agents make the same structural choices by default
 
 ## Short Version
 
-Use `@fresh/shadcn-reference` as the strict reference system, keep runtime UI behind
-`@fresh/ui-core`, `@fresh/ui`, and `@fresh/recipes`, treat direct product-level
+Use `@fresh-ds/shadcn-reference` as the strict reference system, keep runtime UI behind
+`@fresh-ds/ui-core`, `@fresh-ds/ui`, and `@fresh-ds/recipes`, treat direct product-level
 primitive usage as debt, and preserve approved screen craft while moving shared
 patterns inward one seam at a time.

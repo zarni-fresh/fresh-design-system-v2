@@ -1,5 +1,5 @@
 {
-  "name": "@fresh/ui",
+  "name": "@fresh-ds/ui",
   "version": "0.1.0",
   "type": "module",
   "files": [
@@ -26,8 +26,8 @@
     "test": "vitest run --config ../../vitest.config.ts packages/ui/src"
   },
   "dependencies": {
-    "@fresh/tokens": "0.1.0",
-    "@fresh/ui-core": "0.1.0"
+    "@fresh-ds/tokens": "0.1.0",
+    "@fresh-ds/ui-core": "0.1.0"
   },
   "peerDependencies": {
     "react": "^19.0.0",

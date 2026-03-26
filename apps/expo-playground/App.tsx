@@ -18,8 +18,8 @@ import {
   Switch,
   TextField,
   componentManifests,
-} from '@fresh/ui';
-import { Box, FreshThemeProvider, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+} from '@fresh-ds/ui';
+import { Box, FreshThemeProvider, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 
 const SectionHeading = ({
   eyebrow,

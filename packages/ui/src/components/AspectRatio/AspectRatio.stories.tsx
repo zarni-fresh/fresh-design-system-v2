@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react';
-import { Box, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import { AspectRatioExamples } from './AspectRatio.examples';
 import { AspectRatio } from './AspectRatio';
 

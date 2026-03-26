@@ -1,6 +1,6 @@
-import type { SemanticTheme } from '@fresh/tokens';
-import { cva, getActionPalette } from '@fresh/ui-core';
-import type { TextProps } from '@fresh/ui-core';
+import type { SemanticTheme } from '@fresh-ds/tokens';
+import { cva, getActionPalette } from '@fresh-ds/ui-core';
+import type { TextProps } from '@fresh-ds/ui-core';
 
 export const buttonVariantOptions = [
   'primary',

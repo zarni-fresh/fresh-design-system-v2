@@ -1,4 +1,4 @@
-import { Stack } from '@fresh/ui-core';
+import { Stack } from '@fresh-ds/ui-core';
 import { Progress } from './Progress';
 
 export const ProgressExamples = () => {

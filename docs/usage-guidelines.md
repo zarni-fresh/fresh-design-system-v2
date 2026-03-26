@@ -2,9 +2,9 @@
 
 ## Choose The Right Layer
 
-- Use `@fresh/ui` for branded product UI.
-- Use `@fresh/ui-core` when composing a new shared pattern or primitive layout.
-- Use `@fresh/tokens` only when defining or evolving system values, not in product
+- Use `@fresh-ds/ui` for branded product UI.
+- Use `@fresh-ds/ui-core` when composing a new shared pattern or primitive layout.
+- Use `@fresh-ds/tokens` only when defining or evolving system values, not in product
   screens.
 
 ## Screen Composition

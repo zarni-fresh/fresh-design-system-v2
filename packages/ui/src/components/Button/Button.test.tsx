@@ -1,6 +1,6 @@
 import TestRenderer from 'react-test-renderer';
-import { getSemanticTheme } from '@fresh/tokens';
-import { FreshThemeProvider } from '@fresh/ui-core';
+import { getSemanticTheme } from '@fresh-ds/tokens';
+import { FreshThemeProvider } from '@fresh-ds/ui-core';
 import { Button } from './Button';
 
 describe('Button', () => {

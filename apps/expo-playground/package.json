@@ -1,5 +1,5 @@
 {
-  "name": "@fresh/expo-playground",
+  "name": "@fresh-ds/expo-playground",
   "version": "0.1.0",
   "private": true,
   "main": "index.ts",
@@ -17,9 +17,9 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~5.0.5",
-    "@fresh/tokens": "0.1.0",
-    "@fresh/ui": "0.1.0",
-    "@fresh/ui-core": "0.1.0",
+    "@fresh-ds/tokens": "0.1.0",
+    "@fresh-ds/ui": "0.1.0",
+    "@fresh-ds/ui-core": "0.1.0",
     "expo": "~53.0.9",
     "expo-dev-client": "~5.2.4",
     "expo-status-bar": "~2.2.3",

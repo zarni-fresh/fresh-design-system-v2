@@ -1,5 +1,5 @@
 import TestRenderer from 'react-test-renderer';
-import { FreshThemeProvider } from '@fresh/ui-core';
+import { FreshThemeProvider } from '@fresh-ds/ui-core';
 import { Switch } from './Switch';
 
 describe('Switch', () => {

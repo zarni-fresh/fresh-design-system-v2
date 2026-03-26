@@ -1,6 +1,6 @@
-import type { SemanticTheme } from '@fresh/tokens';
-import { cva, getFeedbackPalette } from '@fresh/ui-core';
-import type { TextProps } from '@fresh/ui-core';
+import type { SemanticTheme } from '@fresh-ds/tokens';
+import { cva, getFeedbackPalette } from '@fresh-ds/ui-core';
+import type { TextProps } from '@fresh-ds/ui-core';
 
 export const badgeVariantOptions = ['neutral', 'accent', 'success', 'warning', 'danger'] as const;
 

@@ -14,15 +14,15 @@
 - Storybook: light scaffold from day one
 - Primary runtime: `apps/expo-playground`
 - Pencil: primary visual review surface, never implementation authority
-- Package namespaces: `@fresh/tokens`, `@fresh/ui-core`, `@fresh/ui`
+- Package namespaces: `@fresh-ds/tokens`, `@fresh-ds/ui-core`, `@fresh-ds/ui`
 
 ## Monorepo Intent
 
 The repo is designed around one source of truth:
 
-1. `@fresh/tokens` defines raw and semantic values.
-2. `@fresh/ui-core` defines React Native primitives and theme plumbing.
-3. `@fresh/ui` defines branded shared components and manifests.
+1. `@fresh-ds/tokens` defines raw and semantic values.
+2. `@fresh-ds/ui-core` defines React Native primitives and theme plumbing.
+3. `@fresh-ds/ui` defines branded shared components and manifests.
 4. `apps/expo-playground` is where components are exercised as real UI.
 5. `apps/storybook-native` exists for light component browsing, not as the primary
    authority.

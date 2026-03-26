@@ -2,7 +2,7 @@
 
 Current state of all Fresh Design System components.
 
-## Primitives (`@fresh/ui-core`)
+## Primitives (`@fresh-ds/ui-core`)
 
 | Component | Status  | Description                                            |
 | --------- | ------- | ------------------------------------------------------ |
@@ -12,7 +12,7 @@ Current state of all Fresh Design System components.
 | Pressable | Shipped | Touch target with focus and hover states               |
 | Icon      | Shipped | Lucide wrapper with tone and size (8 registered icons) |
 
-## Components (`@fresh/ui`) — Wave 1
+## Components (`@fresh-ds/ui`) — Wave 1
 
 | Component   | Status  | shadcn Equivalent | Description                                      |
 | ----------- | ------- | ----------------- | ------------------------------------------------ |
@@ -28,7 +28,7 @@ Current state of all Fresh Design System components.
 | Switch      | Shipped | Switch            | Boolean toggle                                   |
 | TextField   | Shipped | Input             | Text input with label, helper, validation        |
 
-## Recipes (`@fresh/recipes`)
+## Recipes (`@fresh-ds/recipes`)
 
 | Component          | Status  | Description                             |
 | ------------------ | ------- | --------------------------------------- |

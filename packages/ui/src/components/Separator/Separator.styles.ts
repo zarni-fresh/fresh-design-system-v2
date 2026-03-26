@@ -1,4 +1,4 @@
-import type { SemanticTheme } from '@fresh/tokens';
+import type { SemanticTheme } from '@fresh-ds/tokens';
 
 export const separatorEmphasisOptions = ['subtle', 'default', 'strong'] as const;
 export const separatorOrientationOptions = ['horizontal', 'vertical'] as const;

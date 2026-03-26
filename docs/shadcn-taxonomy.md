@@ -113,7 +113,7 @@ Wave 1 current coverage after this implementation:
 - Treat the shadcn catalog as the target taxonomy, not as a copy-paste source.
 - Use Fresh component names when they are intentionally different:
   - `Input` maps to `TextField` in v1.
-  - `Typography` maps to `@fresh/ui-core/Text` plus content recipes.
+  - `Typography` maps to `@fresh-ds/ui-core/Text` plus content recipes.
   - `Sonner` and `Toast` converge into one Fresh toast system.
 - When a requested shadcn pattern is listed as `web-specific/defer`, do not improvise a
   shared cross-platform version inline. Propose the component as a planned addition

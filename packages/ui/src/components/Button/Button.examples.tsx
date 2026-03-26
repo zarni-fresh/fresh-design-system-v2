@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from '@fresh/ui-core';
+import { Box, Stack, Text } from '@fresh-ds/ui-core';
 import { Button } from './Button';
 
 export const ButtonExamples = () => {

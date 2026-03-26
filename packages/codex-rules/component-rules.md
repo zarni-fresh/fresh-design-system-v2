@@ -1,7 +1,7 @@
 # Component Rules
 
-Use `@fresh/recipes` first for prototype and screen-level composition. Reach for
-`@fresh/ui` for shared reusable components, then `@fresh/ui-core` only when the higher
+Use `@fresh-ds/recipes` first for prototype and screen-level composition. Reach for
+`@fresh-ds/ui` for shared reusable components, then `@fresh-ds/ui-core` only when the higher
 layers do not fit.
 
 Visual baseline:
@@ -24,7 +24,7 @@ Visual baseline:
 6. In product screens, use `Stack` for layout, `Box` for simple containers, and `Text`
    for copy before reaching for raw React Native equivalents.
 7. Use `Pressable` directly only inside shared components. Product screens should
-   prefer approved components from `@fresh/ui`.
+   prefer approved components from `@fresh-ds/ui`.
 8. Do not import third-party UI packages directly into product screens when the same
    need should live behind the shared layer.
 9. Preserve approved visual output while extracting or refactoring shared components.
@@ -35,12 +35,12 @@ Visual baseline:
 - Before implementing a new shared component, check `design/board-index.md` for an
   approved or active board covering the pattern.
 - If the pattern is still only product-specific, do not automatically promote it into
-  `@fresh/ui`.
+  `@fresh-ds/ui`.
 - When extracting a pattern from a product surface, classify it first:
   cross-product, product-specific, or primitive.
 - Shared component implementation should follow:
   approved board -> code -> manifest -> stories/examples -> tests -> Expo validation.
-- When changing look and feel or interaction details, check `@fresh/shadcn-reference`
+- When changing look and feel or interaction details, check `@fresh-ds/shadcn-reference`
   first and document any allowed adaptation or deviation.
 - If the work is boundary cleanup rather than a new design direction, keep screen-level
   craft stable and move the change inward.
@@ -76,7 +76,7 @@ Visual baseline:
 ## Taxonomy Alias Rules
 
 - If a request asks for shadcn `Input`, use `TextField`.
-- If a request asks for shadcn `Typography`, use `@fresh/ui-core/Text` recipes.
+- If a request asks for shadcn `Typography`, use `@fresh-ds/ui-core/Text` recipes.
 - If a request asks for `Sonner`, plan against the shared `Toast` roadmap rather than
   creating a second notification system.
 

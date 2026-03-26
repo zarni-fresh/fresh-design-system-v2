@@ -15,11 +15,11 @@ Primary environment:
 
 ## Non-Negotiable Rules
 
-1. For prototyping and screen composition, use approved blocks from `@fresh/recipes`
-   first. For shared reusable component work, use `@fresh/ui`, then `@fresh/ui-core`.
+1. For prototyping and screen composition, use approved blocks from `@fresh-ds/recipes`
+   first. For shared reusable component work, use `@fresh-ds/ui`, then `@fresh-ds/ui-core`.
 2. Do not use raw React Native primitives in product screens when a wrapper exists.
 3. Do not hardcode hex colors, spacing values, radii, font sizes, motion timings, or
-   shadow values outside `@fresh/tokens`.
+   shadow values outside `@fresh-ds/tokens`.
 4. Use semantic tokens only. Product code should express intent, not raw palette
    choices.
 5. Prefer composition over one-off custom UI. If a pattern is missing, propose or add a
@@ -35,10 +35,10 @@ Primary environment:
     shared components and must resolve through semantic tokens.
 11. For a new shared component or major visual refactor, do not improvise final
     anatomy directly in code. Start from an approved board or create one first.
-12. Do not promote a product-specific extracted pattern into `@fresh/ui` until it is
+12. Do not promote a product-specific extracted pattern into `@fresh-ds/ui` until it is
     approved as canonical or proven reusable across multiple product surfaces.
 13. Do not import third-party UI packages directly into product screens when the same
-    need belongs behind `@fresh/ui-core`, `@fresh/ui`, or `@fresh/recipes`.
+    need belongs behind `@fresh-ds/ui-core`, `@fresh-ds/ui`, or `@fresh-ds/recipes`.
 14. Preserve approved visual and interaction craft during extraction or migration work.
     Do not redesign a source flow while moving it inward unless the board explicitly
     changes the direction.
@@ -49,10 +49,10 @@ Primary environment:
 
 1. Check `design/board-index.md` for approved anatomy before changing a shared pattern.
 2. Start from the approved canvas screen or board, then move into code.
-3. For prototypes, start in `@fresh/recipes`.
-4. For shared reusable components, start in `@fresh/ui`.
-5. Drop to `@fresh/ui-core` only when a shared primitive composition is still needed.
-6. Use `@fresh/shadcn-reference` to validate parity targets and allowed platform
+3. For prototypes, start in `@fresh-ds/recipes`.
+4. For shared reusable components, start in `@fresh-ds/ui`.
+5. Drop to `@fresh-ds/ui-core` only when a shared primitive composition is still needed.
+6. Use `@fresh-ds/shadcn-reference` to validate parity targets and allowed platform
    adaptations before changing look and feel.
 7. If neither layer fits a repeated product need, propose a new shared component before
    shipping the screen.
@@ -72,7 +72,7 @@ Primary environment:
   loading structure, `Avatar` for identity markers, `Separator` for section division,
   and `AspectRatio` for fixed media frames.
 - Shadcn taxonomy aliases:
-  `Input` maps to `TextField`, `Typography` maps to `@fresh/ui-core/Text` recipes, and
+  `Input` maps to `TextField`, `Typography` maps to `@fresh-ds/ui-core/Text` recipes, and
   `Sonner` should resolve into the shared `Toast` system once it lands.
 - `Button` hierarchy:
   Use `primary` for the main action on a surface, `secondary` for supporting actions,
@@ -117,7 +117,7 @@ Primary environment:
 
 ## Guardrails For Generated UI
 
-- Default to `@fresh/recipes` when building prototype screens. Drop to `Button`,
+- Default to `@fresh-ds/recipes` when building prototype screens. Drop to `Button`,
   `TextField`, `Card`, and `Badge` when composing lower-level shared UI.
 - Prefer the approved foundational set before planning a new shared abstraction:
   `AspectRatio`, `Avatar`, `Badge`, `Button`, `Card`, `Label`, `Progress`,
@@ -134,6 +134,6 @@ Primary environment:
 - Keep visual tone crisp, modern, and brand-neutral until official brand tokens land.
 - Use exported variant option arrays and manifests as the preferred source for allowed
   states and variants when generating code.
-- Treat `@fresh/shadcn-reference` as strict parity guidance, not a runtime dependency.
+- Treat `@fresh-ds/shadcn-reference` as strict parity guidance, not a runtime dependency.
 - When a requested shadcn pattern is not approved yet, check
   `docs/shadcn-taxonomy.md` before improvising a new cross-platform component.

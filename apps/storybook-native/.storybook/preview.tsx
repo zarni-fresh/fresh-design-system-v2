@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Preview } from '@storybook/react-native';
 import { SafeAreaView, ScrollView } from 'react-native';
-import { Box, FreshThemeProvider, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, FreshThemeProvider, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 
 const StoryCanvas = ({ children }: { children: ReactNode }) => {
   const { theme } = useFreshTheme();

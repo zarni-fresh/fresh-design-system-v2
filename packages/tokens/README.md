@@ -1,6 +1,6 @@
-# `@fresh/tokens`
+# `@fresh-ds/tokens`
 
-`@fresh/tokens` is the authority for all reusable visual values in Fresh.
+`@fresh-ds/tokens` is the authority for all reusable visual values in Fresh.
 
 The intended visual character is documented in
 [`docs/visual-recipe.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/visual-recipe.md).

@@ -3,9 +3,9 @@
 ## Suggested Rollout
 
 1. Audit existing product screens for repeated patterns and hardcoded values.
-2. Map visual values into `@fresh/tokens`.
-3. Replace repeated inline patterns with `@fresh/ui` components.
-4. Move remaining custom layouts onto `@fresh/ui-core` primitives.
+2. Map visual values into `@fresh-ds/tokens`.
+3. Replace repeated inline patterns with `@fresh-ds/ui` components.
+4. Move remaining custom layouts onto `@fresh-ds/ui-core` primitives.
 5. Validate the migrated flows in Expo dev builds and desktop web.
 6. Update agent prompts and local rules to point at this repo as the canonical source.
 7. Use [`shadcn-taxonomy.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/shadcn-taxonomy.md)
@@ -13,7 +13,7 @@
 
 ## Adoption Checklist
 
-- Product screens import from `@fresh/ui` by default.
+- Product screens import from `@fresh-ds/ui` by default.
 - Hardcoded visual values are removed from screen code.
 - Stories and examples cover the adopted patterns.
 - Expo playground demonstrates the adopted patterns on mobile and desktop web.

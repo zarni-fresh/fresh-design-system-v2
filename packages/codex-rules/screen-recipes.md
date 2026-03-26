@@ -4,11 +4,11 @@
 
 - Start from approved or in-review design boards, not from screenshots alone.
 - Start from the approved canvas screen first, then build the app surface from it.
-- Check `@fresh/recipes` before rebuilding a polished section from raw components.
+- Check `@fresh-ds/recipes` before rebuilding a polished section from raw components.
 - Identify which parts of the screen are already shared components.
 - Separate product-specific shells from cross-product structure before implementing.
 - Prefer extracting one stable shared pattern at a time rather than porting a whole
-  screen wholesale into `@fresh/ui`.
+  screen wholesale into `@fresh-ds/ui`.
 - Keep product flow logic outside the shared component layer unless it is clearly
   reusable.
 - Preserve the approved visual and interaction craft of the source screen while

@@ -1,5 +1,5 @@
-import { Button, Card } from '@fresh/ui';
-import { Box, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Button, Card } from '@fresh-ds/ui';
+import { Box, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import { renderRecipeBadges } from '../../lib/render';
 import type { RecipeAction, RecipeBadge, RecipeMetadataItem, RecipeSlot } from '../../lib/types';
 

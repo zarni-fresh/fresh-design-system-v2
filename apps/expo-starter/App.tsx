@@ -7,9 +7,9 @@ import {
   SelectionCard,
   StickyActionFooter,
   SummaryCard,
-} from '@fresh/recipes';
-import { Badge, Button, Card, Progress, Separator } from '@fresh/ui';
-import { Box, FreshThemeProvider, Icon, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+} from '@fresh-ds/recipes';
+import { Badge, Button, Card, Progress, Separator } from '@fresh-ds/ui';
+import { Box, FreshThemeProvider, Icon, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 
 type TreatmentArea = {
   area: string;

@@ -1,5 +1,5 @@
-import type { SemanticTheme } from '@fresh/tokens';
-import { getFeedbackPalette } from '@fresh/ui-core';
+import type { SemanticTheme } from '@fresh-ds/tokens';
+import { getFeedbackPalette } from '@fresh-ds/ui-core';
 
 export const progressSizeOptions = ['sm', 'md', 'lg'] as const;
 export const progressVariantOptions = [

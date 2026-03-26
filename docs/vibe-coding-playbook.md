@@ -26,9 +26,9 @@ for a concrete PM-to-engineering flow.
    [`starting-prompt-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/starting-prompt-playbook.md).
 4. Then use the fuller copy-paste prompt in
    [`canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
-5. Prefer `@fresh/recipes` for prototype screens and polished screen blocks.
-6. Prefer `@fresh/ui` for reusable shared components.
-7. Only drop to `@fresh/ui-core` when the higher layers do not fit.
+5. Prefer `@fresh-ds/recipes` for prototype screens and polished screen blocks.
+6. Prefer `@fresh-ds/ui` for reusable shared components.
+7. Only drop to `@fresh-ds/ui-core` when the higher layers do not fit.
 8. If a pattern is missing and repeated, propose it as shared work instead of
    improvising it inline.
 
@@ -38,9 +38,9 @@ for a concrete PM-to-engineering flow.
 - React Native
 - TypeScript
 - NativeWind
-- `@fresh/tokens`
-- `@fresh/ui-core`
-- `@fresh/ui`
+- `@fresh-ds/tokens`
+- `@fresh-ds/ui-core`
+- `@fresh-ds/ui`
 
 ## Default Team Workflow
 
@@ -88,7 +88,7 @@ of following the repo contract.
 
 Before sharing or merging generated UI:
 
-- the screen uses `@fresh/ui` where possible
+- the screen uses `@fresh-ds/ui` where possible
 - no hardcoded visual values were introduced
 - the layout works on mobile and desktop web
 - the copy is concise and in sentence case

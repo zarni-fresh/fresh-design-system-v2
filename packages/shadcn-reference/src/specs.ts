@@ -4,7 +4,7 @@ export const shadcnReferenceSpecs = [
   {
     referenceName: 'Button',
     freshMapping: {
-      package: '@fresh/ui',
+      package: '@fresh-ds/ui',
       component: 'Button',
       layer: 'component',
     },
@@ -54,7 +54,7 @@ export const shadcnReferenceSpecs = [
   {
     referenceName: 'Input',
     freshMapping: {
-      package: '@fresh/ui',
+      package: '@fresh-ds/ui',
       component: 'TextField',
       layer: 'component',
     },
@@ -100,7 +100,7 @@ export const shadcnReferenceSpecs = [
   {
     referenceName: 'Card',
     freshMapping: {
-      package: '@fresh/ui',
+      package: '@fresh-ds/ui',
       component: 'Card',
       layer: 'component',
     },
@@ -147,7 +147,7 @@ export const shadcnReferenceSpecs = [
   {
     referenceName: 'Badge',
     freshMapping: {
-      package: '@fresh/ui',
+      package: '@fresh-ds/ui',
       component: 'Badge',
       layer: 'component',
     },
@@ -190,7 +190,7 @@ export const shadcnReferenceSpecs = [
   {
     referenceName: 'Switch',
     freshMapping: {
-      package: '@fresh/ui',
+      package: '@fresh-ds/ui',
       component: 'Switch',
       layer: 'component',
     },
@@ -240,7 +240,7 @@ export const shadcnReferenceSpecs = [
   {
     referenceName: 'Avatar',
     freshMapping: {
-      package: '@fresh/ui',
+      package: '@fresh-ds/ui',
       component: 'Avatar',
       layer: 'component',
     },

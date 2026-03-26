@@ -1,5 +1,5 @@
 import { forwardRef, type ElementRef, type ReactNode } from 'react';
-import { Box, type BoxProps, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, type BoxProps, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   badgeEmphasisOptions,
   badgeLayout,

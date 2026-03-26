@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef } from 'react';
-import { Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   getLabelColor,
   getLabelTypography,

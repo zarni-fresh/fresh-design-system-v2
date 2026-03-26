@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import { Avatar } from '../Avatar/Avatar';
 import { Badge } from '../Badge/Badge';
 import { Button } from '../Button/Button';

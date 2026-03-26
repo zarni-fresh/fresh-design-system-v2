@@ -10,9 +10,9 @@ A data entry screen with labeled inputs and a submit action.
 **Components:** `PageHeader`, `Card`, `Label`, `TextField`, `Stack`, `StickyActionFooter`
 
 ```tsx
-import { Button, Card, Label, TextField } from '@fresh/ui';
-import { Stack } from '@fresh/ui-core';
-import { PageHeader, StickyActionFooter } from '@fresh/recipes';
+import { Button, Card, Label, TextField } from '@fresh-ds/ui';
+import { Stack } from '@fresh-ds/ui-core';
+import { PageHeader, StickyActionFooter } from '@fresh-ds/recipes';
 
 function FormScreen() {
   return (
@@ -43,8 +43,8 @@ A screen where the user picks from a list of options.
 **Components:** `PageHeader`, `SelectionCard`, `Stack`, `StickyActionFooter`
 
 ```tsx
-import { Stack } from '@fresh/ui-core';
-import { PageHeader, SelectionCard, StickyActionFooter } from '@fresh/recipes';
+import { Stack } from '@fresh-ds/ui-core';
+import { PageHeader, SelectionCard, StickyActionFooter } from '@fresh-ds/recipes';
 
 function SelectionScreen() {
   return (
@@ -77,9 +77,9 @@ A read-only screen showing structured data about an entity.
 `Separator`
 
 ```tsx
-import { Badge, Card, Separator } from '@fresh/ui';
-import { Stack, Text } from '@fresh/ui-core';
-import { PageHeader, SectionHeader, SummaryCard } from '@fresh/recipes';
+import { Badge, Card, Separator } from '@fresh-ds/ui';
+import { Stack, Text } from '@fresh-ds/ui-core';
+import { PageHeader, SectionHeader, SummaryCard } from '@fresh-ds/recipes';
 
 function DetailScreen() {
   return (
@@ -135,9 +135,9 @@ A top-level screen with KPI summaries and grouped content sections.
 **Components:** `PageHeader`, `SummaryCard`, `SectionHeader`, `Card`, `Progress`, `Badge`
 
 ```tsx
-import { Badge, Card, Progress } from '@fresh/ui';
-import { Stack, Text } from '@fresh/ui-core';
-import { PageHeader, SectionHeader, SummaryCard } from '@fresh/recipes';
+import { Badge, Card, Progress } from '@fresh-ds/ui';
+import { Stack, Text } from '@fresh-ds/ui-core';
+import { PageHeader, SectionHeader, SummaryCard } from '@fresh-ds/recipes';
 
 function DashboardScreen() {
   return (

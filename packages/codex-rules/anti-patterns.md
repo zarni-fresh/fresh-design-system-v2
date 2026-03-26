@@ -3,7 +3,7 @@
 1. Do not import raw React Native primitives into product screens when an approved
    wrapper already exists.
 2. Do not hardcode hex values, spacing numbers, radii, typography sizes, or shadow
-   values outside `@fresh/tokens`.
+   values outside `@fresh-ds/tokens`.
 3. Do not fork component variants inline for one screen. Add a shared variant or a new
    shared component instead.
 4. Do not communicate validation or destructive intent through color alone.

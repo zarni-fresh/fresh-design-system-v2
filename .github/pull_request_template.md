@@ -14,8 +14,8 @@
 
 ## Design System Checklist
 
-- [ ] No raw visual values were introduced outside `@fresh/tokens`
-- [ ] Shared UI used `@fresh/ui` or `@fresh/ui-core`
+- [ ] No raw visual values were introduced outside `@fresh-ds/tokens`
+- [ ] Shared UI used `@fresh-ds/ui` or `@fresh-ds/ui-core`
 - [ ] Dark mode and accessibility were considered
 - [ ] Stories, examples, tests, and manifests were updated when component APIs changed
 

@@ -1,7 +1,7 @@
 import { Badge } from '../Badge/Badge';
 import { Button } from '../Button/Button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card';
-import { Stack, Text } from '@fresh/ui-core';
+import { Stack, Text } from '@fresh-ds/ui-core';
 
 export const CardExamples = () => {
   return (

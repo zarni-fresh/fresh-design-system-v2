@@ -1,7 +1,7 @@
 # Icon Catalog
 
 Fresh uses [Lucide](https://lucide.dev/) as its icon library, wrapped by the `Icon`
-primitive in `@fresh/ui-core`.
+primitive in `@fresh-ds/ui-core`.
 
 ## Approved Icons
 
@@ -32,7 +32,7 @@ Prefer registered string names over raw Lucide imports. String names are determi
 and keep the approved set explicit.
 
 ```tsx
-import { Icon } from '@fresh/ui-core';
+import { Icon } from '@fresh-ds/ui-core';
 
 // Preferred: string name
 <Icon icon="check" size={16} tone="success" />;

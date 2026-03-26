@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef } from 'react';
-import { Box, useFreshTheme } from '@fresh/ui-core';
+import { Box, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   getSeparatorColor,
   separatorEmphasisOptions,

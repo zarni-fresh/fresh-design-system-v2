@@ -1,5 +1,5 @@
-import { Button } from '@fresh/ui';
-import { Box, type BoxProps, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Button } from '@fresh-ds/ui';
+import { Box, type BoxProps, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import type { RecipeAction } from '../../lib/types';
 
 export type StickyActionFooterProps = Omit<BoxProps, 'children'> & {

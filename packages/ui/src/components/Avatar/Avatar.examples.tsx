@@ -1,4 +1,4 @@
-import { Stack, Text } from '@fresh/ui-core';
+import { Stack, Text } from '@fresh-ds/ui-core';
 import { Avatar } from './Avatar';
 
 export const AvatarExamples = () => {

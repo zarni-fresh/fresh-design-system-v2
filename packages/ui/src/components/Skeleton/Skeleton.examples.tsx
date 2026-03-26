@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '../Card/Card';
 import { Separator } from '../Separator/Separator';
 import { Skeleton } from './Skeleton';
-import { Stack } from '@fresh/ui-core';
+import { Stack } from '@fresh-ds/ui-core';
 
 export const SkeletonExamples = () => {
   return (

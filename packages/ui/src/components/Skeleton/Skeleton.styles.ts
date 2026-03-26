@@ -1,4 +1,4 @@
-import type { SemanticTheme } from '@fresh/tokens';
+import type { SemanticTheme } from '@fresh-ds/tokens';
 
 export const skeletonShapeOptions = ['line', 'block', 'circle'] as const;
 export const skeletonSizeOptions = ['sm', 'md', 'lg'] as const;

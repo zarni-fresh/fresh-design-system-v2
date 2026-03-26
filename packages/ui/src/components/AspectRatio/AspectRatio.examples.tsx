@@ -1,4 +1,4 @@
-import { Box, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Box, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
 import { AspectRatio } from './AspectRatio';
 
 export const AspectRatioExamples = () => {

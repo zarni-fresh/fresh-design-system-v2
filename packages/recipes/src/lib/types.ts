@@ -1,6 +1,12 @@
 import type { ReactNode } from 'react';
-import type { BadgeEmphasis, BadgeSize, BadgeVariant, ButtonSize, ButtonVariant } from '@fresh/ui';
-import type { IconName, TextTone } from '@fresh/ui-core';
+import type {
+  BadgeEmphasis,
+  BadgeSize,
+  BadgeVariant,
+  ButtonSize,
+  ButtonVariant,
+} from '@fresh-ds/ui';
+import type { IconName, TextTone } from '@fresh-ds/ui-core';
 
 export type RecipeAction = {
   accessibilityLabel?: string;

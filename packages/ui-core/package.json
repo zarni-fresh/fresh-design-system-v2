@@ -1,5 +1,5 @@
 {
-  "name": "@fresh/ui-core",
+  "name": "@fresh-ds/ui-core",
   "version": "0.1.0",
   "type": "module",
   "files": [
@@ -22,7 +22,7 @@
     "test": "vitest run --config ../../vitest.config.ts packages/ui-core/src --passWithNoTests"
   },
   "dependencies": {
-    "@fresh/tokens": "0.1.0",
+    "@fresh-ds/tokens": "0.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react-native": "^0.525.0",

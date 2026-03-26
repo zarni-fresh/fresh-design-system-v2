@@ -1,6 +1,6 @@
 import { type ComponentPropsWithoutRef } from 'react';
 import { type DimensionValue } from 'react-native';
-import { Box, useFreshTheme } from '@fresh/ui-core';
+import { Box, useFreshTheme } from '@fresh-ds/ui-core';
 import {
   getSkeletonColor,
   getSkeletonMetrics,

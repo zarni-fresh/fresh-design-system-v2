@@ -107,36 +107,36 @@ design/                Pencil board index, handoff checklist, companion exports
 
 ## Package Responsibilities
 
-### `@fresh/tokens`
+### `@fresh-ds/tokens`
 
 - Owns all raw values for color, spacing, radius, typography, elevation, and motion
 - Exposes semantic themes for light and dark mode
 - Provides the only approved place for visual values to live
 
-### `@fresh/ui-core`
+### `@fresh-ds/ui-core`
 
 - Provides React Native primitives such as `Box`, `Text`, `Stack`, `Pressable`, and
   `Icon`
 - Supplies the shared `cn` helper, variant utilities, and theme access
 - Keeps native building blocks composable and token-aware
 
-### `@fresh/ui`
+### `@fresh-ds/ui`
 
 - Provides branded components such as `Button`, `TextField`, `Card`, and `Badge`
 - Ships stories, tests, examples, and manifest JSON files alongside the code
 - Acts as the default component surface for product UIs and code generation
 
-### `@fresh/codex-rules`
+### `@fresh-ds/codex-rules`
 
 - Captures generation rules, repeatable screen recipes, and anti-patterns
 - Gives coding agents a local rulebook to follow before inventing new UI
 
-### `@fresh/shadcn-reference`
+### `@fresh-ds/shadcn-reference`
 
 - Holds typed shadcn parity specs and adaptation rules
 - Provides a strict reference contract without importing web-only runtime code
 
-### `@fresh/recipes`
+### `@fresh-ds/recipes`
 
 - Provides the prototype lane for polished higher-level blocks
 - Gives PMs, designers, and engineers a better prompting surface than raw components
@@ -151,21 +151,21 @@ design/                Pencil board index, handoff checklist, companion exports
    and use
    [`design/handoff-checklist.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/design/handoff-checklist.md)
    to define what needs to move into code.
-3. Promote only approved, repeated, or canonical patterns into `@fresh/ui` or
-   `@fresh/ui-core`.
+3. Promote only approved, repeated, or canonical patterns into `@fresh-ds/ui` or
+   `@fresh-ds/ui-core`.
 4. Keep product-specific patterns local until they are proven reusable.
 5. Validate the coded result in Expo playground and, when useful, Storybook.
 
 ## How Engineers Should Use It
 
 1. Check the approved board registry before adding a new shared pattern.
-2. Prefer `@fresh/recipes` for prototyping and screen-level composition.
-3. Prefer `@fresh/ui` for reusable shared components.
-4. If a higher-level component does not exist, compose with `@fresh/ui-core`.
+2. Prefer `@fresh-ds/recipes` for prototyping and screen-level composition.
+3. Prefer `@fresh-ds/ui` for reusable shared components.
+4. If a higher-level component does not exist, compose with `@fresh-ds/ui-core`.
 5. Never hardcode visual values in product code. Pull intent from semantic tokens.
 6. If a pattern repeats across products or is explicitly approved, add a shared
    component instead of copying inline layout.
-7. Use `@fresh/shadcn-reference` to validate parity decisions instead of guessing.
+7. Use `@fresh-ds/shadcn-reference` to validate parity decisions instead of guessing.
 8. Validate meaningful UI changes in the Expo playground first, then on desktop web.
 
 ## How AI Agents Should Use It
@@ -175,7 +175,7 @@ design/                Pencil board index, handoff checklist, companion exports
 2. Check
    [`design/board-index.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/design/board-index.md)
    before inventing a new shared component or changing major visual anatomy.
-3. Use `@fresh/shadcn-reference` to understand strict parity expectations before
+3. Use `@fresh-ds/shadcn-reference` to understand strict parity expectations before
    inventing visual or interaction changes.
 4. Use manifest JSON files in `packages/ui/src/components/*/*.manifest.json` and
    `packages/recipes/src/components/*/*.manifest.json` to choose the right layer.
@@ -242,12 +242,12 @@ npm run build
 If you are consuming Fresh packages from a separate repository:
 
 ```bash
-npm install @fresh/tokens @fresh/ui-core @fresh/ui
+npm install @fresh-ds/tokens @fresh-ds/ui-core @fresh-ds/ui
 # For recipe-level components:
-npm install @fresh/recipes
+npm install @fresh-ds/recipes
 ```
 
-Peer dependencies: `react`, `react-native`, `react-native-svg` (for `@fresh/ui-core`).
+Peer dependencies: `react`, `react-native`, `react-native-svg` (for `@fresh-ds/ui-core`).
 
 > **Note:** Confirm `@fresh` npm scope availability before first publish. If the scope is
 > unavailable, packages may be published under an alternative scope.

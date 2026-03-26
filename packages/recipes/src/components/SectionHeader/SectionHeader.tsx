@@ -7,7 +7,7 @@ import {
   Stack,
   Text,
   useFreshTheme,
-} from '@fresh/ui-core';
+} from '@fresh-ds/ui-core';
 import { renderRecipeBadges } from '../../lib/render';
 import type { RecipeBadge } from '../../lib/types';
 

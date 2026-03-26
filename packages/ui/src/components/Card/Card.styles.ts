@@ -1,5 +1,5 @@
-import type { SemanticTheme } from '@fresh/tokens';
-import { cva, getBorderColor, getElevationStyle, getSurfaceColor } from '@fresh/ui-core';
+import type { SemanticTheme } from '@fresh-ds/tokens';
+import { cva, getBorderColor, getElevationStyle, getSurfaceColor } from '@fresh-ds/ui-core';
 
 export const cardVariantOptions = ['outlined', 'elevated', 'subtle'] as const;
 export const cardPaddingOptions = ['sm', 'md', 'lg'] as const;
