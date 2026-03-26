@@ -3,6 +3,18 @@
 Fresh Design System is a React Native and TypeScript monorepo for the canonical UI
 contract that Fresh products and AI agents should follow by default.
 
+## Quick Start
+
+```bash
+git clone git@github.com:zarni-fresh/fresh-design-system-v2.git
+cd fresh-design-system
+npm install
+npm run dev                    # Expo playground (mobile)
+npm run dev:playground:web     # Desktop web
+```
+
+---
+
 This repository exists to keep branded UI authority in code, not scattered across
 screens, screenshots, or visual tooling. It combines tokens, primitives, branded
 components, manifests, docs, and agent rules into one source of truth that can be
@@ -10,7 +22,8 @@ shared across engineering and code generation workflows.
 
 The working model is now explicit:
 
-- Pencil is the visual review and alignment surface for major design decisions.
+- A design canvas is the visual review and alignment surface for major design
+  decisions. Pencil is the preferred default, but the canvas can be user-specified.
 - Code is still the source of truth for tokens, components, manifests, stories, tests,
   and agent rules.
 - Shared UI should move from approved design boards into code deliberately, not by
@@ -22,6 +35,9 @@ while reinterpreting components natively for React Native and Expo. See
 for the full matrix and rollout plan.
 Strict shadcn parity and the new prototype lane are documented in
 [`docs/prototype-architecture.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/prototype-architecture.md).
+The package-boundary and migration discipline informed by recent prototype learnings is
+documented in
+[`docs/primitive-boundary-strategy.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/primitive-boundary-strategy.md).
 
 The visual baseline is documented separately in
 [`docs/visual-recipe.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/visual-recipe.md)
@@ -37,6 +53,10 @@ The team onboarding path lives in
 [`docs/vibe-coding-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/vibe-coding-playbook.md)
 and
 [`docs/canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
+The universal starting prompt lives in
+[`docs/starting-prompt-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/starting-prompt-playbook.md).
+The plain-English onboarding guide lives in
+[`docs/how-to-use-fresh.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/how-to-use-fresh.md).
 There is also a worked example using Drugbook in
 [`docs/drugbook-simulation.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/drugbook-simulation.md).
 
@@ -216,6 +236,21 @@ npm run typecheck
 npm run test
 npm run build
 ```
+
+## For External Consumers
+
+If you are consuming Fresh packages from a separate repository:
+
+```bash
+npm install @fresh/tokens @fresh/ui-core @fresh/ui
+# For recipe-level components:
+npm install @fresh/recipes
+```
+
+Peer dependencies: `react`, `react-native`, `react-native-svg` (for `@fresh/ui-core`).
+
+> **Note:** Confirm `@fresh` npm scope availability before first publish. If the scope is
+> unavailable, packages may be published under an alternative scope.
 
 ## Contribution Expectations
 

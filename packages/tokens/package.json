@@ -1,8 +1,8 @@
 {
   "name": "@fresh/tokens",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
+  "files": ["dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,6 +17,7 @@
     }
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "tsup src/index.ts src/nativewind.ts --format esm --dts --clean",
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
