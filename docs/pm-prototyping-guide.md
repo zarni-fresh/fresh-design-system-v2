@@ -3,9 +3,48 @@
 This guide gets you from zero to a working prototype using the Fresh Design System.
 No backend knowledge required.
 
-## Before You Start
+## Fastest Way: Use an AI Coding Agent
 
-You will need:
+If you use Claude Code, Cursor, Codex, or a similar AI coding tool, you can skip
+the manual setup entirely. Paste a prompt like this:
+
+> Clone the Fresh Design System repo (zarni-fresh/fresh-design-system-v2), create
+> a branch called prototype/[feature-name], and run the blank starter on web.
+> I want to build a [describe your screen].
+
+The agent will handle git, npm, and terminal commands for you. You focus on
+describing what you want.
+
+Here are some example prompts to get started:
+
+**Starting a new prototype:**
+
+> Clone fresh-design-system-v2, create a branch called prototype/patient-intake,
+> install dependencies, and run the blank starter on web. Then build me a patient
+> intake form with fields for name, date of birth, email, and phone number. Use
+> a PageHeader, Card with TextFields, and a StickyActionFooter with a Save button.
+
+**Iterating on an existing prototype:**
+
+> Switch to my prototype/patient-intake branch. Add a second screen that shows a
+> summary of the entered data using a SummaryCard. Add a back button to the
+> PageHeader.
+
+**Exploring what is available:**
+
+> Read the component status doc and the icon catalog in the Fresh Design System
+> repo. What components and icons can I use to build a dashboard screen?
+
+The agent has access to all the docs, manifests, and component source code in the
+repo, so it can make informed choices about which components to use and how to
+compose them correctly.
+
+## Manual Setup
+
+If you prefer to work without an AI agent, or want to understand the steps, follow
+the manual path below.
+
+### Prerequisites
 
 - **Node.js** (v22 or later) — download from https://nodejs.org
 - **Git** — likely already installed on your Mac (`git --version` to check)
@@ -15,9 +54,9 @@ You will need:
 If any of these are unfamiliar, ask an engineer to help with the initial setup. It
 takes 5 minutes.
 
-## Quick Start (5 Steps)
+### Quick Start (5 Steps)
 
-### 1. Clone the repo
+#### 1. Clone the repo
 
 ```bash
 git clone git@github.com:zarni-fresh/fresh-design-system-v2.git
@@ -25,7 +64,7 @@ cd fresh-design-system
 npm install
 ```
 
-### 2. Create a branch for your prototype
+#### 2. Create a branch for your prototype
 
 ```bash
 git checkout -b prototype/your-feature-name
@@ -34,12 +73,12 @@ git checkout -b prototype/your-feature-name
 Name it something descriptive, like `prototype/patient-intake-flow` or
 `prototype/dashboard-redesign`.
 
-### 3. Open the blank starter
+#### 3. Open the blank starter
 
 Open `apps/blank-starter/App.tsx` in your editor. This is your canvas. It comes
 pre-wired with a PageHeader, Card, TextField, and Button to show you the pattern.
 
-### 4. Run it
+#### 4. Run it
 
 ```bash
 npm run dev:blank:web
@@ -53,7 +92,7 @@ To preview on mobile instead:
 npm run dev:blank
 ```
 
-### 5. Build your screens
+#### 5. Build your screens
 
 Edit `App.tsx` to compose your prototype. Use the components listed below. When
 you are done, commit and push your branch:
