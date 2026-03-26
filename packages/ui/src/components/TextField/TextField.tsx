@@ -109,7 +109,11 @@ export const TextField = forwardRef<ElementRef<typeof TextInput>, TextFieldProps
                 marginRight: resolveSpace(theme, 2),
               }}
             >
-              <Icon color={theme.color.content.secondary} icon={leadingIcon} size={metrics.iconSize} />
+              <Icon
+                color={theme.color.content.secondary}
+                icon={leadingIcon}
+                size={metrics.iconSize}
+              />
             </Box>
           ) : null}
 

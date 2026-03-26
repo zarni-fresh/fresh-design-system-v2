@@ -79,7 +79,11 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
           ? palette.backgroundHover
           : palette.background;
       const baseShadow =
-        variant === 'ghost' ? theme.elevation[0] : variant === 'outline' ? theme.elevation[0] : theme.elevation[1];
+        variant === 'ghost'
+          ? theme.elevation[0]
+          : variant === 'outline'
+            ? theme.elevation[0]
+            : theme.elevation[1];
       const baseStyle: ViewStyle = {
         alignItems: 'center',
         backgroundColor,

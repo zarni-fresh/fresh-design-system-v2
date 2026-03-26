@@ -22,5 +22,7 @@ const fallbackFlatten = (style: StyleProp<ViewStyle>): ViewStyle => {
 };
 
 export const flattenStyle = (style: StyleProp<ViewStyle>) => {
-  return typeof StyleSheet.flatten === 'function' ? StyleSheet.flatten(style) : fallbackFlatten(style);
+  return typeof StyleSheet.flatten === 'function'
+    ? StyleSheet.flatten(style)
+    : fallbackFlatten(style);
 };

@@ -1,5 +1,5 @@
-import { type ReactNode, useState } from 'react';
-import { SafeAreaView, ScrollView, useWindowDimensions } from 'react-native';
+import { useState, type ReactNode } from 'react';
+import { SafeAreaView, ScrollView, useColorScheme, useWindowDimensions } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {
   PageHeader,
@@ -8,547 +8,959 @@ import {
   StickyActionFooter,
   SummaryCard,
 } from '@fresh/recipes';
-import {
-  Avatar,
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  Label,
-  Separator,
-  Switch,
-  TextField,
-} from '@fresh/ui';
-import { Box, FreshThemeProvider, Stack, Text, useFreshTheme } from '@fresh/ui-core';
+import { Badge, Button, Card, Progress, Separator } from '@fresh/ui';
+import { Box, FreshThemeProvider, Icon, Stack, Text, useFreshTheme } from '@fresh/ui-core';
 
-const BulletRow = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useFreshTheme();
-
-  return (
-    <Stack align="center" direction="horizontal" gap={2.5}>
-      <Box
-        style={{
-          backgroundColor: theme.color.content.secondary,
-          borderRadius: theme.radius.pill,
-          height: 6,
-          width: 6,
-        }}
-      />
-      <Text style={{ flex: 1 }} tone="muted">
-        {children}
-      </Text>
-    </Stack>
-  );
-};
-
-const DrugbookProductSelectionCard = () => {
-  return (
-    <SelectionCard
-      badges={[
-        { label: 'Selected product', variant: 'accent' },
-        { label: 'In stock', variant: 'success' },
-      ]}
-      description="Injectable vial · SKU DB-204 · Prescriber-only supply"
-      helperText="This uses the recipe lane to reach a more polished prototype block without pretending the whole Drugbook flow is already a shared component."
-      media={<Avatar fallbackLabel="Drugbook" size="sm" tone="accent" />}
-      metadata={[
-        { label: 'Cold chain' },
-        { label: 'Batch tracked' },
-        { label: 'Clinic ready' },
-      ]}
-      selected
-      title="Botulinum toxin 50U"
-      tone="accent"
-    />
-  );
-};
-
-const DrugbookQuantityStepper = ({
-  onDecrement,
-  onIncrement,
-  quantity,
-}: {
-  onDecrement: () => void;
-  onIncrement: () => void;
-  quantity: number;
-}) => (
-  <Stack align="center" direction="horizontal" gap={3} justify="space-between">
-    <Button
-      accessibilityLabel="Decrease quantity"
-      disabled={quantity <= 1}
-      label="-"
-      onPress={onDecrement}
-      size="sm"
-      variant="outline"
-    />
-    <Stack align="center" gap={1} style={{ flex: 1 }}>
-      <Text size="2xl" weight="bold">
-        {quantity}
-      </Text>
-      <Text size="sm" tone="muted">
-        vials selected
-      </Text>
-    </Stack>
-    <Button
-      accessibilityLabel="Increase quantity"
-      label="+"
-      onPress={onIncrement}
-      size="sm"
-      variant="outline"
-    />
-  </Stack>
-);
-
-const DrugbookBatchOptionCard = ({
-  detail,
-  onSelect,
-  recommended = false,
-  selected = false,
-  title,
-}: {
+type TreatmentArea = {
+  area: string;
   detail: string;
-  onSelect: () => void;
-  recommended?: boolean;
-  selected?: boolean;
-  title: string;
-}) => (
-  <SelectionCard
-    action={{
-      disabled: selected,
-      label: selected ? 'Selected' : 'Select batch',
-      onPress: onSelect,
-      size: 'sm',
-      variant: selected ? 'secondary' : 'outline',
-    }}
-    description={detail}
-    helperText="This remains product-local today, but the recipe component gives it a stronger prototype-quality baseline."
-    recommended={recommended}
-    selected={selected}
-    title={title}
-  />
-);
+  id: string;
+  units: number;
+};
 
-const DrugbookSummaryCard = ({
-  batchLabel,
-  quantity,
-}: {
-  batchLabel: string;
-  quantity: number;
-}) => {
-  const unitPrice = 128;
-  const subtotal = quantity * unitPrice;
-  const handling = 18;
-  const total = subtotal + handling;
+type BatchOption = {
+  description: string;
+  helperText: string;
+  id: string;
+  recommended?: boolean;
+  title: string;
+};
+
+type WorkflowStep = 'select' | 'confirm' | 'review' | 'saved';
+
+const WORKFLOW_STEPS = [
+  {
+    description: 'Choose the product entry to complete for this visit.',
+    id: 'select',
+    title: 'Select product',
+  },
+  {
+    description: 'Confirm treatment areas, dose, and tracked batch.',
+    id: 'confirm',
+    title: 'Confirm quantity',
+  },
+  {
+    description: 'Review chart details before saving the visit record.',
+    id: 'review',
+    title: 'Review entries',
+  },
+] as const satisfies ReadonlyArray<{
+  description: string;
+  id: Exclude<WorkflowStep, 'saved'>;
+  title: string;
+}>;
+
+const INVENTORY_BEFORE_SAVE = 58;
+
+const INITIAL_TREATMENT_AREAS: TreatmentArea[] = [
+  {
+    area: 'Frontalis (forehead)',
+    detail: '1 treatment area',
+    id: 'frontalis',
+    units: 12,
+  },
+  {
+    area: 'Glabella',
+    detail: '1 treatment area',
+    id: 'glabella',
+    units: 30,
+  },
+];
+
+const BATCH_OPTIONS: BatchOption[] = [
+  {
+    description: '1 remaining vial',
+    helperText: 'Expires Oct 2026 - Opened this visit',
+    id: 'B7Y-A045',
+    recommended: true,
+    title: 'B7Y-A045',
+  },
+  {
+    description: '2 vials remaining',
+    helperText: 'Expires Jan 2027 - Reserve stock',
+    id: 'B7Y-A204',
+    title: 'B7Y-A204',
+  },
+];
+
+const DEFAULT_SELECTED_BATCH_ID = BATCH_OPTIONS[0]?.id ?? 'B7Y-A045';
+
+const formatUnits = (value: number) => `${value} units`;
+
+const clampUnits = (value: number) => Math.max(0, value);
+
+const getStepProgressValue = (step: WorkflowStep) => {
+  switch (step) {
+    case 'select':
+      return 33;
+    case 'confirm':
+      return 66;
+    case 'review':
+    case 'saved':
+      return 100;
+    default:
+      return 0;
+  }
+};
+
+const SelectionIndicator = ({ selected }: { selected?: boolean }) => {
+  const { theme } = useFreshTheme();
+  const indicatorSize = theme.spacing[8];
 
   return (
-    <SummaryCard
-      badges={[{ label: 'Product-local summary', variant: 'warning' }]}
-      description="The summary stays local today, but it now uses a reusable recipe block so the prototype reads closer to a polished product surface."
-      primaryAction={{ fullWidth: true, label: 'Continue to review', trailingIcon: 'chevron-right' }}
-      rows={[
-        { label: 'Selected batch', value: batchLabel },
-        { label: 'Quantity', value: `${quantity} vials` },
-        { label: 'Subtotal', value: `$${subtotal}` },
-        { label: 'Cold-chain handling', value: `$${handling}` },
-        { emphasis: 'strong', label: 'Estimated total', value: `$${total}` },
-      ]}
-      title="Review before continuing"
-      tone="warning"
-    />
+    <Box
+      style={{
+        alignItems: 'center',
+        backgroundColor: selected
+          ? theme.color.feedback.accent.background
+          : theme.color.surface.default,
+        borderColor: selected ? theme.color.border.strong : theme.color.border.default,
+        borderRadius: theme.radius.lg,
+        borderWidth: 1,
+        height: indicatorSize,
+        justifyContent: 'center',
+        width: indicatorSize,
+      }}
+    >
+      {selected ? (
+        <Icon color={theme.color.feedback.accent.foreground} icon="check" size={14} />
+      ) : null}
+    </Box>
   );
 };
 
-const AuditCard = ({
-  badges,
-  children,
-  title,
-}: {
-  badges?: ReactNode;
-  children: ReactNode;
-  title: string;
-}) => (
-  <Card variant="outlined">
-    <CardHeader>
-      {badges}
-      <CardTitle>{title}</CardTitle>
-    </CardHeader>
-    <CardContent>
-      <Stack gap={3}>{children}</Stack>
-    </CardContent>
+const SelectionChevron = () => {
+  const { theme } = useFreshTheme();
+  const chevronSize = theme.spacing[6];
+
+  return (
+    <Box
+      style={{
+        alignItems: 'center',
+        backgroundColor: theme.color.surface.subtle,
+        borderColor: theme.color.border.default,
+        borderRadius: theme.radius.lg,
+        borderWidth: 1,
+        height: chevronSize,
+        justifyContent: 'center',
+        width: chevronSize,
+      }}
+    >
+      <Icon color={theme.color.content.secondary} icon="chevron-right" size={14} />
+    </Box>
+  );
+};
+
+const InlineField = ({ detail, title }: { detail: string; title: string }) => (
+  <Card padding="sm" variant="outlined">
+    <Stack gap={0.5}>
+      <Text size="sm" weight="medium">
+        {title}
+      </Text>
+      <Text size="xs" tone="muted">
+        {detail}
+      </Text>
+    </Stack>
   </Card>
 );
 
-const StarterScreen = ({
-  mode,
-  onToggleMode,
+const QuantityPill = ({ value }: { value: string }) => {
+  const { theme } = useFreshTheme();
+
+  return (
+    <Box
+      style={{
+        backgroundColor: theme.color.surface.subtle,
+        borderColor: theme.color.border.default,
+        borderRadius: theme.radius.lg,
+        borderWidth: 1,
+        paddingHorizontal: theme.spacing[2],
+        paddingVertical: theme.spacing[1],
+      }}
+    >
+      <Text size="xs" weight="medium">
+        {value}
+      </Text>
+    </Box>
+  );
+};
+
+const StepAdjustButton = ({
+  delta,
+  disabled,
+  onPress,
 }: {
-  mode: 'light' | 'dark';
-  onToggleMode: () => void;
+  delta: number;
+  disabled?: boolean;
+  onPress?: () => void;
 }) => {
+  const label = `${delta > 0 ? '+' : ''}${delta}`;
+  const actionLabel = delta > 0 ? 'Increase' : 'Decrease';
+
+  return (
+    <Button
+      accessibilityLabel={`${actionLabel} by ${Math.abs(delta)} units`}
+      disabled={disabled}
+      label={label}
+      onPress={onPress}
+      size="sm"
+      style={{ flex: 1 }}
+      variant="outline"
+    />
+  );
+};
+
+const TreatmentAreaCard = ({
+  area,
+  detail,
+  onAdjust,
+  units,
+}: {
+  area: string;
+  detail: string;
+  onAdjust: (delta: number) => void;
+  units: number;
+}) => (
+  <Card padding="sm" variant="outlined">
+    <Stack gap={3}>
+      <Stack align="center" direction="horizontal" justify="space-between">
+        <Stack gap={0.5}>
+          <Text size="sm" weight="medium">
+            {area}
+          </Text>
+          <Text size="xs" tone="muted">
+            {detail}
+          </Text>
+        </Stack>
+        <QuantityPill value={formatUnits(units)} />
+      </Stack>
+      <Stack direction="horizontal" gap={2}>
+        {[-4, -1, 1, 4].map((delta) => (
+          <StepAdjustButton
+            delta={delta}
+            disabled={units + delta < 0}
+            key={delta}
+            onPress={() => onAdjust(delta)}
+          />
+        ))}
+      </Stack>
+    </Stack>
+  </Card>
+);
+
+const ReviewDetailRow = ({ label, value }: { label: string; value: string }) => (
+  <Stack align="center" direction="horizontal" gap={3} justify="space-between">
+    <Text size="xs" style={{ flex: 1 }} tone="muted" weight="medium">
+      {label}
+    </Text>
+    <Text size="sm" style={{ flex: 1, textAlign: 'right' }} weight="medium">
+      {value}
+    </Text>
+  </Stack>
+);
+
+const ReviewEntryCard = ({
+  amount,
+  batch,
+  detail,
+  label,
+  note,
+}: {
+  amount: string;
+  batch: string;
+  detail: string;
+  label: string;
+  note: string;
+}) => (
+  <Card padding="sm" variant="outlined">
+    <Stack gap={3}>
+      <Stack align="center" direction="horizontal" gap={3} justify="space-between">
+        <Stack gap={0.5} style={{ flex: 1 }}>
+          <Text size="sm" weight="semibold">
+            {label}
+          </Text>
+          <Text size="xs" tone="muted">
+            {detail}
+          </Text>
+        </Stack>
+        <Badge label="Ready" size="sm" variant="success" />
+      </Stack>
+
+      <Stack direction="horizontal" gap={1.5} wrap>
+        <Badge emphasis="outline" label="Lot tracked" size="sm" variant="neutral" />
+        <Badge emphasis="outline" label="Inventory ready" size="sm" variant="neutral" />
+        <Badge emphasis="outline" label="Charted" size="sm" variant="neutral" />
+      </Stack>
+
+      <Separator />
+
+      <Stack gap={2}>
+        <ReviewDetailRow label="Batch" value={batch} />
+        <ReviewDetailRow label="Amount" value={amount} />
+        <ReviewDetailRow label="Note" value={note} />
+      </Stack>
+    </Stack>
+  </Card>
+);
+
+const VisitContextCard = ({
+  selectedBatchId,
+  totalAdministered,
+}: {
+  selectedBatchId: string;
+  totalAdministered: number;
+}) => (
+  <Card padding="sm" variant="subtle">
+    <Stack gap={3}>
+      <Stack align="center" direction="horizontal" gap={3} justify="space-between">
+        <Stack gap={0.5} style={{ flex: 1 }}>
+          <Text size="xs" tone="muted" weight="medium">
+            Current visit
+          </Text>
+          <Text size="sm" weight="semibold">
+            Amelia K. - Cosmetic review
+          </Text>
+          <Text size="xs" tone="muted">
+            Dr. Carmen Rivera - 17 March 2026 - Room 04
+          </Text>
+        </Stack>
+        <Badge label="Visit open" size="sm" variant="accent" />
+      </Stack>
+
+      <Stack direction="horizontal" gap={1.5} wrap>
+        <Badge emphasis="outline" label="Botox 100U" size="sm" variant="neutral" />
+        <Badge
+          emphasis="outline"
+          label={formatUnits(totalAdministered)}
+          size="sm"
+          variant="neutral"
+        />
+        <Badge emphasis="outline" label={`Batch ${selectedBatchId}`} size="sm" variant="neutral" />
+      </Stack>
+    </Stack>
+  </Card>
+);
+
+const WorkflowProgressCard = ({ currentStep }: { currentStep: WorkflowStep }) => {
+  const currentIndex = WORKFLOW_STEPS.findIndex((step) => step.id === currentStep);
+
+  return (
+    <Card padding="sm" variant="outlined">
+      <Stack gap={3}>
+        <Stack gap={0.5}>
+          <Text size="sm" weight="semibold">
+            Entry progress
+          </Text>
+          <Text size="xs" tone="muted">
+            Move through the same flow a clinician would follow during the visit.
+          </Text>
+        </Stack>
+
+        <Progress
+          showValueLabel
+          size="sm"
+          value={getStepProgressValue(currentStep)}
+          variant="accent"
+        />
+
+        <Stack gap={2}>
+          {WORKFLOW_STEPS.map((step, index) => {
+            const status =
+              currentStep === 'saved' || index < currentIndex
+                ? 'Done'
+                : index === currentIndex
+                  ? 'In progress'
+                  : 'Up next';
+
+            const variant =
+              status === 'Done' ? 'success' : status === 'In progress' ? 'accent' : 'neutral';
+
+            return (
+              <Stack
+                align="center"
+                direction="horizontal"
+                gap={3}
+                justify="space-between"
+                key={step.id}
+              >
+                <Stack gap={0.5} style={{ flex: 1 }}>
+                  <Text size="sm" weight="medium">
+                    {step.title}
+                  </Text>
+                  <Text size="xs" tone="muted">
+                    {step.description}
+                  </Text>
+                </Stack>
+                <Badge label={status} size="sm" variant={variant} />
+              </Stack>
+            );
+          })}
+        </Stack>
+      </Stack>
+    </Card>
+  );
+};
+
+const ChartNotePreviewCard = ({ note }: { note: string }) => (
+  <Card padding="sm" variant="subtle">
+    <Stack gap={3}>
+      <Stack align="center" direction="horizontal" gap={3} justify="space-between">
+        <Stack gap={0.5} style={{ flex: 1 }}>
+          <Text size="sm" weight="semibold">
+            Draft chart note
+          </Text>
+          <Text size="xs" tone="muted">
+            Auto-generated from the confirmed drugbook entries
+          </Text>
+        </Stack>
+        <Badge label="Draft ready" size="sm" variant="success" />
+      </Stack>
+      <Text size="sm" tone="muted">
+        {note}
+      </Text>
+    </Stack>
+  </Card>
+);
+
+const MainSurface = ({ children }: { children: ReactNode }) => (
+  <Card padding="lg" variant="elevated">
+    <Stack gap={5}>{children}</Stack>
+  </Card>
+);
+
+const ProductSelectionStep = ({ onContinue }: { onContinue: () => void }) => (
+  <MainSurface>
+    <PageHeader
+      description="Choose the next product entry to complete for this visit. Botox is ready for confirmation now."
+      eyebrow="Drugbook"
+      title="Select product"
+    />
+
+    <Stack gap={2.5}>
+      <SectionHeader
+        density="sm"
+        title="Products documented for this appointment"
+        trailingContent={<Badge label="3 products" size="sm" variant="neutral" />}
+      />
+
+      <Stack gap={3}>
+        <SelectionCard
+          action={{
+            disabled: true,
+            label: 'Selected',
+            size: 'sm',
+            variant: 'secondary',
+          }}
+          badges={[{ label: 'Current entry', size: 'sm', variant: 'accent' }]}
+          density="compact"
+          description="2 areas - 42 units planned"
+          helperText="This is the next product that needs a completed drugbook entry."
+          leadingAccessory={<SelectionIndicator selected />}
+          metadata={[{ label: 'Batch tracked' }, { label: 'Clinician confirmed' }]}
+          selected
+          title="Botox"
+          trailingAccessory={<SelectionChevron />}
+        />
+        <SelectionCard
+          density="compact"
+          description="Upper and lower lip - 1.0 mL"
+          helperText="This entry follows after the Botox record is saved."
+          leadingAccessory={<SelectionIndicator />}
+          metadata={[{ label: 'Cold chain' }, { label: 'Queued next' }]}
+          title="Juvederm Ultra XC"
+          trailingAccessory={<SelectionChevron />}
+        />
+        <SelectionCard
+          density="compact"
+          description="Temple restoration - 10 mL"
+          helperText="This product is present on the visit but is not the current entry."
+          leadingAccessory={<SelectionIndicator />}
+          metadata={[{ label: 'Reconstitution required' }, { label: 'Queued next' }]}
+          title="Sculptra 150mg vial"
+          trailingAccessory={<SelectionChevron />}
+        />
+      </Stack>
+    </Stack>
+
+    <SummaryCard
+      badges={[{ label: 'Ready now', variant: 'success' }]}
+      rows={[
+        { label: 'Current product', value: 'Botox' },
+        { label: 'Treatment areas', value: '2' },
+        { emphasis: 'strong', label: 'Planned total', value: '42 units' },
+      ]}
+      title="Current entry"
+    />
+
+    <StickyActionFooter
+      caption="Continue into the Botox entry to confirm quantity and tracked stock."
+      primaryAction={{
+        label: 'Continue to quantity',
+        onPress: onContinue,
+        trailingIcon: 'chevron-right',
+      }}
+      secondaryAction={{ label: 'Save draft', variant: 'secondary' }}
+      surface="card"
+    />
+  </MainSurface>
+);
+
+const ConfirmQuantityStep = ({
+  onAdjustArea,
+  onBack,
+  onContinue,
+  onSelectBatch,
+  selectedBatchId,
+  totalAdministered,
+  treatmentAreas,
+}: {
+  onAdjustArea: (id: string, delta: number) => void;
+  onBack: () => void;
+  onContinue: () => void;
+  onSelectBatch: (id: string) => void;
+  selectedBatchId: string;
+  totalAdministered: number;
+  treatmentAreas: TreatmentArea[];
+}) => {
+  const remainingAfterSave = clampUnits(INVENTORY_BEFORE_SAVE - totalAdministered);
+
+  return (
+    <MainSurface>
+      <PageHeader
+        backLabel="Back to products"
+        density="compact"
+        description="Lock the treatment areas, confirm the total dose, and select the tracked batch."
+        eyebrow="Drugbook"
+        onBackPress={onBack}
+        title="Confirm quantity"
+      />
+
+      <Stack gap={2.5}>
+        <SectionHeader density="sm" leadingIcon="check" title="Product" />
+        <InlineField detail="100 units vial" title="Botox" />
+      </Stack>
+
+      <Stack gap={2.5}>
+        <SectionHeader
+          density="sm"
+          leadingIcon="check"
+          title="Treatment areas"
+          trailingContent={
+            <Badge label={formatUnits(totalAdministered)} size="sm" variant="accent" />
+          }
+        />
+        {treatmentAreas.map((treatmentArea) => (
+          <TreatmentAreaCard
+            area={treatmentArea.area}
+            detail={treatmentArea.detail}
+            key={treatmentArea.id}
+            onAdjust={(delta) => onAdjustArea(treatmentArea.id, delta)}
+            units={treatmentArea.units}
+          />
+        ))}
+      </Stack>
+
+      <Stack gap={2.5}>
+        <SectionHeader
+          density="sm"
+          leadingIcon="check"
+          title="Batch number"
+          trailingContent={<Badge label="1 selected" size="sm" variant="neutral" />}
+        />
+        <Stack gap={3}>
+          {BATCH_OPTIONS.map((batchOption) => {
+            const selected = batchOption.id === selectedBatchId;
+
+            return (
+              <SelectionCard
+                action={{
+                  disabled: selected,
+                  label: selected ? 'Selected' : 'Use batch',
+                  onPress: () => onSelectBatch(batchOption.id),
+                  size: 'sm',
+                  variant: selected ? 'secondary' : 'outline',
+                }}
+                density="compact"
+                description={batchOption.description}
+                helperText={batchOption.helperText}
+                key={batchOption.id}
+                recommended={batchOption.recommended}
+                selected={selected}
+                title={batchOption.title}
+                trailingAccessory={<SelectionIndicator selected={selected} />}
+              />
+            );
+          })}
+        </Stack>
+      </Stack>
+
+      <SummaryCard
+        badges={[{ label: 'Inventory preview', variant: 'neutral' }]}
+        rows={[
+          { label: 'Total administered', value: formatUnits(totalAdministered) },
+          { label: 'Balance before save', value: formatUnits(INVENTORY_BEFORE_SAVE) },
+          {
+            emphasis: 'strong',
+            label: 'Balance after save',
+            value: formatUnits(remainingAfterSave),
+          },
+        ]}
+        title="Quantity summary"
+      />
+
+      <StickyActionFooter
+        caption={`${selectedBatchId} is selected and the Botox dose is ready for review.`}
+        primaryAction={{
+          label: 'Review entry',
+          onPress: onContinue,
+          trailingIcon: 'chevron-right',
+        }}
+        secondaryAction={{ label: 'Save draft', variant: 'secondary' }}
+        tertiaryAction={{ label: 'Back', onPress: onBack, variant: 'ghost' }}
+        surface="card"
+      />
+    </MainSurface>
+  );
+};
+
+const ReviewEntriesStep = ({
+  onBack,
+  onSave,
+  selectedBatchId,
+  totalAdministered,
+  treatmentAreas,
+}: {
+  onBack: () => void;
+  onSave: () => void;
+  selectedBatchId: string;
+  totalAdministered: number;
+  treatmentAreas: TreatmentArea[];
+}) => {
+  const remainingAfterSave = clampUnits(INVENTORY_BEFORE_SAVE - totalAdministered);
+  const areaSummary = treatmentAreas
+    .map((treatmentArea) => treatmentArea.area.split(' (')[0])
+    .join(', ');
+  const notePreview = `Botox ${formatUnits(totalAdministered)} administered across ${areaSummary} from batch ${selectedBatchId}. Juvederm Ultra XC 1.0 mL documented separately for lip volume restoration.`;
+
+  return (
+    <MainSurface>
+      <PageHeader
+        backLabel="Back to quantity"
+        density="compact"
+        description="Check inventory movement and the generated chart note before saving the visit record."
+        eyebrow="Drugbook"
+        meta={
+          <Stack gap={2}>
+            <Stack align="center" direction="horizontal" gap={3} justify="space-between">
+              <Text size="sm" weight="medium">
+                Submission readiness
+              </Text>
+              <Badge label="Ready to save" size="sm" variant="success" />
+            </Stack>
+            <Progress showValueLabel size="sm" value={100} variant="success" />
+          </Stack>
+        }
+        onBackPress={onBack}
+        title="Review entries"
+      />
+
+      <Stack gap={2.5}>
+        <SectionHeader
+          density="sm"
+          leadingIcon="check"
+          title="Confirmed entries"
+          trailingContent={<Badge label="2 entries" size="sm" variant="accent" />}
+        />
+        <ReviewEntryCard
+          amount={formatUnits(totalAdministered)}
+          batch={selectedBatchId}
+          detail={`${treatmentAreas.length} treatment areas - Botox`}
+          label="Botox"
+          note="Clinician confirmed"
+        />
+        <ReviewEntryCard
+          amount="1.0 mL"
+          batch="J9X-204"
+          detail="Upper and lower lip - Juvederm Ultra XC"
+          label="Juvederm Ultra XC"
+          note="Template note ready"
+        />
+      </Stack>
+
+      <Stack gap={2.5}>
+        <SectionHeader
+          density="sm"
+          leadingIcon="check"
+          title="Chart note"
+          trailingContent={<Badge label="Draft ready" size="sm" variant="neutral" />}
+        />
+        <ChartNotePreviewCard note={notePreview} />
+      </Stack>
+
+      <SummaryCard
+        badges={[{ label: 'Final review', variant: 'accent' }]}
+        rows={[
+          { label: 'Drugbook entries', value: '2' },
+          { label: 'Tracked batches', value: '2' },
+          { label: 'Botox balance after save', value: formatUnits(remainingAfterSave) },
+          { emphasis: 'strong', label: 'Submission status', value: 'Ready' },
+        ]}
+        title="Submission summary"
+        tone="accent"
+      />
+
+      <StickyActionFooter
+        caption="Saving will post the chart note and record lot usage for the confirmed entries."
+        primaryAction={{ label: 'Save drugbook', onPress: onSave, trailingIcon: 'chevron-right' }}
+        secondaryAction={{ label: 'Save draft', variant: 'secondary' }}
+        tertiaryAction={{ label: 'Back', onPress: onBack, variant: 'ghost' }}
+        surface="card"
+      />
+    </MainSurface>
+  );
+};
+
+const SaveCompleteStep = ({
+  onRestart,
+  selectedBatchId,
+  totalAdministered,
+}: {
+  onRestart: () => void;
+  selectedBatchId: string;
+  totalAdministered: number;
+}) => {
+  const remainingAfterSave = clampUnits(INVENTORY_BEFORE_SAVE - totalAdministered);
+
+  return (
+    <MainSurface>
+      <PageHeader
+        description="The visit note and inventory movement have been recorded successfully."
+        eyebrow="Drugbook"
+        meta={<Badge label="Saved" size="sm" variant="success" />}
+        title="Drugbook saved"
+      />
+
+      <SummaryCard
+        badges={[{ label: 'Completed', variant: 'success' }]}
+        rows={[
+          { label: 'Saved entry', value: 'Botox' },
+          { label: 'Tracked batch', value: selectedBatchId },
+          { label: 'Quantity posted', value: formatUnits(totalAdministered) },
+          {
+            emphasis: 'strong',
+            label: 'Balance remaining',
+            value: formatUnits(remainingAfterSave),
+          },
+        ]}
+        title="Saved summary"
+      />
+
+      <Card padding="sm" variant="subtle">
+        <Stack gap={3}>
+          <Stack gap={0.5}>
+            <Text size="sm" weight="semibold">
+              What happened
+            </Text>
+            <Text size="sm" tone="muted">
+              The clinician note is attached to the visit, the lot usage is recorded against stock,
+              and the next queued product can be documented when ready.
+            </Text>
+          </Stack>
+          <Stack direction="horizontal" gap={1.5} wrap>
+            <Badge label="Visit updated" size="sm" variant="success" />
+            <Badge label="Inventory synced" size="sm" variant="success" />
+            <Badge label="Chart note attached" size="sm" variant="success" />
+          </Stack>
+        </Stack>
+      </Card>
+
+      <StickyActionFooter
+        caption="Use this stakeholder preview to continue with the next product entry or restart the flow."
+        primaryAction={{
+          label: 'Record another product',
+          onPress: onRestart,
+          trailingIcon: 'chevron-right',
+        }}
+        secondaryAction={{ label: 'Back to visit', variant: 'secondary' }}
+        surface="card"
+      />
+    </MainSurface>
+  );
+};
+
+const DrugbookApp = () => {
   const { theme } = useFreshTheme();
   const { width } = useWindowDimensions();
-  const [projectName, setProjectName] = useState('Fresh Pilot App');
-  const [ownerEmail, setOwnerEmail] = useState('team@fresh.systems');
-  const [aiDraftingEnabled, setAiDraftingEnabled] = useState(true);
-  const [drugbookQuantity, setDrugbookQuantity] = useState(2);
-  const [selectedBatchId, setSelectedBatchId] = useState<'batch-a41' | 'batch-b09'>('batch-a41');
-  const isWide = width >= 960;
-  const selectedBatchLabel = selectedBatchId === 'batch-a41' ? 'Batch A41' : 'Batch B09';
+  const [currentStep, setCurrentStep] = useState<WorkflowStep>('select');
+  const [treatmentAreas, setTreatmentAreas] = useState(INITIAL_TREATMENT_AREAS);
+  const [selectedBatchId, setSelectedBatchId] = useState(DEFAULT_SELECTED_BATCH_ID);
+  const showDesktopRail = width >= 1100;
+  const totalAdministered = treatmentAreas.reduce(
+    (currentTotal, treatmentArea) => currentTotal + treatmentArea.units,
+    0
+  );
+
+  const handleAdjustArea = (id: string, delta: number) => {
+    setTreatmentAreas((currentAreas) =>
+      currentAreas.map((treatmentArea) =>
+        treatmentArea.id === id
+          ? {
+              ...treatmentArea,
+              units: clampUnits(treatmentArea.units + delta),
+            }
+          : treatmentArea
+      )
+    );
+  };
+
+  const renderCurrentStep = () => {
+    switch (currentStep) {
+      case 'confirm':
+        return (
+          <ConfirmQuantityStep
+            onAdjustArea={handleAdjustArea}
+            onBack={() => setCurrentStep('select')}
+            onContinue={() => setCurrentStep('review')}
+            onSelectBatch={setSelectedBatchId}
+            selectedBatchId={selectedBatchId}
+            totalAdministered={totalAdministered}
+            treatmentAreas={treatmentAreas}
+          />
+        );
+      case 'review':
+        return (
+          <ReviewEntriesStep
+            onBack={() => setCurrentStep('confirm')}
+            onSave={() => setCurrentStep('saved')}
+            selectedBatchId={selectedBatchId}
+            totalAdministered={totalAdministered}
+            treatmentAreas={treatmentAreas}
+          />
+        );
+      case 'saved':
+        return (
+          <SaveCompleteStep
+            onRestart={() => setCurrentStep('select')}
+            selectedBatchId={selectedBatchId}
+            totalAdministered={totalAdministered}
+          />
+        );
+      case 'select':
+      default:
+        return <ProductSelectionStep onContinue={() => setCurrentStep('confirm')} />;
+    }
+  };
 
   return (
     <SafeAreaView
       style={{
-        backgroundColor: theme.color.canvas.default,
+        backgroundColor: theme.color.canvas.subtle,
         flex: 1,
       }}
     >
-      <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
+      <StatusBar style={theme.mode === 'dark' ? 'light' : 'dark'} />
+
+      <Box
+        style={[
+          {
+            backgroundColor: theme.color.surface.default,
+            borderBottomColor: theme.color.border.default,
+            borderBottomWidth: 1,
+          },
+          theme.elevation[1],
+        ]}
+      >
+        <Stack
+          gap={3}
+          style={{
+            alignSelf: 'center',
+            maxWidth: 1320,
+            paddingHorizontal: theme.spacing[4],
+            paddingVertical: theme.spacing[4],
+            width: '100%',
+          }}
+        >
+          <Stack
+            direction={width >= 900 ? 'horizontal' : 'vertical'}
+            gap={3}
+            justify="space-between"
+          >
+            <Stack gap={1}>
+              <Stack direction="horizontal" gap={2} wrap>
+                <Badge label="Drugbook" variant="accent" />
+                <Badge label="Stakeholder preview" variant="neutral" />
+              </Stack>
+              <Text size="2xl" weight="bold">
+                Drugbook
+              </Text>
+              <Text size="sm" tone="muted">
+                Record administered medication before the visit is closed.
+              </Text>
+            </Stack>
+
+            <Stack gap={1}>
+              <Text size="xs" tone="muted" weight="medium">
+                Visit owner
+              </Text>
+              <Text size="sm" weight="semibold">
+                Dr. Carmen Rivera
+              </Text>
+              <Text size="xs" tone="muted">
+                Cosmetic review - Amelia K.
+              </Text>
+            </Stack>
+          </Stack>
+        </Stack>
+      </Box>
+
       <ScrollView
         contentContainerStyle={{
           padding: theme.spacing[4],
         }}
-        style={{
-          flex: 1,
-        }}
+        style={{ flex: 1 }}
       >
         <Stack
-          gap={6}
+          direction={showDesktopRail ? 'horizontal' : 'vertical'}
+          gap={4}
           style={{
             alignSelf: 'center',
-            maxWidth: 1080,
+            maxWidth: 1320,
             width: '100%',
           }}
         >
-          <Stack gap={4}>
-            <Stack direction="horizontal" gap={2} wrap>
-              <Badge label="Fresh starter" variant="accent" />
-              <Badge label="Expo baseline" variant="neutral" />
-              <Badge label="Agent-ready" variant="success" />
-              <Badge label="Mobile-first" variant="neutral" />
-            </Stack>
+          <Stack
+            gap={4}
+            style={{
+              flex: 1,
+            }}
+          >
+            {!showDesktopRail ? (
+              <Stack gap={4}>
+                <VisitContextCard
+                  selectedBatchId={selectedBatchId}
+                  totalAdministered={totalAdministered}
+                />
+                <WorkflowProgressCard currentStep={currentStep} />
+              </Stack>
+            ) : null}
 
-            <Stack gap={2}>
-              <Text size="3xl" weight="bold">
-                Fresh app starter
-              </Text>
-              <Text tone="muted">
-                This is the golden-path reference app for engineers who are vibe coding new
-                product surfaces with the Fresh design system.
-              </Text>
-            </Stack>
-
-            <Stack direction="horizontal" gap={2} wrap>
-              <Button
-                label={mode === 'dark' ? 'Use light mode' : 'Use dark mode'}
-                leadingIcon={mode === 'dark' ? 'sun' : 'moon'}
-                onPress={onToggleMode}
-                variant="secondary"
-              />
-              <Button label="Primary action" trailingIcon="chevron-right" />
-              <Button label="Secondary action" variant="outline" />
-            </Stack>
+            {renderCurrentStep()}
           </Stack>
 
-          <Stack direction={isWide ? 'horizontal' : 'vertical'} gap={4}>
-            <Card
-              style={{
-                flex: 1.2,
-              }}
-              variant="elevated"
-            >
-              <CardHeader>
-                <CardTitle>Starter workspace setup</CardTitle>
-                <CardDescription>
-                  This screen shows the expected quality bar for forms, metadata, boolean settings,
-                  and action hierarchy.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Stack gap={4}>
-                  <TextField
-                    helperText="Keep the app name short and readable."
-                    label="Project name"
-                    onChangeText={setProjectName}
-                    value={projectName}
-                  />
-                  <TextField
-                    helperText="Use a team-owned mailbox whenever possible."
-                    label="Owner email"
-                    onChangeText={setOwnerEmail}
-                    value={ownerEmail}
-                  />
-
-                  <Separator />
-
-                  <Stack align="center" direction="horizontal" justify="space-between">
-                    <Stack gap={1} style={{ flex: 1 }}>
-                      <Label>AI drafting</Label>
-                      <Text size="sm" tone="muted">
-                        Keep enabled when you want the assistant to scaffold on-system UI first.
-                      </Text>
-                    </Stack>
-                    <Switch
-                      accessibilityLabel="AI drafting"
-                      checked={aiDraftingEnabled}
-                      onCheckedChange={setAiDraftingEnabled}
-                    />
-                  </Stack>
-
-                  <Stack direction="horizontal" gap={2} wrap>
-                    <Button label="Continue" />
-                    <Button label="Save draft" variant="secondary" />
-                    <Button label="Cancel" variant="ghost" />
-                  </Stack>
-                </Stack>
-              </CardContent>
-            </Card>
-
+          {showDesktopRail ? (
             <Stack
               gap={4}
               style={{
-                flex: 0.8,
+                flex: 0.34,
               }}
             >
-              <Card variant="subtle">
-                <CardHeader>
-                  <CardTitle>Rules for generated UI</CardTitle>
-                  <CardDescription>
-                    These are the default expectations we want engineers and agents to follow.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Stack gap={3}>
-                    <BulletRow>Use `@fresh/ui` first and `@fresh/ui-core` only when needed.</BulletRow>
-                    <BulletRow>Do not hardcode visual values in app code.</BulletRow>
-                    <BulletRow>Prefer shared patterns over one-off screen inventions.</BulletRow>
-                    <BulletRow>Support dark mode and accessibility by default.</BulletRow>
-                    <BulletRow>Validate on mobile and desktop web before calling a screen done.</BulletRow>
-                  </Stack>
-                </CardContent>
-              </Card>
-
-              <Card variant="outlined">
-                <CardHeader>
-                  <CardTitle>Starter composition</CardTitle>
-                  <CardDescription>
-                    These are good default building blocks for most early app screens.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Stack direction="horizontal" gap={2} wrap>
-                    <Badge label="Button" variant="accent" />
-                    <Badge label="TextField" variant="neutral" />
-                    <Badge label="Card" variant="neutral" />
-                    <Badge label="Badge" variant="neutral" />
-                    <Badge label="Label" variant="neutral" />
-                    <Badge label="Switch" variant="neutral" />
-                  </Stack>
-                </CardContent>
-              </Card>
+              <VisitContextCard
+                selectedBatchId={selectedBatchId}
+                totalAdministered={totalAdministered}
+              />
+              <WorkflowProgressCard currentStep={currentStep} />
             </Stack>
-          </Stack>
-
-          <Card variant="outlined">
-            <CardHeader>
-              <CardTitle>Starter team state</CardTitle>
-              <CardDescription>
-                Use shared components even on basic dashboard and settings surfaces.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Stack direction={isWide ? 'horizontal' : 'vertical'} gap={4}>
-                <Stack
-                  gap={3}
-                  style={{
-                    flex: 1,
-                  }}
-                >
-                  <Text weight="semibold">Active collaborators</Text>
-                  <Stack align="center" direction="horizontal" gap={3} wrap>
-                    <Avatar fallbackLabel="Zarni Fresh" size="md" tone="accent" />
-                    <Avatar fallbackLabel="Product Design" size="md" />
-                    <Avatar fallbackLabel="Engineering" shape="rounded" size="md" />
-                    <Badge label="3 active" variant="success" />
-                  </Stack>
-                </Stack>
-
-                <Separator orientation={isWide ? 'vertical' : 'horizontal'} style={{ minHeight: 1 }} />
-
-                <Stack
-                  gap={3}
-                  style={{
-                    flex: 1,
-                  }}
-                >
-                  <Text weight="semibold">Next team step</Text>
-                  <Text tone="muted">
-                    Start from this app or copy its structure, use the canonical prompt, and keep
-                    new UI inside the shared system unless the pattern is clearly product-specific.
-                  </Text>
-                </Stack>
-              </Stack>
-            </CardContent>
-          </Card>
-
-          <Stack gap={4}>
-            <PageHeader
-              badges={[
-                { label: 'Drugbook', variant: 'accent' },
-                { label: 'Recipe lane', variant: 'success' },
-              ]}
-              description="This is the actual prototype lane: recipe-level blocks create a more polished starting point, while product-specific patterns still stay local until they are proven reusable."
-              eyebrow="Worked example"
-              title="Drugbook pilot using the Fresh starter"
-            />
-
-            <Stack direction={isWide ? 'horizontal' : 'vertical'} gap={4}>
-              <Stack
-                gap={4}
-                style={{
-                  flex: 1.1,
-                }}
-              >
-                <PageHeader
-                  actions={[
-                    { label: 'Save draft', variant: 'secondary' },
-                    { label: 'Continue', trailingIcon: 'chevron-right' },
-                  ]}
-                  badges={[
-                    { label: 'PM brief translated', variant: 'neutral' },
-                    { label: 'Engineer-ready', variant: 'success' },
-                  ]}
-                  density="compact"
-                  description="Review the selected product, adjust quantity, choose a batch, and continue with one clear primary action."
-                  title="Select product and batch"
-                />
-
-                <DrugbookProductSelectionCard />
-
-                <Card variant="outlined">
-                  <CardHeader>
-                    <SectionHeader
-                      description="This row stays local for now because a generalized stepper pattern is not yet approved."
-                      title="Quantity"
-                    />
-                  </CardHeader>
-                  <CardContent>
-                    <DrugbookQuantityStepper
-                      onDecrement={() =>
-                        setDrugbookQuantity((currentQuantity) => Math.max(1, currentQuantity - 1))
-                      }
-                      onIncrement={() =>
-                        setDrugbookQuantity((currentQuantity) => Math.min(9, currentQuantity + 1))
-                      }
-                      quantity={drugbookQuantity}
-                    />
-                  </CardContent>
-                </Card>
-
-                <Card variant="outlined">
-                  <CardHeader>
-                    <SectionHeader
-                      description="These options are product-local, but the surrounding composition now uses the recipe lane instead of raw cards alone."
-                      title="Batch options"
-                    />
-                  </CardHeader>
-                  <CardContent>
-                    <Stack gap={3}>
-                      <DrugbookBatchOptionCard
-                        detail="Expires Oct 2026 · 12 units available"
-                        onSelect={() => setSelectedBatchId('batch-a41')}
-                        recommended
-                        selected={selectedBatchId === 'batch-a41'}
-                        title="Batch A41"
-                      />
-                      <DrugbookBatchOptionCard
-                        detail="Expires Jan 2027 · 8 units available"
-                        onSelect={() => setSelectedBatchId('batch-b09')}
-                        selected={selectedBatchId === 'batch-b09'}
-                        title="Batch B09"
-                      />
-                    </Stack>
-                  </CardContent>
-                </Card>
-
-                <DrugbookSummaryCard batchLabel={selectedBatchLabel} quantity={drugbookQuantity} />
-
-                <StickyActionFooter
-                  caption="Recipe-level action footers give prototypes a stronger bottom action treatment before a full production shell exists."
-                  primaryAction={{ label: 'Continue to next step', trailingIcon: 'chevron-right' }}
-                  secondaryAction={{ label: 'Save draft', variant: 'secondary' }}
-                  tertiaryAction={{ label: 'Back', variant: 'ghost' }}
-                />
-              </Stack>
-
-              <Stack
-                gap={4}
-                style={{
-                  flex: 0.9,
-                }}
-              >
-                <AuditCard
-                  badges={<Badge label="PM view" size="sm" variant="accent" />}
-                  title="What the PM is asking for"
-                >
-                  <BulletRow>Confirm the selected product without rebuilding a custom shell.</BulletRow>
-                  <BulletRow>Make quantity changes easy on touch devices.</BulletRow>
-                  <BulletRow>Show distinct batch choices and a clear next step.</BulletRow>
-                  <BulletRow>Keep summary information grouped and scannable.</BulletRow>
-                </AuditCard>
-
-                <AuditCard
-                  badges={<Badge label="Engineer view" size="sm" variant="success" />}
-                  title="What the engineer should reuse now"
-                >
-                  <Stack direction="horizontal" gap={2} wrap>
-                    <Badge label="Button" variant="neutral" />
-                    <Badge label="Card" variant="neutral" />
-                    <Badge label="Badge" variant="neutral" />
-                    <Badge label="Label" variant="neutral" />
-                    <Badge label="Separator" variant="neutral" />
-                  </Stack>
-                  <Text size="sm" tone="muted">
-                    The screen should be composed from existing shared parts first, then filled in
-                    with product-local patterns only where the shared catalog does not fit yet.
-                  </Text>
-                </AuditCard>
-
-                <AuditCard
-                  badges={<Badge label="Keep local" size="sm" variant="warning" />}
-                  title="What should stay product-specific for now"
-                >
-                  <Stack direction="horizontal" gap={2} wrap>
-                    <Badge emphasis="outline" label="ProductSelectionCard" size="sm" variant="warning" />
-                    <Badge emphasis="outline" label="QuantityStepperRow" size="sm" variant="warning" />
-                    <Badge emphasis="outline" label="BatchOptionCard" size="sm" variant="warning" />
-                    <Badge emphasis="outline" label="SummaryTotalsCard" size="sm" variant="warning" />
-                  </Stack>
-                  <Text size="sm" tone="muted">
-                    These are useful Drugbook patterns, but they should not move into `@fresh/ui`
-                    until they are proven reusable or explicitly approved.
-                  </Text>
-                </AuditCard>
-
-                <AuditCard
-                  badges={<Badge label="Shared follow-up" size="sm" variant="accent" />}
-                  title="What should likely be promoted next"
-                >
-                  <Stack direction="horizontal" gap={2} wrap>
-                    <Badge label="PageHeader" size="sm" variant="accent" />
-                    <Badge label="SectionHeader" size="sm" variant="accent" />
-                    <Badge label="IconButton" size="sm" variant="accent" />
-                  </Stack>
-                  <Text size="sm" tone="muted">
-                    These patterns are the real cross-product opportunity exposed by the Drugbook
-                    pilot. They belong in the shared backlog, not invented ad hoc in screens.
-                  </Text>
-                </AuditCard>
-              </Stack>
-            </Stack>
-          </Stack>
+          ) : null}
         </Stack>
       </ScrollView>
     </SafeAreaView>
@@ -556,14 +968,12 @@ const StarterScreen = ({
 };
 
 export default function App() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const systemColorScheme = useColorScheme();
+  const mode = systemColorScheme === 'dark' ? 'dark' : 'light';
 
   return (
     <FreshThemeProvider mode={mode}>
-      <StarterScreen
-        mode={mode}
-        onToggleMode={() => setMode((currentMode) => (currentMode === 'dark' ? 'light' : 'dark'))}
-      />
+      <DrugbookApp />
     </FreshThemeProvider>
   );
 }

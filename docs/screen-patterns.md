@@ -30,9 +30,7 @@ function FormScreen() {
           <TextField label="Phone" placeholder="04XX XXX XXX" />
         </Stack>
       </Card>
-      <StickyActionFooter
-        primaryAction={{ label: 'Save Patient', onPress: () => {} }}
-      />
+      <StickyActionFooter primaryAction={{ label: 'Save Patient', onPress: () => {} }} />
     </Stack>
   );
 }
@@ -51,10 +49,7 @@ import { PageHeader, SelectionCard, StickyActionFooter } from '@fresh/recipes';
 function SelectionScreen() {
   return (
     <Stack gap={4} style={{ flex: 1, padding: 16 }}>
-      <PageHeader
-        description="Choose the product to dispense"
-        title="Select Product"
-      />
+      <PageHeader description="Choose the product to dispense" title="Select Product" />
       <Stack gap={3}>
         <SelectionCard
           description="500mg, 100 tablets"
@@ -62,14 +57,8 @@ function SelectionScreen() {
           selected={true}
           title="Paracetamol"
         />
-        <SelectionCard
-          description="200mg, 50 capsules"
-          title="Ibuprofen"
-        />
-        <SelectionCard
-          description="10mg, 30 tablets"
-          title="Cetirizine"
-        />
+        <SelectionCard description="200mg, 50 capsules" title="Ibuprofen" />
+        <SelectionCard description="10mg, 30 tablets" title="Cetirizine" />
       </Stack>
       <StickyActionFooter
         primaryAction={{ label: 'Confirm Selection', onPress: () => {} }}
@@ -114,17 +103,23 @@ function DetailScreen() {
         <Stack gap={3} style={{ padding: 16 }}>
           <Stack align="center" direction="horizontal" justify="space-between">
             <Text size="sm">Paracetamol 500mg</Text>
-            <Text size="sm" weight="medium">$12.00</Text>
+            <Text size="sm" weight="medium">
+              $12.00
+            </Text>
           </Stack>
           <Separator />
           <Stack align="center" direction="horizontal" justify="space-between">
             <Text size="sm">Ibuprofen 200mg</Text>
-            <Text size="sm" weight="medium">$15.50</Text>
+            <Text size="sm" weight="medium">
+              $15.50
+            </Text>
           </Stack>
           <Separator />
           <Stack align="center" direction="horizontal" justify="space-between">
             <Text size="sm">Cetirizine 10mg</Text>
-            <Text size="sm" weight="medium">$15.00</Text>
+            <Text size="sm" weight="medium">
+              $15.00
+            </Text>
           </Stack>
         </Stack>
       </Card>
@@ -165,14 +160,18 @@ function DashboardScreen() {
         <Stack gap={4} style={{ padding: 16 }}>
           <Stack gap={2}>
             <Stack align="center" direction="horizontal" justify="space-between">
-              <Text size="sm" weight="medium">Stock Check</Text>
+              <Text size="sm" weight="medium">
+                Stock Check
+              </Text>
               <Badge label="In Progress" variant="accent" size="sm" />
             </Stack>
             <Progress value={65} max={100} variant="accent" size="sm" />
           </Stack>
           <Stack gap={2}>
             <Stack align="center" direction="horizontal" justify="space-between">
-              <Text size="sm" weight="medium">Daily Reconciliation</Text>
+              <Text size="sm" weight="medium">
+                Daily Reconciliation
+              </Text>
               <Badge label="Pending" variant="neutral" size="sm" />
             </Stack>
             <Progress value={0} max={100} variant="neutral" size="sm" />

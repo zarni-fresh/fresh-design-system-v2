@@ -1,20 +1,37 @@
-import { Avatar } from '@fresh/ui';
+import { Box, Icon, useFreshTheme } from '@fresh/ui-core';
 import { SelectionCard } from './SelectionCard';
 
-export const SelectionCardExamples = () => (
-  <SelectionCard
-    action={{ label: 'Selected', disabled: true, variant: 'secondary' }}
-    badges={[{ label: 'Drugbook', variant: 'accent' }]}
-    description="Injectable vial · SKU DB-204 · Prescriber-only supply"
-    helperText="Recipe cards give PMs and engineers a higher-level prototype building block without forcing product-specific shared components."
-    media={<Avatar fallbackLabel="Drugbook" size="sm" tone="accent" />}
-    metadata={[
-      { label: 'Cold chain' },
-      { label: 'Batch tracked' },
-      { label: 'Clinic ready' },
-    ]}
-    selected
-    title="Botulinum toxin 50U"
-    tone="accent"
-  />
-);
+const SelectionCardExampleContent = () => {
+  const { theme } = useFreshTheme();
+
+  return (
+    <SelectionCard
+      badges={[{ label: 'Selected product', variant: 'accent' }]}
+      density="compact"
+      description="2 areas • 20 units total"
+      leadingAccessory={
+        <Box
+          style={{
+            alignItems: 'center',
+            borderColor: theme.color.border.default,
+            borderRadius: theme.radius.lg,
+            borderWidth: 1,
+            height: 32,
+            justifyContent: 'center',
+            width: 32,
+          }}
+        >
+          <Icon color={theme.color.content.secondary} icon="check" size={14} />
+        </Box>
+      }
+      selected
+      title="Botox"
+      trailingAccessory={
+        <Icon color={theme.color.content.secondary} icon="chevron-right" size={16} />
+      }
+      tone="accent"
+    />
+  );
+};
+
+export const SelectionCardExamples = () => <SelectionCardExampleContent />;

@@ -2,16 +2,12 @@ import { PageHeader } from './PageHeader';
 
 export const PageHeaderExamples = () => (
   <PageHeader
-    actions={[
-      { label: 'Save draft', variant: 'secondary' },
-      { label: 'Continue', trailingIcon: 'chevron-right' },
-    ]}
+    backLabel="Back to products"
     badges={[
       { label: 'Drugbook', variant: 'accent' },
       { label: 'Prototype lane', variant: 'success' },
     ]}
-    description="Use recipe-level headers when a screen needs polished framing faster than raw component composition."
-    eyebrow="Recipe"
-    title="Select product and batch"
+    description="Use recipe-level headers when a screen needs polished framing closer to an approved product flow."
+    title="Confirm quantity"
   />
 );

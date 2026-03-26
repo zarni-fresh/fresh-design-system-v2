@@ -1,5 +1,13 @@
 import type { ReactNode } from 'react';
-import { Box, type BoxProps, Stack, Text } from '@fresh/ui-core';
+import {
+  Box,
+  type BoxProps,
+  Icon,
+  type IconName,
+  Stack,
+  Text,
+  useFreshTheme,
+} from '@fresh/ui-core';
 import { renderRecipeBadges } from '../../lib/render';
 import type { RecipeBadge } from '../../lib/types';
 
@@ -12,6 +20,7 @@ export type SectionHeaderProps = Omit<BoxProps, 'children'> & {
   density?: SectionHeaderDensity;
   description?: string;
   eyebrow?: string;
+  leadingIcon?: IconName;
   title: string;
   trailingContent?: ReactNode;
 };
@@ -21,27 +30,38 @@ export const SectionHeader = ({
   density = 'md',
   description,
   eyebrow,
+  leadingIcon,
   style,
   title,
   trailingContent,
   ...props
 }: SectionHeaderProps) => {
-  const titleSize = density === 'md' ? 'xl' : 'lg';
+  const { theme } = useFreshTheme();
+  const titleSize = density === 'md' ? 'md' : 'sm';
 
   return (
     <Box style={style} {...props}>
       <Stack direction="horizontal" gap={3} justify="space-between">
-        <Stack gap={1.5} style={{ flex: 1 }}>
+        <Stack gap={1} style={{ flex: 1 }}>
           {renderRecipeBadges(badges)}
           {eyebrow ? (
-            <Text size="sm" tone="muted" weight="medium">
+            <Text size="xs" tone="muted" weight="medium">
               {eyebrow}
             </Text>
           ) : null}
-          <Text size={titleSize} weight="semibold">
-            {title}
-          </Text>
-          {description ? <Text tone="muted">{description}</Text> : null}
+          <Stack align="center" direction="horizontal" gap={1.5}>
+            {leadingIcon ? (
+              <Icon color={theme.color.content.secondary} icon={leadingIcon} size={14} />
+            ) : null}
+            <Text size={titleSize} weight="semibold">
+              {title}
+            </Text>
+          </Stack>
+          {description ? (
+            <Text size="sm" tone="muted">
+              {description}
+            </Text>
+          ) : null}
         </Stack>
         {trailingContent}
       </Stack>

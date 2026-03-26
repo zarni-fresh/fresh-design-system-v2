@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Separator } from '@fresh/ui';
+import { Button, Card, Separator } from '@fresh/ui';
 import { Stack, Text } from '@fresh/ui-core';
 import { renderRecipeBadges } from '../../lib/render';
 import type { RecipeAction, RecipeBadge, RecipeSummaryRow } from '../../lib/types';
@@ -26,56 +26,66 @@ export const SummaryCard = ({
   title,
   tone = 'default',
 }: SummaryCardProps) => {
-  const variant = tone === 'default' ? 'subtle' : 'elevated';
+  const variant = tone === 'default' ? 'subtle' : 'outlined';
 
   return (
-    <Card variant={variant}>
-      <CardHeader>
-        {renderRecipeBadges(badges)}
-        <CardTitle>{title}</CardTitle>
-        {description ? <CardDescription>{description}</CardDescription> : null}
-      </CardHeader>
-      <CardContent>
-        <Stack gap={3}>
-          {rows.map((row, index) => (
-            <Stack gap={3} key={`${row.label}-${index}`}>
-              <Stack align="center" direction="horizontal" justify="space-between">
-                <Text tone={row.tone ?? (row.emphasis === 'strong' ? 'default' : 'muted')} weight={row.emphasis === 'strong' ? 'semibold' : 'regular'}>
-                  {row.label}
-                </Text>
-                <Text weight={row.emphasis === 'strong' ? 'semibold' : 'medium'}>{row.value}</Text>
-              </Stack>
-              {index === rows.length - 2 ? <Separator /> : null}
-            </Stack>
-          ))}
-          {primaryAction || secondaryAction ? (
-            <Stack direction="horizontal" gap={2} wrap>
-              {secondaryAction ? (
-                <Button
-                  accessibilityLabel={secondaryAction.accessibilityLabel}
-                  disabled={secondaryAction.disabled}
-                  label={secondaryAction.label}
-                  onPress={secondaryAction.onPress}
-                  size={secondaryAction.size ?? 'md'}
-                  variant={secondaryAction.variant ?? 'secondary'}
-                />
-              ) : null}
-              {primaryAction ? (
-                <Button
-                  accessibilityLabel={primaryAction.accessibilityLabel}
-                  disabled={primaryAction.disabled}
-                  fullWidth={primaryAction.fullWidth}
-                  label={primaryAction.label}
-                  onPress={primaryAction.onPress}
-                  size={primaryAction.size ?? 'md'}
-                  trailingIcon={primaryAction.trailingIcon}
-                  variant={primaryAction.variant ?? 'primary'}
-                />
-              ) : null}
-            </Stack>
+    <Card padding="sm" variant={variant}>
+      <Stack gap={3}>
+        {badges?.length ? renderRecipeBadges(badges) : null}
+        <Stack gap={0.5}>
+          <Text size="sm" weight="semibold">
+            {title}
+          </Text>
+          {description ? (
+            <Text size="sm" tone="muted">
+              {description}
+            </Text>
           ) : null}
         </Stack>
-      </CardContent>
+        {rows.map((row, index) => (
+          <Stack gap={3} key={`${row.label}-${index}`}>
+            <Stack align="center" direction="horizontal" justify="space-between">
+              <Text
+                size="sm"
+                tone={row.tone ?? (row.emphasis === 'strong' ? 'default' : 'muted')}
+                weight={row.emphasis === 'strong' ? 'semibold' : 'regular'}
+              >
+                {row.label}
+              </Text>
+              <Text size="sm" weight={row.emphasis === 'strong' ? 'semibold' : 'medium'}>
+                {row.value}
+              </Text>
+            </Stack>
+            {index < rows.length - 1 ? <Separator /> : null}
+          </Stack>
+        ))}
+        {primaryAction || secondaryAction ? (
+          <Stack gap={2}>
+            {primaryAction ? (
+              <Button
+                accessibilityLabel={primaryAction.accessibilityLabel}
+                disabled={primaryAction.disabled}
+                fullWidth={primaryAction.fullWidth ?? true}
+                label={primaryAction.label}
+                onPress={primaryAction.onPress}
+                size={primaryAction.size ?? 'md'}
+                trailingIcon={primaryAction.trailingIcon}
+                variant={primaryAction.variant ?? 'primary'}
+              />
+            ) : null}
+            {secondaryAction ? (
+              <Button
+                accessibilityLabel={secondaryAction.accessibilityLabel}
+                disabled={secondaryAction.disabled}
+                label={secondaryAction.label}
+                onPress={secondaryAction.onPress}
+                size={secondaryAction.size ?? 'md'}
+                variant={secondaryAction.variant ?? 'secondary'}
+              />
+            ) : null}
+          </Stack>
+        ) : null}
+      </Stack>
     </Card>
   );
 };

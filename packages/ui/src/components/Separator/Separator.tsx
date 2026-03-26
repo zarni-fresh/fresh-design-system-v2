@@ -27,7 +27,7 @@ export const Separator = ({
   return (
     <Box
       accessibilityElementsHidden={decorative}
-      accessibilityLabel={decorative ? undefined : accessibilityLabel ?? 'Separator'}
+      accessibilityLabel={decorative ? undefined : (accessibilityLabel ?? 'Separator')}
       accessible={!decorative}
       importantForAccessibility={decorative ? 'no-hide-descendants' : 'auto'}
       style={[

@@ -3,7 +3,14 @@ import { Box, Stack, Text, useFreshTheme } from '@fresh/ui-core';
 import { Avatar } from '../Avatar/Avatar';
 import { Badge } from '../Badge/Badge';
 import { Button } from '../Button/Button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../Card/Card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../Card/Card';
 import { Label } from '../Label/Label';
 import { Progress } from '../Progress/Progress';
 import { Separator } from '../Separator/Separator';

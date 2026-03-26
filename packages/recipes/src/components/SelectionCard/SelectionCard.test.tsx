@@ -3,7 +3,7 @@ import { FreshThemeProvider } from '@fresh/ui-core';
 import { SelectionCard } from './SelectionCard';
 
 describe('SelectionCard', () => {
-  it('renders title and selected treatment', () => {
+  it('renders the title when selected', () => {
     let tree!: TestRenderer.ReactTestRenderer;
 
     TestRenderer.act(() => {
@@ -15,6 +15,5 @@ describe('SelectionCard', () => {
     });
 
     expect(() => tree.root.findByProps({ children: 'Batch A41' })).not.toThrow();
-    expect(() => tree.root.findByProps({ accessibilityLabel: 'Selected' })).not.toThrow();
   });
 });

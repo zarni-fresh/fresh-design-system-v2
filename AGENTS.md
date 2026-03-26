@@ -10,6 +10,8 @@ Primary environment:
 - Preserve the visual recipe in `docs/visual-recipe.md`.
 - Major shared UI decisions should start from approved Pencil boards tracked in
   `design/board-index.md`.
+- Treat the design canvas as the starting point for new app work. Pencil is preferred,
+  but another canvas can be used if the user explicitly names it.
 
 ## Non-Negotiable Rules
 
@@ -35,20 +37,30 @@ Primary environment:
     anatomy directly in code. Start from an approved board or create one first.
 12. Do not promote a product-specific extracted pattern into `@fresh/ui` until it is
     approved as canonical or proven reusable across multiple product surfaces.
+13. Do not import third-party UI packages directly into product screens when the same
+    need belongs behind `@fresh/ui-core`, `@fresh/ui`, or `@fresh/recipes`.
+14. Preserve approved visual and interaction craft during extraction or migration work.
+    Do not redesign a source flow while moving it inward unless the board explicitly
+    changes the direction.
+15. Do not ship compressed or squashed layouts. If the screen feels cramped, fix
+    spacing, grouping, and outer padding before adding more UI.
 
 ## Working Pattern
 
 1. Check `design/board-index.md` for approved anatomy before changing a shared pattern.
-2. For prototypes, start in `@fresh/recipes`.
-3. For shared reusable components, start in `@fresh/ui`.
-4. Drop to `@fresh/ui-core` only when a shared primitive composition is still needed.
-5. Use `@fresh/shadcn-reference` to validate parity targets and allowed platform
+2. Start from the approved canvas screen or board, then move into code.
+3. For prototypes, start in `@fresh/recipes`.
+4. For shared reusable components, start in `@fresh/ui`.
+5. Drop to `@fresh/ui-core` only when a shared primitive composition is still needed.
+6. Use `@fresh/shadcn-reference` to validate parity targets and allowed platform
    adaptations before changing look and feel.
-6. If neither layer fits a repeated product need, propose a new shared component before
+7. If neither layer fits a repeated product need, propose a new shared component before
    shipping the screen.
-7. When component or recipe APIs change, update stories, examples, tests, docs, and
+8. When component or recipe APIs change, update stories, examples, tests, docs, and
    manifests in the same change.
-8. Validate user-facing changes in the Expo playground before treating them as done.
+9. Validate user-facing changes in the Expo playground before treating them as done.
+10. After shared-boundary changes, validate the closest starter or product example in
+    addition to isolated component stories.
 
 ## Default Component Choices
 
@@ -79,6 +91,8 @@ Primary environment:
   pattern. Do not compose three primitives when one shared component already exists.
 - Shared component work should follow this order: approved board -> component spec ->
   code -> manifest/stories/tests -> Expo validation.
+- If a requested change is really an internal boundary cleanup, keep feature-level UI
+  output stable while making the change.
 - Choose semantics first, then variants. Never pick a variant because it "looks close"
   to a random mock.
 - Keep one primary action per card or form section unless the flow clearly requires
@@ -89,6 +103,8 @@ Primary environment:
   examples, and manifest updates in one change.
 - When a pattern is extracted from a product surface, classify it as cross-product,
   product-specific, or primitive before deciding where it belongs in the repo.
+- Before calling a layout done, check that outer padding, section gaps, and card
+  padding are not compressed below the visual recipe guardrails.
 
 ## Package Map
 
@@ -108,6 +124,9 @@ Primary environment:
   `Separator`, `Skeleton`, `Switch`, `TextField`.
 - Keep copy concise and use sentence case unless a product term requires otherwise.
 - Preserve minimum tap target intent and visible validation feedback.
+- Default mobile screen edge padding should usually be `16px` to `20px`, not smaller.
+- Default section-to-section spacing should usually be `16px` to `24px`.
+- Default card padding should usually be `16px` to `20px`.
 - Never treat `/design` as the source of truth. It is companion review material, not
   the implementation contract.
 - Treat `/design` as the review and approval layer. It informs implementation but does

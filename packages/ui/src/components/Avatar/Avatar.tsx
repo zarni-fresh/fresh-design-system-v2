@@ -24,11 +24,7 @@ const getAvatarInitials = (value?: string) => {
     return '?';
   }
 
-  const tokens = value
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2);
+  const tokens = value.trim().split(/\s+/).filter(Boolean).slice(0, 2);
 
   if (tokens.length === 0) {
     return '?';

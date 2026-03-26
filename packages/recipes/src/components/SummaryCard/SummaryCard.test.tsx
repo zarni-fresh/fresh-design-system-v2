@@ -9,7 +9,10 @@ describe('SummaryCard', () => {
     TestRenderer.act(() => {
       tree = TestRenderer.create(
         <FreshThemeProvider mode="light">
-          <SummaryCard rows={[{ label: 'Estimated total', value: '$274' }]} title="Review before continuing" />
+          <SummaryCard
+            rows={[{ label: 'Estimated total', value: '$274' }]}
+            title="Review before continuing"
+          />
         </FreshThemeProvider>
       );
     });

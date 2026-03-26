@@ -10,6 +10,9 @@ Fresh now has two distinct but connected lanes:
 This gives PMs, designers, and engineers a better path than prompting directly from
 low-level shared components alone.
 
+The stricter boundary model that governs those lanes is documented in
+[`docs/primitive-boundary-strategy.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/primitive-boundary-strategy.md).
+
 ## Layer Model
 
 Use the system in this order:
@@ -37,6 +40,8 @@ That means:
 - use shadcn for taxonomy, visual direction, and interaction intent
 - never copy DOM internals into shared React Native code
 - document all allowed platform adaptations explicitly
+- preserve approved product craft while moving patterns inward
+- do not redesign a screen while extracting its shared seam
 
 ## Why Recipes Exist
 
@@ -65,6 +70,7 @@ prototyping.
 3. Drop to `@fresh/ui-core` only when the higher layers do not fit.
 4. Use `@fresh/shadcn-reference` to validate visual and interaction parity when making
    changes to shared components or recipes.
+5. If a change belongs behind a shared boundary, do not solve it in product screens.
 
 ## First Recipe Set
 

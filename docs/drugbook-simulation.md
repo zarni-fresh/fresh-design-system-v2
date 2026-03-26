@@ -44,6 +44,7 @@ This is the kind of brief the PM should hand to engineering or an agent:
 Build the Drugbook product selection screen using the Fresh design system.
 
 Users need to:
+
 - confirm the selected product
 - adjust quantity
 - choose from available batch options
@@ -51,6 +52,7 @@ Users need to:
 - move to the next step
 
 Constraints:
+
 - React Native + Expo + TypeScript
 - mobile-first but also usable on desktop web
 - use Fresh shared components first
@@ -58,6 +60,7 @@ Constraints:
 - if a repeated pattern is missing, call it out explicitly
 
 Acceptance criteria:
+
 - there is one clear primary action
 - the quantity control is easy to tap on mobile
 - batch options are visually distinct and selectable
@@ -75,6 +78,7 @@ You are building inside a React Native + Expo + TypeScript app that uses the Fre
 design system.
 
 Follow these rules:
+
 - Use `@fresh/ui` components first.
 - Use `@fresh/ui-core` primitives only when a shared component does not fit.
 - Do not use raw React Native primitives in product screens when a Fresh wrapper
@@ -88,6 +92,7 @@ Follow these rules:
   improvising inline.
 
 Before writing code:
+
 - inspect existing Fresh components, manifests, examples, stories, and the Drugbook
   design extraction boards
 - choose the smallest approved component set that fits the task
@@ -96,6 +101,7 @@ Task:
 Build a Drugbook product selection screen.
 
 The screen should let the user:
+
 - review a selected product card
 - change quantity
 - choose a batch option
@@ -103,6 +109,7 @@ The screen should let the user:
 - continue to the next step or go back
 
 Acceptance criteria:
+
 - use Fresh shared components first
 - keep product-specific patterns local if they are not yet approved shared components
 - identify which parts should become future shared components
@@ -138,18 +145,18 @@ It should be broken down into shared vs product-specific parts.
 
 #### Good Classification
 
-| Drugbook need | Fresh decision | Why |
-| --- | --- | --- |
-| screen title and supporting actions | future shared `PageHeader` | likely cross-product |
-| section labels | future shared `SectionHeader` | likely cross-product |
-| primary and secondary actions | use `Button` now | already shared |
-| grouped surfaces | use `Card` now | already shared |
-| compact status or metadata | use `Badge` now | already shared |
-| quantity stepper row | keep product-local for now | promising, but not yet canonical |
-| product selection card | keep product-local for now | domain-specific |
-| batch option card | keep product-local for now | domain-specific |
-| summary totals card | keep product-local for now | too domain-shaped today |
-| sticky footer nav | keep as app-level recipe until repeated | useful, but not proven enough |
+| Drugbook need                       | Fresh decision                          | Why                              |
+| ----------------------------------- | --------------------------------------- | -------------------------------- |
+| screen title and supporting actions | future shared `PageHeader`              | likely cross-product             |
+| section labels                      | future shared `SectionHeader`           | likely cross-product             |
+| primary and secondary actions       | use `Button` now                        | already shared                   |
+| grouped surfaces                    | use `Card` now                          | already shared                   |
+| compact status or metadata          | use `Badge` now                         | already shared                   |
+| quantity stepper row                | keep product-local for now              | promising, but not yet canonical |
+| product selection card              | keep product-local for now              | domain-specific                  |
+| batch option card                   | keep product-local for now              | domain-specific                  |
+| summary totals card                 | keep product-local for now              | too domain-shaped today          |
+| sticky footer nav                   | keep as app-level recipe until repeated | useful, but not proven enough    |
 
 ### Step 3: Build With Shared Components First
 
@@ -161,9 +168,7 @@ A good first implementation would compose the screen like this:
     <CardHeader>
       <Badge label="Drugbook" variant="accent" />
       <CardTitle>Select product</CardTitle>
-      <CardDescription>
-        Review the selected product, choose quantity, and continue.
-      </CardDescription>
+      <CardDescription>Review the selected product, choose quantity, and continue.</CardDescription>
     </CardHeader>
   </Card>
 
@@ -231,6 +236,7 @@ Implemented the Drugbook product selection screen using existing Fresh primitive
 shared components where possible.
 
 Used existing shared components:
+
 - Button
 - Card
 - Badge
@@ -238,12 +244,14 @@ Used existing shared components:
 - Separator
 
 Kept these patterns product-local for now:
+
 - ProductSelectionCard
 - QuantityStepperRow
 - BatchOptionCard
 - SummaryTotalsCard
 
 Shared component follow-up recommendations:
+
 - PageHeader should likely be promoted into @fresh/ui
 - SectionHeader should likely be promoted into @fresh/ui
 - IconButton should likely be promoted into @fresh/ui

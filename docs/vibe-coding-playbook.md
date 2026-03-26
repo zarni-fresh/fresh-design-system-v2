@@ -22,12 +22,14 @@ for a concrete PM-to-engineering flow.
 1. Start from the Expo starter app in
    [`apps/expo-starter`](/Users/zarnim/Documents/FCXD/fresh-design-system/apps/expo-starter).
 2. Read the root [`AGENTS.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/AGENTS.md).
-3. Use the copy-paste prompt in
+3. Start with the universal first prompt in
+   [`starting-prompt-playbook.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/starting-prompt-playbook.md).
+4. Then use the fuller copy-paste prompt in
    [`canonical-agent-prompt.md`](/Users/zarnim/Documents/FCXD/fresh-design-system/docs/canonical-agent-prompt.md).
-4. Prefer `@fresh/recipes` for prototype screens and polished screen blocks.
-5. Prefer `@fresh/ui` for reusable shared components.
-6. Only drop to `@fresh/ui-core` when the higher layers do not fit.
-7. If a pattern is missing and repeated, propose it as shared work instead of
+5. Prefer `@fresh/recipes` for prototype screens and polished screen blocks.
+6. Prefer `@fresh/ui` for reusable shared components.
+7. Only drop to `@fresh/ui-core` when the higher layers do not fit.
+8. If a pattern is missing and repeated, propose it as shared work instead of
    improvising it inline.
 
 ## Recommended Default Stack

@@ -3,6 +3,7 @@
 ## Product Extraction Recipe
 
 - Start from approved or in-review design boards, not from screenshots alone.
+- Start from the approved canvas screen first, then build the app surface from it.
 - Check `@fresh/recipes` before rebuilding a polished section from raw components.
 - Identify which parts of the screen are already shared components.
 - Separate product-specific shells from cross-product structure before implementing.
@@ -10,6 +11,21 @@
   screen wholesale into `@fresh/ui`.
 - Keep product flow logic outside the shared component layer unless it is clearly
   reusable.
+- Preserve the approved visual and interaction craft of the source screen while
+  extracting its shared seam.
+- Keep third-party UI choices behind the shared system instead of introducing them in
+  product screens.
+
+## Spacing Rules
+
+- Mobile screens should usually begin with `16px` to `20px` edge padding.
+- Major sections should usually be separated by `16px` to `24px`.
+- Cards and grouped surfaces should usually have `16px` to `20px` internal padding.
+- Dense card content should still keep `12px` to `16px` vertical rhythm between rows.
+- If a screen feels squashed, increase spacing and regroup content before adding more
+  visual treatment.
+- On desktop web, keep the mobile-safe internal rhythm but add more outer breathing
+  room around the overall screen.
 
 ## Form Screen
 
@@ -53,3 +69,7 @@
   accessibility label.
 - Confirm spacing and hierarchy are built from `Stack`, `Card`, and shared components
   instead of one-off wrappers.
+- Confirm the layout is not compressed at the screen edge, section level, or card
+  level.
+- Confirm a boundary cleanup or promotion change did not quietly restyle the source
+  screen.

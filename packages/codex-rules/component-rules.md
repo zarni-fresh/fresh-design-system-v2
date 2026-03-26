@@ -25,6 +25,10 @@ Visual baseline:
    for copy before reaching for raw React Native equivalents.
 7. Use `Pressable` directly only inside shared components. Product screens should
    prefer approved components from `@fresh/ui`.
+8. Do not import third-party UI packages directly into product screens when the same
+   need should live behind the shared layer.
+9. Preserve approved visual output while extracting or refactoring shared components.
+   Do not redesign a product flow in the same change unless the board says to.
 
 ## Approval Gate
 
@@ -38,6 +42,8 @@ Visual baseline:
   approved board -> code -> manifest -> stories/examples -> tests -> Expo validation.
 - When changing look and feel or interaction details, check `@fresh/shadcn-reference`
   first and document any allowed adaptation or deviation.
+- If the work is boundary cleanup rather than a new design direction, keep screen-level
+  craft stable and move the change inward.
 
 ## Existing Component Defaults
 

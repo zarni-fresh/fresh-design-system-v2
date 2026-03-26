@@ -49,9 +49,7 @@ export const shadcnReferenceSpecs = [
     intentionalDeviations: [
       'Fresh keeps RN-native accessibility and event handling instead of DOM composition helpers.',
     ],
-    notes: [
-      'Button parity is a top-level visual benchmark for the whole system.',
-    ],
+    notes: ['Button parity is a top-level visual benchmark for the whole system.'],
   },
   {
     referenceName: 'Input',
@@ -63,7 +61,8 @@ export const shadcnReferenceSpecs = [
     status: 'strict',
     visualParityTarget: {
       density: {
-        defaultExpectation: 'Compact but comfortable field height with clear helper and error spacing.',
+        defaultExpectation:
+          'Compact but comfortable field height with clear helper and error spacing.',
         strictOn: ['input height', 'label spacing', 'helper rhythm'],
       },
       radius: {
@@ -71,7 +70,8 @@ export const shadcnReferenceSpecs = [
         strictOn: ['field corner treatment'],
       },
       border: {
-        defaultExpectation: 'Inputs should have sharper, calmer border relationships than generic cards.',
+        defaultExpectation:
+          'Inputs should have sharper, calmer border relationships than generic cards.',
         strictOn: ['default border', 'focus border', 'invalid border'],
       },
       shadow: {
@@ -89,19 +89,13 @@ export const shadcnReferenceSpecs = [
     },
     interactionParityTarget: {
       requiredStates: ['default', 'focus', 'disabled', 'error', 'placeholder'],
-      allowedPlatformAdaptations: [
-        'Use RN-native text input behavior and keyboard handling.',
-      ],
-      prohibitedWebAssumptions: [
-        'Do not depend on HTML input pseudo-selectors.',
-      ],
+      allowedPlatformAdaptations: ['Use RN-native text input behavior and keyboard handling.'],
+      prohibitedWebAssumptions: ['Do not depend on HTML input pseudo-selectors.'],
     },
     intentionalDeviations: [
       'Fresh includes a visible label and helper contract by default instead of shipping a bare input element.',
     ],
-    notes: [
-      'Input parity is about field calmness and clarity, not DOM shape.',
-    ],
+    notes: ['Input parity is about field calmness and clarity, not DOM shape.'],
   },
   {
     referenceName: 'Card',
@@ -117,11 +111,13 @@ export const shadcnReferenceSpecs = [
         strictOn: ['internal padding', 'header-content spacing'],
       },
       radius: {
-        defaultExpectation: 'Cards should use a slightly softer radius than controls while staying in-family.',
+        defaultExpectation:
+          'Cards should use a slightly softer radius than controls while staying in-family.',
         strictOn: ['corner consistency'],
       },
       border: {
-        defaultExpectation: 'Most definition should come from border and surface contrast, not decoration.',
+        defaultExpectation:
+          'Most definition should come from border and surface contrast, not decoration.',
         strictOn: ['subtle outline treatment'],
       },
       shadow: {
@@ -129,7 +125,8 @@ export const shadcnReferenceSpecs = [
         strictOn: ['shadow subtlety'],
       },
       hierarchy: {
-        defaultExpectation: 'Header, description, and body content should read clearly without excess chrome.',
+        defaultExpectation:
+          'Header, description, and body content should read clearly without excess chrome.',
         strictOn: ['header hierarchy'],
       },
       focus: {
@@ -142,9 +139,7 @@ export const shadcnReferenceSpecs = [
       allowedPlatformAdaptations: [
         'Use RN surface and shadow primitives instead of CSS box-shadow behavior.',
       ],
-      prohibitedWebAssumptions: [
-        'Do not assume hover-only elevation changes for comprehension.',
-      ],
+      prohibitedWebAssumptions: ['Do not assume hover-only elevation changes for comprehension.'],
     },
     intentionalDeviations: [],
     notes: ['Card parity is mostly visual and structural.'],
@@ -179,7 +174,8 @@ export const shadcnReferenceSpecs = [
         strictOn: ['information density'],
       },
       focus: {
-        defaultExpectation: 'Badges are informational by default and should not behave like buttons.',
+        defaultExpectation:
+          'Badges are informational by default and should not behave like buttons.',
         strictOn: ['non-interactive semantics'],
       },
     },
@@ -237,7 +233,9 @@ export const shadcnReferenceSpecs = [
     intentionalDeviations: [
       'Switch is native-adapted because platform controls differ more than button or card.',
     ],
-    notes: ['Switch should feel close to shadcn without pretending native controls are DOM widgets.'],
+    notes: [
+      'Switch should feel close to shadcn without pretending native controls are DOM widgets.',
+    ],
   },
   {
     referenceName: 'Avatar',

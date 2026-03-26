@@ -1,10 +1,7 @@
 import { forwardRef, type ReactNode } from 'react';
 import { type ElementRef } from 'react';
 import { Box, type BoxProps, useFreshTheme } from '@fresh/ui-core';
-import {
-  aspectRatioRadiusOptions,
-  type AspectRatioRadius,
-} from './AspectRatio.styles';
+import { aspectRatioRadiusOptions, type AspectRatioRadius } from './AspectRatio.styles';
 
 export type AspectRatioProps = Omit<BoxProps, 'children'> & {
   children?: ReactNode;

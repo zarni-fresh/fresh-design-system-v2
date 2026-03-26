@@ -563,8 +563,8 @@ const PlaygroundScreen = ({
                 <CardHeader>
                   <CardTitle>Manifest-backed defaults</CardTitle>
                   <CardDescription>
-                    These new building blocks now participate in the same examples, stories,
-                    tests, and manifest contract as the original four components.
+                    These new building blocks now participate in the same examples, stories, tests,
+                    and manifest contract as the original four components.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>

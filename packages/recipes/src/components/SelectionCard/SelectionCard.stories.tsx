@@ -8,7 +8,8 @@ export default {
   args: {
     title: 'Botulinum toxin 50U',
     description: 'Injectable vial · SKU DB-204 · Prescriber-only supply',
-    helperText: 'Use recipe-level selection cards for higher-fidelity prototypes and reusable product sections.',
+    helperText:
+      'Use recipe-level selection cards for higher-fidelity prototypes and reusable product sections.',
   },
 };
 

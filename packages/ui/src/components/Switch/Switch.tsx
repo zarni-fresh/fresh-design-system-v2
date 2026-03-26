@@ -10,7 +10,10 @@ import {
   type SwitchTone,
 } from './Switch.styles';
 
-export type SwitchProps = Omit<ComponentPropsWithoutRef<typeof RNSwitch>, 'onValueChange' | 'value'> & {
+export type SwitchProps = Omit<
+  ComponentPropsWithoutRef<typeof RNSwitch>,
+  'onValueChange' | 'value'
+> & {
   checked?: boolean;
   defaultChecked?: boolean;
   onCheckedChange?: (checked: boolean) => void;

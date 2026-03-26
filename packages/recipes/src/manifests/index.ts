@@ -22,7 +22,9 @@ export const recipeManifests = {
   SummaryCard: summaryCardManifest,
 } satisfies Record<string, RecipeManifest>;
 
-export const recipeManifestNames = Object.keys(recipeManifests) as Array<keyof typeof recipeManifests>;
+export const recipeManifestNames = Object.keys(recipeManifests) as Array<
+  keyof typeof recipeManifests
+>;
 
 export {
   pageHeaderManifest,

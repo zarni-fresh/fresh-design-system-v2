@@ -15,6 +15,8 @@ describe('PageHeader', () => {
     });
 
     expect(() => tree.root.findByProps({ children: 'Select product' })).not.toThrow();
-    expect(() => tree.root.findByProps({ children: 'Review the current selection.' })).not.toThrow();
+    expect(() =>
+      tree.root.findByProps({ children: 'Review the current selection.' })
+    ).not.toThrow();
   });
 });

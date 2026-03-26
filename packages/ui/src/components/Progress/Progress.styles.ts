@@ -2,7 +2,13 @@ import type { SemanticTheme } from '@fresh/tokens';
 import { getFeedbackPalette } from '@fresh/ui-core';
 
 export const progressSizeOptions = ['sm', 'md', 'lg'] as const;
-export const progressVariantOptions = ['neutral', 'accent', 'success', 'warning', 'danger'] as const;
+export const progressVariantOptions = [
+  'neutral',
+  'accent',
+  'success',
+  'warning',
+  'danger',
+] as const;
 
 export type ProgressSize = (typeof progressSizeOptions)[number];
 export type ProgressVariant = (typeof progressVariantOptions)[number];

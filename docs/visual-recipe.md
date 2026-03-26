@@ -17,6 +17,34 @@ a React Native system.
 - Keep most controls visually between `40px` and `44px` tall, then rely on hit slop to
   preserve mobile tap comfort.
 - Default card padding should feel compact and editorial, not roomy by default.
+- Compact should never mean cramped. The system should read calm and intentional, not
+  compressed.
+
+## Spacing Guardrails
+
+- Mobile screen edge padding should usually start at `16px` and often land at `20px`.
+  Avoid dropping below `16px` unless the screen is intentionally edge-to-edge.
+- Vertical gaps between major sections should usually be `16px` to `24px`.
+- Internal card padding should usually be `16px` to `20px`.
+- Gaps between stacked rows inside a card should usually be `12px` to `16px`.
+- Label-to-control spacing should usually be `6px` to `8px`.
+- Dense list items can use `10px` to `12px` vertical rhythm, but should still breathe.
+- Sticky footers should have enough top separation to feel anchored, not jammed into
+  the last section.
+- On desktop web, keep mobile-safe internals but give the overall screen more outer
+  breathing room.
+
+## Anti-Compression Rule
+
+If a screen feels squished, fix spacing before adding new visual decoration.
+
+The first things to check are:
+
+- screen edge padding
+- section-to-section gaps
+- card internal padding
+- title/body/action spacing
+- whether too many elements were forced into a single card
 
 ## Radius Language
 
@@ -65,7 +93,8 @@ a React Native system.
 
 - `Button`: compact height, medium-weight label, crisp radius, restrained shadow
 - `TextField`: clean neutral background, sharper border, stronger focus state
-- `Card`: clean border, subtle shadow, compact padding, editorial hierarchy
+- `Card`: clean border, subtle shadow, compact padding, editorial hierarchy, enough
+  internal breathing room to avoid visual crowding
 - `Badge`: small radius, short height, compact text
 - `Avatar`: quiet neutral shell, simple fallback initials
 - `Progress`: thin track, strong fill

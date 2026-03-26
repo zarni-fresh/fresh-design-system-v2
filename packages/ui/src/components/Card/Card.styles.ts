@@ -11,16 +11,16 @@ export const cardLayout = cva('border');
 
 const cardMetricMap = {
   sm: {
+    padding: 14,
+    radius: 'lg',
+  },
+  md: {
     padding: 16,
     radius: 'xl',
   },
-  md: {
-    padding: 20,
-    radius: '2xl',
-  },
   lg: {
-    padding: 24,
-    radius: '2xl',
+    padding: 20,
+    radius: 'xl',
   },
 } as const satisfies Record<
   CardPadding,
@@ -45,7 +45,7 @@ export const getCardPalette = (theme: SemanticTheme, variant: CardVariant) => {
       return {
         backgroundColor: getSurfaceColor(theme, 'elevated'),
         borderColor: getBorderColor(theme, 'default'),
-        shadow: getElevationStyle(theme, 2),
+        shadow: getElevationStyle(theme, 1),
       };
     case 'subtle':
       return {
@@ -58,7 +58,7 @@ export const getCardPalette = (theme: SemanticTheme, variant: CardVariant) => {
       return {
         backgroundColor: getSurfaceColor(theme, 'default'),
         borderColor: getBorderColor(theme, 'default'),
-        shadow: getElevationStyle(theme, 1),
+        shadow: getElevationStyle(theme, 0),
       };
   }
 };

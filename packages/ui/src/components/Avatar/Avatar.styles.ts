@@ -23,7 +23,10 @@ const avatarTextSizeMap: Record<AvatarSize, TextProps['size']> = {
   xl: 'lg',
 };
 
-export const getAvatarMetrics = (theme: SemanticTheme, options: { shape: AvatarShape; size: AvatarSize }) => {
+export const getAvatarMetrics = (
+  theme: SemanticTheme,
+  options: { shape: AvatarShape; size: AvatarSize }
+) => {
   const dimension = avatarDimensionMap[options.size];
 
   return {

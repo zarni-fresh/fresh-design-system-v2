@@ -7,7 +7,8 @@ export default {
   component: PageHeader,
   args: {
     title: 'Select product and batch',
-    description: 'Use recipe-level headers when a screen needs polished framing faster than raw component composition.',
+    description:
+      'Use recipe-level headers when a screen needs polished framing faster than raw component composition.',
     eyebrow: 'Recipe',
   },
 };

@@ -22,31 +22,38 @@ style, reinterpreted for React Native.
 ## Visual Identity
 
 ### Spacing Rhythm
+
 `4 / 6 / 8 / 12 / 16 / 20 / 24` — this is the dominant scale. Screen edge padding
 starts at 16px. Card padding is 16–20px. Label-to-control gaps are 6–8px.
 
 ### Radius
+
 Base is 10px (`lg`). Inputs and buttons: 8–10px. Cards: 12–16px. Pill rounding only for
 switches, circular avatars, and capsule shapes.
 
 ### Typography
+
 Body copy at 14px. Labels are compact and medium weight. Titles use spacing and weight,
 not oversized type. Muted text stays readable.
 
 ### Palette
+
 Near-white in light mode, near-black in dark mode. Muted surfaces from neutral layers,
 not tinted fills. Accent color is present but sparingly used. Primary action contrast
 comes from foreground/background inversion first.
 
 ### Borders and Shadows
+
 Borders are visible and crisp. Focus uses a stronger border plus a soft neutral ring.
 Elevation stays subtle — `shadow-xs` and `shadow-sm` energy.
 
 ### Icons
+
 16px default. 15px for small controls. 18px for hero or status moments. Icons should
 never outweigh labels.
 
 ### Controls
+
 Most controls sit between 40–44px tall. Hit slop preserves mobile tap comfort without
 inflating visual height.
 

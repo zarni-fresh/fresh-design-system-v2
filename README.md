@@ -162,11 +162,11 @@ design/                Pencil board index, handoff checklist, companion exports
 2. Prefer `@fresh/recipes` for prototyping and screen-level composition.
 3. Prefer `@fresh/ui` for reusable shared components.
 4. If a higher-level component does not exist, compose with `@fresh/ui-core`.
-4. Never hardcode visual values in product code. Pull intent from semantic tokens.
-5. If a pattern repeats across products or is explicitly approved, add a shared
+5. Never hardcode visual values in product code. Pull intent from semantic tokens.
+6. If a pattern repeats across products or is explicitly approved, add a shared
    component instead of copying inline layout.
-6. Use `@fresh/shadcn-reference` to validate parity decisions instead of guessing.
-7. Validate meaningful UI changes in the Expo playground first, then on desktop web.
+7. Use `@fresh/shadcn-reference` to validate parity decisions instead of guessing.
+8. Validate meaningful UI changes in the Expo playground first, then on desktop web.
 
 ## How AI Agents Should Use It
 
