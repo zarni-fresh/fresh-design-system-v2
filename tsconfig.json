@@ -3,10 +3,10 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/expo-playground"
+      "path": "./apps/starter"
     },
     {
-      "path": "./apps/storybook-native"
+      "path": "./apps/drugbook"
     },
     {
       "path": "./packages/tokens"
@@ -16,6 +16,9 @@
     },
     {
       "path": "./packages/ui"
+    },
+    {
+      "path": "./packages/recipes"
     },
     {
       "path": "./packages/codex-rules"
