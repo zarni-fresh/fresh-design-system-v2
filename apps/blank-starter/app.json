@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Fresh Blank Starter",
+    "slug": "fresh-blank-starter",
+    "scheme": "fresh-blank",
+    "version": "0.1.0",
+    "orientation": "default",
+    "platforms": ["ios", "android", "web"],
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.freshblankstarter"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.anonymous.freshblankstarter"
+    }
+  }
+}

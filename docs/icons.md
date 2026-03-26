@@ -5,16 +5,45 @@ primitive in `@fresh-ds/ui-core`.
 
 ## Approved Icons
 
-| Name            | Lucide Source | Typical Use                            |
-| --------------- | ------------- | -------------------------------------- |
-| `alert-circle`  | AlertCircle   | Validation errors, warnings            |
-| `check`         | Check         | Selection indicators, success          |
-| `chevron-right` | ChevronRight  | Navigation, disclosure, back (rotated) |
-| `loader-circle` | LoaderCircle  | Loading spinners                       |
-| `moon`          | MoonStar      | Dark mode toggle                       |
-| `search`        | Search        | Search fields                          |
-| `sun`           | Sun           | Light mode toggle                      |
-| `x`             | X             | Close, dismiss, clear                  |
+| Name              | Lucide Source  | Typical Use                   |
+| ----------------- | -------------- | ----------------------------- |
+| `alert-circle`    | AlertCircle    | Validation errors, warnings   |
+| `arrow-left`      | ArrowLeft      | Back navigation               |
+| `arrow-right`     | ArrowRight     | Forward navigation            |
+| `check`           | Check          | Selection indicators, success |
+| `chevron-down`    | ChevronDown    | Dropdown triggers, expand     |
+| `chevron-left`    | ChevronLeft    | Back, previous                |
+| `chevron-right`   | ChevronRight   | Navigation, disclosure        |
+| `chevron-up`      | ChevronUp      | Collapse, scroll to top       |
+| `copy`            | Copy           | Copy to clipboard             |
+| `download`        | Download       | Download action               |
+| `edit`            | Edit           | Edit, modify                  |
+| `external-link`   | ExternalLink   | Open in new window            |
+| `eye`             | Eye            | Show, visible                 |
+| `eye-off`         | EyeOff         | Hide, password toggle         |
+| `filter`          | Filter         | Filter lists                  |
+| `heart`           | Heart          | Favourite, like               |
+| `home`            | Home           | Home screen                   |
+| `info`            | Info           | Information, help             |
+| `loader-circle`   | LoaderCircle   | Loading spinners              |
+| `log-out`         | LogOut         | Sign out                      |
+| `mail`            | Mail           | Email, messages               |
+| `menu`            | Menu           | Hamburger menu                |
+| `minus`           | Minus          | Remove, decrease              |
+| `moon`            | MoonStar       | Dark mode toggle              |
+| `more-horizontal` | MoreHorizontal | Overflow menu (horizontal)    |
+| `more-vertical`   | MoreVertical   | Overflow menu (vertical)      |
+| `phone`           | Phone          | Phone, call                   |
+| `plus`            | Plus           | Add, create                   |
+| `search`          | Search         | Search fields                 |
+| `settings`        | Settings       | Settings, preferences         |
+| `share`           | Share          | Share action                  |
+| `star`            | Star           | Rating, bookmark              |
+| `sun`             | Sun            | Light mode toggle             |
+| `trash`           | Trash          | Delete, remove                |
+| `upload`          | Upload         | Upload action                 |
+| `user`            | User           | Profile, account              |
+| `x`               | X              | Close, dismiss, clear         |
 
 ## Sizing Rules
 
