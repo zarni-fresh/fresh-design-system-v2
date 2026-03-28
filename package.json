@@ -23,7 +23,8 @@
     "test": "turbo run test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "clean": "turbo run clean && rimraf node_modules"
+    "clean": "turbo run clean && rimraf node_modules",
+    "generate:tokens": "node packages/tokens/scripts/generate-tokens-json.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
