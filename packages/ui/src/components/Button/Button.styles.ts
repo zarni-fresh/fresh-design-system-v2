@@ -31,12 +31,12 @@ export const buttonLayout = cva('flex-row items-center justify-center', {
 const buttonMetricMap = {
   sm: {
     borderRadius: 'md',
-    gap: 1.5,
-    iconSize: 15,
+    gap: 1,
+    iconSize: 16,
     minHeight: 36,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    textSize: 'sm',
+    textSize: 'md',
   },
   md: {
     borderRadius: 'lg',
