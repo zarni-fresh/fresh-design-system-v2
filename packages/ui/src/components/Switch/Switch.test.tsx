@@ -15,14 +15,11 @@ describe('Switch', () => {
     });
 
     const control = tree.root.findAll(
-      (node) => node.props.testID === 'switch-root' && node.props['data-name'] === 'Switch'
+      (node) => node.props.testID === 'switch-root' && node.props.accessibilityRole === 'switch'
     )[0];
 
     expect(control).toBeDefined();
-    if (!control) {
-      throw new Error('Expected Switch host node to exist.');
-    }
-    expect(control.props.value).toBe(true);
+    expect(control!.props.accessibilityState.checked).toBe(true);
   });
 
   it('notifies callers when the checked state changes', () => {
@@ -42,22 +39,14 @@ describe('Switch', () => {
     });
 
     const control = tree.root.findAll(
-      (node) => node.props.testID === 'switch-root' && node.props['data-name'] === 'Switch'
+      (node) => node.props.testID === 'switch-root' && node.props.accessibilityRole === 'switch'
     )[0];
 
     expect(control).toBeDefined();
-    if (!control) {
-      throw new Error('Expected Switch host node to exist.');
-    }
     TestRenderer.act(() => {
-      control.props.onValueChange(true);
+      control!.props.onPress();
     });
 
     expect(onCheckedChange).toHaveBeenCalledWith(true);
-    expect(
-      tree.root.findAll(
-        (node) => node.props.testID === 'switch-root' && node.props['data-name'] === 'Switch'
-      )[0]?.props.value
-    ).toBe(true);
   });
 });

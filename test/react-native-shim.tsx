@@ -46,6 +46,39 @@ export const Pressable = forwardRef<unknown, GenericProps>(({ children, style, .
 
 Pressable.displayName = 'Pressable';
 
+class AnimatedValue {
+  _value: number;
+  constructor(value: number) {
+    this._value = value;
+  }
+  setValue(value: number) {
+    this._value = value;
+  }
+  interpolate({ inputRange, outputRange }: { inputRange: number[]; outputRange: string[] }) {
+    return outputRange[this._value >= inputRange[1]! ? 1 : 0];
+  }
+}
+
+export const Animated = {
+  Value: AnimatedValue,
+  View: createHostComponent('Animated.View'),
+  spring: (_value: AnimatedValue, _config: Record<string, unknown>) => ({
+    start: (cb?: () => void) => cb?.(),
+  }),
+  timing: (_value: AnimatedValue, _config: Record<string, unknown>) => ({
+    start: (cb?: () => void) => cb?.(),
+  }),
+  parallel: (animations: { start: (cb?: () => void) => void }[]) => ({
+    start: (cb?: () => void) => {
+      animations.forEach((a) => a.start());
+      cb?.();
+    },
+  }),
+  loop: (animation: { start: (cb?: () => void) => void }) => ({
+    start: () => animation.start(),
+  }),
+};
+
 export const useColorScheme = () => 'light' as const;
 
 export const StyleSheet = {

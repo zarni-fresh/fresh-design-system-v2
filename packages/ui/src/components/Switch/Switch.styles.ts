@@ -27,13 +27,16 @@ const switchDimensionMap = {
       return this.trackWidth - this.thumbSize - this.padding * 2;
     },
   },
-} as const satisfies Record<SwitchSize, {
-  trackWidth: number;
-  trackHeight: number;
-  thumbSize: number;
-  padding: number;
-  travel: number;
-}>;
+} as const satisfies Record<
+  SwitchSize,
+  {
+    trackWidth: number;
+    trackHeight: number;
+    thumbSize: number;
+    padding: number;
+    travel: number;
+  }
+>;
 
 export const getSwitchDimensions = (size: SwitchSize) => switchDimensionMap[size];
 

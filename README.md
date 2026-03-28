@@ -58,12 +58,12 @@ npm install @fresh-ds/tokens @fresh-ds/ui-core @fresh-ds/ui @fresh-ds/recipes
 
 Peer dependencies: `react`, `react-native`, `react-native-svg`.
 
-| Package             | What it provides                                                                                                                              |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@fresh-ds/tokens`  | Colours, spacing, radius, typography, elevation, motion. Light and dark themes.                                                               |
-| `@fresh-ds/ui-core` | Primitives (`Box`, `Text`, `Stack`, `Pressable`, `Icon`), theme provider, utilities.                                                          |
+| Package             | What it provides                                                                                                                                                                                                     |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@fresh-ds/tokens`  | Colours, spacing, radius, typography, elevation, motion. Light and dark themes.                                                                                                                                      |
+| `@fresh-ds/ui-core` | Primitives (`Box`, `Text`, `Stack`, `Pressable`, `Icon`), theme provider, utilities.                                                                                                                                 |
 | `@fresh-ds/ui`      | Branded components (`Button`, `TextField`, `Card`, `Badge`, `Avatar`, `Switch`, `Progress`, `Separator`, `Skeleton`, `Label`, `AspectRatio`). All components include real-world variants sourced from the nurse app. |
-| `@fresh-ds/recipes` | Screen blocks (`PageHeader`, `SectionHeader`, `SelectionCard`, `SummaryCard`, `StickyActionFooter`).                                          |
+| `@fresh-ds/recipes` | Screen blocks (`PageHeader`, `SectionHeader`, `SelectionCard`, `SummaryCard`, `StickyActionFooter`).                                                                                                                 |
 
 See [Component Status](docs/component-status.md) for the full inventory and roadmap.
 

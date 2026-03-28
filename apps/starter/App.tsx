@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal, Platform, Pressable, SafeAreaView, ScrollView, View } from 'react-native';
+import { Platform, Pressable, SafeAreaView, ScrollView, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {
   AspectRatio,
@@ -15,9 +15,6 @@ import {
   TextField,
 } from '@fresh-ds/ui';
 import { FreshThemeProvider, Icon, Stack, Text, useFreshTheme } from '@fresh-ds/ui-core';
-import { PageHeader } from '@fresh-ds/recipes';
-
-type Screen = 'home' | 'components';
 
 type ComponentSection = {
   title: string;
@@ -37,7 +34,9 @@ type ComponentEntry = {
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <Stack gap={4}>
-      <Text size="xs" tone="muted">{label}</Text>
+      <Text size="xs" tone="muted">
+        {label}
+      </Text>
       <Text size="sm">{value}</Text>
     </Stack>
   );
@@ -55,8 +54,12 @@ function ProfileSectionCard({
   return (
     <Card variant="outlined">
       <Stack gap={16} style={{ padding: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Text size="md" weight="semibold">{title}</Text>
+        <View
+          style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+        >
+          <Text size="md" weight="semibold">
+            {title}
+          </Text>
           {action ?? null}
         </View>
         <Separator />
@@ -66,17 +69,35 @@ function ProfileSectionCard({
   );
 }
 
-function AppointmentTreatmentRow({ type, title, detail }: { type: string; title: string; detail: string }) {
+function AppointmentTreatmentRow({
+  type,
+  title,
+  detail,
+}: {
+  type: string;
+  title: string;
+  detail: string;
+}) {
   return (
     <Stack gap={8} style={{ paddingHorizontal: 20, paddingVertical: 16 }}>
-      <Text size="xs" tone="muted">{type}</Text>
-      <Text size="sm" weight="semibold">{title}</Text>
+      <Text size="xs" tone="muted">
+        {type}
+      </Text>
+      <Text size="sm" weight="semibold">
+        {title}
+      </Text>
       <Text size="sm">{detail}</Text>
     </Stack>
   );
 }
 
-function AppointmentsFilledCard({ date, items }: { date: string; items: { type: string; title: string; detail: string }[] }) {
+function AppointmentsFilledCard({
+  date,
+  items,
+}: {
+  date: string;
+  items: { type: string; title: string; detail: string }[];
+}) {
   const { theme } = useFreshTheme();
   return (
     <Card variant="outlined" style={{ padding: 0, overflow: 'hidden' }}>
@@ -124,7 +145,9 @@ function AppointmentsEmptyState() {
       >
         <Icon icon="calendar-days" size={20} tone="muted" />
       </View>
-      <Text size="sm" weight="semibold">No previous appointments</Text>
+      <Text size="sm" weight="semibold">
+        No previous appointments
+      </Text>
       <Text size="xs" tone="muted" style={{ textAlign: 'center', maxWidth: 240, lineHeight: 18 }}>
         Once this patient has a completed appointment, it will appear here.
       </Text>
@@ -168,9 +191,13 @@ function SwitchCard({
         }}
       >
         <Stack gap={4} style={{ flex: 1, paddingRight: 16 }}>
-          <Text size="sm" weight="medium">{title}</Text>
+          <Text size="sm" weight="medium">
+            {title}
+          </Text>
           {description ? (
-            <Text size="xs" tone="muted">{description}</Text>
+            <Text size="xs" tone="muted">
+              {description}
+            </Text>
           ) : null}
         </Stack>
         <Switch
@@ -181,7 +208,9 @@ function SwitchCard({
         />
       </View>
       {invalid ? (
-        <Text size="xs" tone="danger">This setting is required to continue.</Text>
+        <Text size="xs" tone="danger">
+          This setting is required to continue.
+        </Text>
       ) : null}
     </Stack>
   );
@@ -232,7 +261,10 @@ function AvatarGroupRow({
   avatars,
   suffix,
 }: {
-  avatars: { fallbackLabel: string; tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger' }[];
+  avatars: {
+    fallbackLabel: string;
+    tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger';
+  }[];
   suffix?: React.ReactNode;
 }) {
   const { theme } = useFreshTheme();
@@ -257,19 +289,34 @@ function AvatarGroupRow({
           />
         </View>
       ))}
-      {suffix ? (
-        <View style={{ marginLeft: -10, zIndex: 0 }}>{suffix}</View>
-      ) : null}
+      {suffix ? <View style={{ marginLeft: -10, zIndex: 0 }}>{suffix}</View> : null}
     </View>
   );
 }
 
-function AspectRatioPreview({ label, ratio = 16 / 9, radius }: { label: string; ratio?: number; radius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' }) {
+function AspectRatioPreview({
+  label,
+  ratio = 16 / 9,
+  radius,
+}: {
+  label: string;
+  ratio?: number;
+  radius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+}) {
   const { theme } = useFreshTheme();
   return (
     <AspectRatio ratio={ratio} radius={radius ?? 'xl'}>
-      <View style={{ flex: 1, backgroundColor: theme.color.surface.subtle, alignItems: 'center', justifyContent: 'center' }}>
-        <Text size="sm" tone="muted">{label}</Text>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: theme.color.surface.subtle,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Text size="sm" tone="muted">
+          {label}
+        </Text>
       </View>
     </AspectRatio>
   );
@@ -318,14 +365,18 @@ function AvatarDropdownDemo() {
               borderBottomColor: theme.color.border.default,
             }}
           >
-            <Text size="sm" weight="semibold">John Doe</Text>
-            <Text size="xs" tone="muted">john.doe@example.com</Text>
+            <Text size="sm" weight="semibold">
+              John Doe
+            </Text>
+            <Text size="xs" tone="muted">
+              john.doe@example.com
+            </Text>
           </View>
 
           {/* Menu items */}
           {menuItems.map((item, i) => (
             <Pressable key={item.label} onPress={() => setOpen(false)}>
-              {({ pressed, hovered }: any) => (
+              {({ pressed, hovered }: { pressed: boolean; hovered?: boolean }) => (
                 <View
                   style={{
                     flexDirection: 'row',
@@ -333,7 +384,8 @@ function AvatarDropdownDemo() {
                     gap: 10,
                     paddingHorizontal: 16,
                     paddingVertical: 10,
-                    backgroundColor: pressed || hovered ? theme.color.surface.subtle : 'transparent',
+                    backgroundColor:
+                      pressed || hovered ? theme.color.surface.subtle : 'transparent',
                     borderTopWidth: i === 0 ? 0 : 0,
                   }}
                 >
@@ -352,7 +404,7 @@ function AvatarDropdownDemo() {
             }}
           >
             <Pressable onPress={() => setOpen(false)}>
-              {({ pressed, hovered }: any) => (
+              {({ pressed, hovered }: { pressed: boolean; hovered?: boolean }) => (
                 <View
                   style={{
                     flexDirection: 'row',
@@ -360,13 +412,16 @@ function AvatarDropdownDemo() {
                     gap: 10,
                     paddingHorizontal: 16,
                     paddingVertical: 10,
-                    backgroundColor: pressed || hovered ? theme.color.surface.subtle : 'transparent',
+                    backgroundColor:
+                      pressed || hovered ? theme.color.surface.subtle : 'transparent',
                     borderBottomLeftRadius: theme.radius.lg,
                     borderBottomRightRadius: theme.radius.lg,
                   }}
                 >
                   <Icon icon="log-out" size={15} tone="danger" />
-                  <Text size="sm" tone="danger">Sign out</Text>
+                  <Text size="sm" tone="danger">
+                    Sign out
+                  </Text>
                 </View>
               )}
             </Pressable>
@@ -382,8 +437,7 @@ function AvatarDropdownDemo() {
 const componentRegistry: ComponentEntry[] = [
   {
     name: 'Aspect Ratio',
-    description:
-      'Container that maintains a fixed aspect ratio. Useful for images and media.',
+    description: 'Container that maintains a fixed aspect ratio. Useful for images and media.',
     category: 'core',
     sections: [
       {
@@ -412,7 +466,9 @@ const componentRegistry: ComponentEntry[] = [
           <Stack gap={12}>
             {(['none', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((r) => (
               <Stack key={r} gap={4}>
-                <Text size="xs" tone="muted">{r}</Text>
+                <Text size="xs" tone="muted">
+                  {r}
+                </Text>
                 <AspectRatioPreview label={`radius: ${r}`} radius={r} ratio={16 / 9} />
               </Stack>
             ))}
@@ -433,9 +489,7 @@ const componentRegistry: ComponentEntry[] = [
       },
       {
         title: 'Badge',
-        content: (
-          <AvatarWithBadge fallbackLabel="Alice Smith" size="md" tone="accent" />
-        ),
+        content: <AvatarWithBadge fallbackLabel="Alice Smith" size="md" tone="accent" />,
       },
       {
         title: 'Badge with Icon',
@@ -479,7 +533,9 @@ const componentRegistry: ComponentEntry[] = [
                   justifyContent: 'center',
                 }}
               >
-                <Text size="xs" weight="semibold">+3</Text>
+                <Text size="xs" weight="semibold">
+                  +3
+                </Text>
               </View>
             );
           };
@@ -646,11 +702,15 @@ const componentRegistry: ComponentEntry[] = [
       },
       {
         title: 'With Leading Icon',
-        content: <Button label="Add Item" leadingIcon="plus" onPress={() => {}} variant="primary" />,
+        content: (
+          <Button label="Add Item" leadingIcon="plus" onPress={() => {}} variant="primary" />
+        ),
       },
       {
         title: 'With Trailing Icon',
-        content: <Button label="Next" onPress={() => {}} trailingIcon="arrow-right" variant="primary" />,
+        content: (
+          <Button label="Next" onPress={() => {}} trailingIcon="arrow-right" variant="primary" />
+        ),
       },
     ],
   },
@@ -704,20 +764,18 @@ const componentRegistry: ComponentEntry[] = [
           <ProfileSectionCard
             title="Appointments"
             action={
-              <Button
-                label="View all"
-                onPress={() => {}}
-                shadow
-                size="sm"
-                variant="outline"
-              />
+              <Button label="View all" onPress={() => {}} shadow size="sm" variant="outline" />
             }
           >
             <AppointmentsFilledCard
               date="10/17/2025"
               items={[
                 { type: 'Anti-Wrinkle', title: 'Botox', detail: 'Forehead - 20 units' },
-                { type: 'Fractional CO2 Laser', title: 'Lumenis UltraPulse', detail: 'Periorbital - 50 mJ\nCheeks - 90 mJ' },
+                {
+                  type: 'Fractional CO2 Laser',
+                  title: 'Lumenis UltraPulse',
+                  detail: 'Periorbital - 50 mJ\nCheeks - 90 mJ',
+                },
                 { type: 'Anti-Wrinkle', title: 'Botox', detail: 'Glabella - 15 units' },
               ]}
             />
@@ -730,13 +788,7 @@ const componentRegistry: ComponentEntry[] = [
           <ProfileSectionCard
             title="Appointments"
             action={
-              <Button
-                label="View all"
-                onPress={() => {}}
-                shadow
-                size="sm"
-                variant="outline"
-              />
+              <Button label="View all" onPress={() => {}} shadow size="sm" variant="outline" />
             }
           >
             <AppointmentsEmptyState />
@@ -747,8 +799,7 @@ const componentRegistry: ComponentEntry[] = [
   },
   {
     name: 'Label',
-    description:
-      'Form field label with optional required indicator and tone support.',
+    description: 'Form field label with optional required indicator and tone support.',
     category: 'core',
     sections: [
       {
@@ -761,7 +812,11 @@ const componentRegistry: ComponentEntry[] = [
       },
       {
         title: 'Optional',
-        content: <Label optionalLabel="Optional" tone="muted">Slack channel</Label>,
+        content: (
+          <Label optionalLabel="Optional" tone="muted">
+            Slack channel
+          </Label>
+        ),
       },
       {
         title: 'Tones',
@@ -787,7 +842,12 @@ const componentRegistry: ComponentEntry[] = [
         title: 'With Field',
         content: (
           <Stack gap={16}>
-            <TextField label="First Name" placeholder="Enter first name..." required value="James" />
+            <TextField
+              label="First Name"
+              placeholder="Enter first name..."
+              required
+              value="James"
+            />
             <TextField label="Last Name" placeholder="Enter last name..." required value="Wilson" />
             <TextField label="Notes" placeholder="Add notes..." />
           </Stack>
@@ -860,15 +920,21 @@ const componentRegistry: ComponentEntry[] = [
         content: (
           <Stack gap={12}>
             <Stack gap={4}>
-              <Text size="xs" tone="muted">Subtle</Text>
+              <Text size="xs" tone="muted">
+                Subtle
+              </Text>
               <Separator emphasis="subtle" />
             </Stack>
             <Stack gap={4}>
-              <Text size="xs" tone="muted">Default</Text>
+              <Text size="xs" tone="muted">
+                Default
+              </Text>
               <Separator emphasis="default" />
             </Stack>
             <Stack gap={4}>
-              <Text size="xs" tone="muted">Strong</Text>
+              <Text size="xs" tone="muted">
+                Strong
+              </Text>
               <Separator emphasis="strong" />
             </Stack>
           </Stack>
@@ -888,14 +954,16 @@ const componentRegistry: ComponentEntry[] = [
         title: 'List',
         content: (
           <Stack gap={0}>
-            {['Personal Details', 'Allergies', 'Regular Medication', 'Medical Diagnoses'].map((item, i, arr) => (
-              <View key={item}>
-                <View style={{ paddingVertical: 12 }}>
-                  <Text size="sm">{item}</Text>
+            {['Personal Details', 'Allergies', 'Regular Medication', 'Medical Diagnoses'].map(
+              (item, i, arr) => (
+                <View key={item}>
+                  <View style={{ paddingVertical: 12 }}>
+                    <Text size="sm">{item}</Text>
+                  </View>
+                  {i < arr.length - 1 ? <Separator /> : null}
                 </View>
-                {i < arr.length - 1 ? <Separator /> : null}
-              </View>
-            ))}
+              )
+            )}
           </Stack>
         ),
       },
@@ -903,8 +971,7 @@ const componentRegistry: ComponentEntry[] = [
   },
   {
     name: 'Skeleton',
-    description:
-      'Loading placeholder in 3 shapes: line, block, and circle. 3 sizes, 2 tones.',
+    description: 'Loading placeholder in 3 shapes: line, block, and circle. 3 sizes, 2 tones.',
     category: 'core',
     sections: [
       {
@@ -965,15 +1032,21 @@ const componentRegistry: ComponentEntry[] = [
         content: (
           <Stack gap={8}>
             <Stack gap={4}>
-              <Text size="xs" tone="muted">Small</Text>
+              <Text size="xs" tone="muted">
+                Small
+              </Text>
               <Skeleton shape="line" size="sm" />
             </Stack>
             <Stack gap={4}>
-              <Text size="xs" tone="muted">Medium</Text>
+              <Text size="xs" tone="muted">
+                Medium
+              </Text>
               <Skeleton shape="line" size="md" />
             </Stack>
             <Stack gap={4}>
-              <Text size="xs" tone="muted">Large</Text>
+              <Text size="xs" tone="muted">
+                Large
+              </Text>
               <Skeleton shape="line" size="lg" />
             </Stack>
           </Stack>
@@ -994,27 +1067,26 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'With Label',
         content: (
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text size="sm" weight="medium">Required question</Text>
+          <View
+            style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+          >
+            <Text size="sm" weight="medium">
+              Required question
+            </Text>
             <Switch defaultChecked tone="neutral" />
           </View>
         ),
       },
       {
         title: 'Card',
-        content: (
-          <SwitchCard
-            defaultChecked
-            title="Required question"
-          />
-        ),
+        content: <SwitchCard defaultChecked title="Required question" />,
       },
       {
         title: 'With Description',
         content: (
           <SwitchCard
             defaultChecked
-            description='Patients must answer before they can continue.'
+            description="Patients must answer before they can continue."
             title="Required question"
           />
         ),
@@ -1023,7 +1095,7 @@ const componentRegistry: ComponentEntry[] = [
         title: 'Allow Other Option',
         content: (
           <SwitchCard
-            description='Adds a dedicated free-text response paired with the Other option.'
+            description="Adds a dedicated free-text response paired with the Other option."
             title='Allow "Other" option'
           />
         ),
@@ -1085,8 +1157,7 @@ const componentRegistry: ComponentEntry[] = [
   },
   {
     name: 'Text Field',
-    description:
-      'Single-line text input with label, helper text, error, and success states.',
+    description: 'Single-line text input with label, helper text, error, and success states.',
     category: 'core',
     sections: [
       {
@@ -1095,23 +1166,48 @@ const componentRegistry: ComponentEntry[] = [
       },
       {
         title: 'With Helper Text',
-        content: <TextField helperText="This will be shown to patients" label="Form name" placeholder="Enter a name..." />,
+        content: (
+          <TextField
+            helperText="This will be shown to patients"
+            label="Form name"
+            placeholder="Enter a name..."
+          />
+        ),
       },
       {
         title: 'Error',
-        content: <TextField errorMessage="This field is required" label="Form name" placeholder="Enter a name..." />,
+        content: (
+          <TextField
+            errorMessage="This field is required"
+            label="Form name"
+            placeholder="Enter a name..."
+          />
+        ),
       },
       {
         title: 'Valid',
-        content: <TextField label="Form name" placeholder="Enter a name..." valid value="Weight Loss Intake" />,
+        content: (
+          <TextField
+            label="Form name"
+            placeholder="Enter a name..."
+            valid
+            value="Weight Loss Intake"
+          />
+        ),
       },
       {
         title: 'Disabled',
-        content: <TextField editable={false} label="Form name" placeholder="Enter a name..." value="Weight Loss Intake" />,
+        content: (
+          <TextField
+            editable={false}
+            label="Form name"
+            placeholder="Enter a name..."
+            value="Weight Loss Intake"
+          />
+        ),
       },
     ],
   },
-
 ];
 
 function SidebarItem({
@@ -1253,9 +1349,7 @@ function ComponentDetail({ component }: { component: ComponentEntry }) {
             </SectionCard>
           ))
         ) : component.render ? (
-          <SectionCard title="Preview">
-            {component.render()}
-          </SectionCard>
+          <SectionCard title="Preview">{component.render()}</SectionCard>
         ) : null}
       </View>
     </ScrollView>
@@ -1264,7 +1358,7 @@ function ComponentDetail({ component }: { component: ComponentEntry }) {
 
 function ComponentsScreen() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = componentRegistry[selectedIndex];
+  const selected = componentRegistry[selectedIndex]!;
 
   return (
     <View style={{ flex: 1, flexDirection: 'row' }}>
@@ -1275,90 +1369,6 @@ function ComponentsScreen() {
       />
       <ComponentDetail component={selected} />
     </View>
-  );
-}
-
-function NavBar({ screen, onNavigate }: { screen: Screen; onNavigate: (s: Screen) => void }) {
-  const { theme } = useFreshTheme();
-
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        borderBottomWidth: 1,
-        borderBottomColor: theme.color.border.default,
-        backgroundColor: theme.color.surface.default,
-        paddingHorizontal: 16,
-        gap: 4,
-      }}
-    >
-      {(['home', 'components'] as Screen[]).map((s) => (
-        <Pressable key={s} onPress={() => onNavigate(s)}>
-          <View
-            style={{
-              paddingHorizontal: 14,
-              paddingVertical: 10,
-              borderBottomWidth: 2,
-              borderBottomColor: screen === s ? theme.color.action.primary.background : 'transparent',
-            }}
-          >
-            <Text
-              size="sm"
-              weight={screen === s ? 'semibold' : 'regular'}
-              style={{
-                color: screen === s ? theme.color.content.primary : theme.color.content.secondary,
-              }}
-            >
-              {s === 'home' ? 'Starter' : 'Components'}
-            </Text>
-          </View>
-        </Pressable>
-      ))}
-    </View>
-  );
-}
-
-function ScreenContainer({ children }: { children: React.ReactNode }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#fafafa',
-      }}
-    >
-      <View
-        style={{
-          width: '100%',
-          maxWidth: Platform.OS === 'web' ? 480 : undefined,
-        }}
-      >
-        {children}
-      </View>
-    </View>
-  );
-}
-
-function HomeScreen() {
-  return (
-    <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 48 }}>
-      <Stack gap={4}>
-        <PageHeader description="Start building your app with Fresh components" title="Fresh App" />
-        <Card>
-          <Stack gap={4} style={{ padding: 16 }}>
-            <Text size="lg" weight="semibold">
-              Getting Started
-            </Text>
-            <Text size="sm" tone="muted">
-              Edit App.tsx to start building. This template includes all Fresh design system
-              packages ready to use.
-            </Text>
-            <TextField label="Example Input" placeholder="Type something..." />
-            <Button label="Get Started" onPress={() => {}} variant="primary" />
-          </Stack>
-        </Card>
-      </Stack>
-    </ScrollView>
   );
 }
 
