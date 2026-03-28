@@ -264,6 +264,17 @@ function AvatarGroupRow({
   );
 }
 
+function AspectRatioPreview({ label, ratio = 16 / 9, radius }: { label: string; ratio?: number; radius?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' }) {
+  const { theme } = useFreshTheme();
+  return (
+    <AspectRatio ratio={ratio} radius={radius ?? 'xl'}>
+      <View style={{ flex: 1, backgroundColor: theme.color.surface.subtle, alignItems: 'center', justifyContent: 'center' }}>
+        <Text size="sm" tone="muted">{label}</Text>
+      </View>
+    </AspectRatio>
+  );
+}
+
 function AvatarDropdownDemo() {
   const { theme } = useFreshTheme();
   const [open, setOpen] = useState(false);
@@ -842,7 +853,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Variants',
         content: (
-          <Stack gap={12}>
+          <Stack gap="3">
             <Progress label="Neutral" showValueLabel value={50} variant="neutral" />
             <Progress label="Accent" showValueLabel value={65} variant="accent" />
             <Progress label="Success" showValueLabel value={82} variant="success" />
@@ -854,7 +865,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Sizes',
         content: (
-          <Stack gap={12}>
+          <Stack gap="3">
             <Progress label="Small" size="sm" value={50} variant="accent" />
             <Progress label="Medium" size="md" value={50} variant="accent" />
             <Progress label="Large" size="lg" value={50} variant="accent" />
@@ -876,7 +887,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Horizontal',
         content: (
-          <Stack gap={12}>
+          <Stack gap="3">
             <Text size="sm">Section content above</Text>
             <Separator />
             <Text size="sm">Section content below</Text>
@@ -886,16 +897,16 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Emphasis',
         content: (
-          <Stack gap={12}>
-            <Stack gap={4}>
+          <Stack gap="3">
+            <Stack gap="1">
               <Text size="xs" tone="muted">Subtle</Text>
               <Separator emphasis="subtle" />
             </Stack>
-            <Stack gap={4}>
+            <Stack gap="1">
               <Text size="xs" tone="muted">Default</Text>
               <Separator emphasis="default" />
             </Stack>
-            <Stack gap={4}>
+            <Stack gap="1">
               <Text size="xs" tone="muted">Strong</Text>
               <Separator emphasis="strong" />
             </Stack>
@@ -905,7 +916,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Vertical',
         content: (
-          <Stack align="center" direction="horizontal" gap={12}>
+          <Stack align="center" direction="horizontal" gap="3">
             <Text size="sm">Left panel</Text>
             <Separator orientation="vertical" style={{ minHeight: 32 }} />
             <Text size="sm">Right panel</Text>
@@ -915,7 +926,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'List',
         content: (
-          <Stack gap={0}>
+          <Stack gap="0">
             {['Personal Details', 'Allergies', 'Regular Medication', 'Medical Diagnoses'].map((item, i, arr) => (
               <View key={item}>
                 <View style={{ paddingVertical: 12 }}>
@@ -938,9 +949,9 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Avatar',
         content: (
-          <Stack align="center" direction="horizontal" gap={12}>
+          <Stack align="center" direction="horizontal" gap="3">
             <Skeleton shape="circle" size="md" />
-            <Stack gap={6} style={{ flex: 1 }}>
+            <Stack gap="1.5" style={{ flex: 1 }}>
               <Skeleton shape="line" size="md" width="55%" />
               <Skeleton shape="line" size="sm" tone="subtle" width="35%" />
             </Stack>
@@ -951,7 +962,7 @@ const componentRegistry: ComponentEntry[] = [
         title: 'Card',
         content: (
           <Card variant="outlined">
-            <Stack gap={12} style={{ padding: 20 }}>
+            <Stack gap="3" style={{ padding: 20 }}>
               <Skeleton shape="line" size="md" width="40%" />
               <Separator />
               <Skeleton shape="block" size="md" />
@@ -962,7 +973,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Text',
         content: (
-          <Stack gap={8}>
+          <Stack gap="2">
             <Skeleton shape="line" size="md" />
             <Skeleton shape="line" size="md" width="80%" />
             <Skeleton shape="line" size="md" width="60%" />
@@ -972,16 +983,16 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Form',
         content: (
-          <Stack gap={16}>
-            <Stack gap={6}>
+          <Stack gap="4">
+            <Stack gap="1.5">
               <Skeleton shape="line" size="sm" width="25%" />
               <Skeleton shape="line" size="lg" />
             </Stack>
-            <Stack gap={6}>
+            <Stack gap="1.5">
               <Skeleton shape="line" size="sm" width="30%" />
               <Skeleton shape="line" size="lg" />
             </Stack>
-            <Stack gap={6}>
+            <Stack gap="1.5">
               <Skeleton shape="line" size="sm" width="20%" />
               <Skeleton shape="block" size="sm" />
             </Stack>
@@ -991,16 +1002,16 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Sizes',
         content: (
-          <Stack gap={8}>
-            <Stack gap={4}>
+          <Stack gap="2">
+            <Stack gap="1">
               <Text size="xs" tone="muted">Small</Text>
               <Skeleton shape="line" size="sm" />
             </Stack>
-            <Stack gap={4}>
+            <Stack gap="1">
               <Text size="xs" tone="muted">Medium</Text>
               <Skeleton shape="line" size="md" />
             </Stack>
-            <Stack gap={4}>
+            <Stack gap="1">
               <Text size="xs" tone="muted">Large</Text>
               <Skeleton shape="line" size="lg" />
             </Stack>
@@ -1030,7 +1041,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Tones',
         content: (
-          <Stack gap={8}>
+          <Stack gap="2">
             <Label>Default tone</Label>
             <Label tone="muted">Muted tone</Label>
             <Label tone="danger">Danger tone</Label>
@@ -1040,7 +1051,7 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Sizes',
         content: (
-          <Stack gap={8}>
+          <Stack gap="2">
             <Label size="sm">Small label</Label>
             <Label size="md">Medium label</Label>
             <Label size="lg">Large label</Label>
@@ -1050,19 +1061,10 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'With Field',
         content: (
-          <Stack gap={16}>
-            <Stack gap={12}>
-              <Label required>First Name</Label>
-              <TextField placeholder="Enter first name..." value="James" />
-            </Stack>
-            <Stack gap={12}>
-              <Label required>Last Name</Label>
-              <TextField placeholder="Enter last name..." value="Wilson" />
-            </Stack>
-            <Stack gap={12}>
-              <Label optionalLabel="Optional" tone="muted">Notes</Label>
-              <TextField placeholder="Add notes..." />
-            </Stack>
+          <Stack gap="4">
+            <TextField label="First Name" placeholder="Enter first name..." required value="James" />
+            <TextField label="Last Name" placeholder="Enter last name..." required value="Wilson" />
+            <TextField label="Notes" placeholder="Add notes..." />
           </Stack>
         ),
       },
@@ -1076,58 +1078,32 @@ const componentRegistry: ComponentEntry[] = [
     sections: [
       {
         title: 'Landscape (16:9)',
-        content: (
-          <AspectRatio ratio={16 / 9}>
-            <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center', borderRadius: 12 }}>
-              <Text size="sm" tone="muted">16:9</Text>
-            </View>
-          </AspectRatio>
-        ),
+        content: <AspectRatioPreview label="16:9" ratio={16 / 9} />,
       },
       {
         title: 'Square (1:1)',
-        content: (
-          <AspectRatio ratio={1} radius="2xl">
-            <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center' }}>
-              <Text size="sm" tone="muted">1:1</Text>
-            </View>
-          </AspectRatio>
-        ),
+        content: <AspectRatioPreview label="1:1" radius="2xl" ratio={1} />,
       },
       {
         title: 'Portrait (9:16)',
         content: (
           <View style={{ width: 200 }}>
-            <AspectRatio ratio={9 / 16}>
-              <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center', borderRadius: 12 }}>
-                <Text size="sm" tone="muted">9:16</Text>
-              </View>
-            </AspectRatio>
+            <AspectRatioPreview label="9:16" ratio={9 / 16} />
           </View>
         ),
       },
       {
         title: 'Photo (4:3)',
-        content: (
-          <AspectRatio ratio={4 / 3}>
-            <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center', borderRadius: 12 }}>
-              <Text size="sm" tone="muted">4:3</Text>
-            </View>
-          </AspectRatio>
-        ),
+        content: <AspectRatioPreview label="4:3" ratio={4 / 3} />,
       },
       {
         title: 'Radius Options',
         content: (
-          <Stack gap={12}>
+          <Stack gap="3">
             {(['none', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((r) => (
-              <Stack key={r} gap={4}>
+              <Stack key={r} gap="1">
                 <Text size="xs" tone="muted">{r}</Text>
-                <AspectRatio ratio={16 / 9} radius={r}>
-                  <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center' }}>
-                    <Text size="xs" tone="muted">radius: {r}</Text>
-                  </View>
-                </AspectRatio>
+                <AspectRatioPreview label={`radius: ${r}`} radius={r} ratio={16 / 9} />
               </Stack>
             ))}
           </Stack>
