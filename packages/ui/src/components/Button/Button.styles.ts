@@ -31,7 +31,7 @@ export const buttonLayout = cva('flex-row items-center justify-center', {
 const buttonMetricMap = {
   sm: {
     borderRadius: 'md',
-    gap: 1,
+    gap: 4,
     iconSize: 16,
     minHeight: 36,
     paddingHorizontal: 12,
@@ -40,7 +40,7 @@ const buttonMetricMap = {
   },
   md: {
     borderRadius: 'lg',
-    gap: 2,
+    gap: 6,
     iconSize: 16,
     minHeight: 40,
     paddingHorizontal: 16,
@@ -49,7 +49,7 @@ const buttonMetricMap = {
   },
   lg: {
     borderRadius: 'lg',
-    gap: 2,
+    gap: 8,
     iconSize: 18,
     minHeight: 44,
     paddingHorizontal: 18,
