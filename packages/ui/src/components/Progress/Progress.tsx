@@ -41,7 +41,7 @@ export const Progress = ({
   const palette = getProgressPalette(theme, variant);
 
   return (
-    <Stack gap={2}>
+    <Stack gap={8}>
       {label || (showValueLabel && !indeterminate) ? (
         <Stack align="center" direction="horizontal" justify="space-between">
           {label ? (
