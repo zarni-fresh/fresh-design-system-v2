@@ -467,6 +467,7 @@ const componentRegistry: ComponentEntry[] = [
             action={
               <Button
                 label="Edit"
+                leadingIcon="edit"
                 onPress={() => {}}
                 size="sm"
                 variant="ghost"
