@@ -828,88 +828,312 @@ const componentRegistry: ComponentEntry[] = [
     description:
       'Determinate and indeterminate progress indicator. 5 variants, 3 sizes, optional label.',
     category: 'core',
-    render: () => (
-      <Stack gap={4}>
-        <Progress label="Uploading" showValueLabel size="md" value={65} variant="accent" />
-        <Progress label="Processing" showValueLabel size="md" value={30} variant="success" />
-        <Progress indeterminate label="Loading..." size="md" variant="accent" />
-      </Stack>
-    ),
+    sections: [
+      {
+        title: 'Default',
+        content: <Progress size="md" value={65} variant="accent" />,
+      },
+      {
+        title: 'With Label',
+        content: (
+          <Progress label="Uploading files" showValueLabel size="md" value={65} variant="accent" />
+        ),
+      },
+      {
+        title: 'Variants',
+        content: (
+          <Stack gap={12}>
+            <Progress label="Neutral" showValueLabel value={50} variant="neutral" />
+            <Progress label="Accent" showValueLabel value={65} variant="accent" />
+            <Progress label="Success" showValueLabel value={82} variant="success" />
+            <Progress label="Warning" showValueLabel value={28} variant="warning" />
+            <Progress label="Danger" showValueLabel value={12} variant="danger" />
+          </Stack>
+        ),
+      },
+      {
+        title: 'Sizes',
+        content: (
+          <Stack gap={12}>
+            <Progress label="Small" size="sm" value={50} variant="accent" />
+            <Progress label="Medium" size="md" value={50} variant="accent" />
+            <Progress label="Large" size="lg" value={50} variant="accent" />
+          </Stack>
+        ),
+      },
+      {
+        title: 'Indeterminate',
+        content: <Progress indeterminate label="Loading..." size="md" variant="accent" />,
+      },
+    ],
   },
   {
     name: 'Separator',
     description:
       'Visual divider for content sections. Horizontal or vertical orientation, 3 emphasis levels.',
     category: 'core',
-    render: () => (
-      <Stack gap={3}>
-        <Text size="sm">Above subtle separator</Text>
-        <Separator emphasis="subtle" />
-        <Text size="sm">Between default separator</Text>
-        <Separator emphasis="default" />
-        <Text size="sm">Below strong separator</Text>
-        <Separator emphasis="strong" />
-        <Text size="sm">After strong separator</Text>
-      </Stack>
-    ),
+    sections: [
+      {
+        title: 'Horizontal',
+        content: (
+          <Stack gap={12}>
+            <Text size="sm">Section content above</Text>
+            <Separator />
+            <Text size="sm">Section content below</Text>
+          </Stack>
+        ),
+      },
+      {
+        title: 'Emphasis',
+        content: (
+          <Stack gap={12}>
+            <Stack gap={4}>
+              <Text size="xs" tone="muted">Subtle</Text>
+              <Separator emphasis="subtle" />
+            </Stack>
+            <Stack gap={4}>
+              <Text size="xs" tone="muted">Default</Text>
+              <Separator emphasis="default" />
+            </Stack>
+            <Stack gap={4}>
+              <Text size="xs" tone="muted">Strong</Text>
+              <Separator emphasis="strong" />
+            </Stack>
+          </Stack>
+        ),
+      },
+      {
+        title: 'Vertical',
+        content: (
+          <Stack align="center" direction="horizontal" gap={12}>
+            <Text size="sm">Left panel</Text>
+            <Separator orientation="vertical" style={{ minHeight: 32 }} />
+            <Text size="sm">Right panel</Text>
+          </Stack>
+        ),
+      },
+      {
+        title: 'List',
+        content: (
+          <Stack gap={0}>
+            {['Personal Details', 'Allergies', 'Regular Medication', 'Medical Diagnoses'].map((item, i, arr) => (
+              <View key={item}>
+                <View style={{ paddingVertical: 12 }}>
+                  <Text size="sm">{item}</Text>
+                </View>
+                {i < arr.length - 1 ? <Separator /> : null}
+              </View>
+            ))}
+          </Stack>
+        ),
+      },
+    ],
   },
   {
     name: 'Skeleton',
     description:
       'Loading placeholder in 3 shapes: line, block, and circle. 3 sizes, 2 tones.',
     category: 'core',
-    render: () => (
-      <Stack gap={3}>
-        <Skeleton shape="line" size="sm" />
-        <Skeleton shape="line" size="md" />
-        <Skeleton shape="line" size="lg" />
-        <Stack direction="horizontal" gap={3}>
-          <Skeleton shape="circle" size="md" />
-          <Stack gap={2} style={{ flex: 1 }}>
-            <Skeleton shape="line" size="md" />
-            <Skeleton shape="line" size="sm" />
+    sections: [
+      {
+        title: 'Avatar',
+        content: (
+          <Stack align="center" direction="horizontal" gap={12}>
+            <Skeleton shape="circle" size="md" />
+            <Stack gap={6} style={{ flex: 1 }}>
+              <Skeleton shape="line" size="md" width="55%" />
+              <Skeleton shape="line" size="sm" tone="subtle" width="35%" />
+            </Stack>
           </Stack>
-        </Stack>
-        <Skeleton shape="block" size="md" />
-      </Stack>
-    ),
+        ),
+      },
+      {
+        title: 'Card',
+        content: (
+          <Card variant="outlined">
+            <Stack gap={12} style={{ padding: 20 }}>
+              <Skeleton shape="line" size="md" width="40%" />
+              <Separator />
+              <Skeleton shape="block" size="md" />
+            </Stack>
+          </Card>
+        ),
+      },
+      {
+        title: 'Text',
+        content: (
+          <Stack gap={8}>
+            <Skeleton shape="line" size="md" />
+            <Skeleton shape="line" size="md" width="80%" />
+            <Skeleton shape="line" size="md" width="60%" />
+          </Stack>
+        ),
+      },
+      {
+        title: 'Form',
+        content: (
+          <Stack gap={16}>
+            <Stack gap={6}>
+              <Skeleton shape="line" size="sm" width="25%" />
+              <Skeleton shape="line" size="lg" />
+            </Stack>
+            <Stack gap={6}>
+              <Skeleton shape="line" size="sm" width="30%" />
+              <Skeleton shape="line" size="lg" />
+            </Stack>
+            <Stack gap={6}>
+              <Skeleton shape="line" size="sm" width="20%" />
+              <Skeleton shape="block" size="sm" />
+            </Stack>
+          </Stack>
+        ),
+      },
+      {
+        title: 'Sizes',
+        content: (
+          <Stack gap={8}>
+            <Stack gap={4}>
+              <Text size="xs" tone="muted">Small</Text>
+              <Skeleton shape="line" size="sm" />
+            </Stack>
+            <Stack gap={4}>
+              <Text size="xs" tone="muted">Medium</Text>
+              <Skeleton shape="line" size="md" />
+            </Stack>
+            <Stack gap={4}>
+              <Text size="xs" tone="muted">Large</Text>
+              <Skeleton shape="line" size="lg" />
+            </Stack>
+          </Stack>
+        ),
+      },
+    ],
   },
   {
     name: 'Label',
     description:
       'Form field label with optional required indicator and tone support.',
     category: 'core',
-    render: () => (
-      <Stack gap={2}>
-        <Label>Default Label</Label>
-        <Label required>Required Label</Label>
-        <Label tone="muted">Muted Label</Label>
-        <Label tone="danger">Danger Label</Label>
-      </Stack>
-    ),
+    sections: [
+      {
+        title: 'Default',
+        content: <Label>Patient name</Label>,
+      },
+      {
+        title: 'Required',
+        content: <Label required>Email address</Label>,
+      },
+      {
+        title: 'Optional',
+        content: <Label optionalLabel="Optional" tone="muted">Slack channel</Label>,
+      },
+      {
+        title: 'Tones',
+        content: (
+          <Stack gap={8}>
+            <Label>Default tone</Label>
+            <Label tone="muted">Muted tone</Label>
+            <Label tone="danger">Danger tone</Label>
+          </Stack>
+        ),
+      },
+      {
+        title: 'Sizes',
+        content: (
+          <Stack gap={8}>
+            <Label size="sm">Small label</Label>
+            <Label size="md">Medium label</Label>
+            <Label size="lg">Large label</Label>
+          </Stack>
+        ),
+      },
+      {
+        title: 'With Field',
+        content: (
+          <Stack gap={16}>
+            <Stack gap={4}>
+              <Label required>First Name</Label>
+              <TextField placeholder="Enter first name..." value="James" />
+            </Stack>
+            <Stack gap={4}>
+              <Label required>Last Name</Label>
+              <TextField placeholder="Enter last name..." value="Wilson" />
+            </Stack>
+            <Stack gap={4}>
+              <Label optionalLabel="Optional" tone="muted">Notes</Label>
+              <TextField placeholder="Add notes..." />
+            </Stack>
+          </Stack>
+        ),
+      },
+    ],
   },
   {
     name: 'AspectRatio',
     description:
       'Container that maintains a fixed aspect ratio. Useful for images and media.',
     category: 'core',
-    render: () => (
-      <AspectRatio ratio={16 / 9}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: '#F5F5F5',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 12,
-          }}
-        >
-          <Text size="sm" tone="muted">
-            16:9
-          </Text>
-        </View>
-      </AspectRatio>
-    ),
+    sections: [
+      {
+        title: 'Landscape (16:9)',
+        content: (
+          <AspectRatio ratio={16 / 9}>
+            <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center', borderRadius: 12 }}>
+              <Text size="sm" tone="muted">16:9</Text>
+            </View>
+          </AspectRatio>
+        ),
+      },
+      {
+        title: 'Square (1:1)',
+        content: (
+          <AspectRatio ratio={1} radius="2xl">
+            <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center' }}>
+              <Text size="sm" tone="muted">1:1</Text>
+            </View>
+          </AspectRatio>
+        ),
+      },
+      {
+        title: 'Portrait (9:16)',
+        content: (
+          <View style={{ width: 200 }}>
+            <AspectRatio ratio={9 / 16}>
+              <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center', borderRadius: 12 }}>
+                <Text size="sm" tone="muted">9:16</Text>
+              </View>
+            </AspectRatio>
+          </View>
+        ),
+      },
+      {
+        title: 'Photo (4:3)',
+        content: (
+          <AspectRatio ratio={4 / 3}>
+            <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center', borderRadius: 12 }}>
+              <Text size="sm" tone="muted">4:3</Text>
+            </View>
+          </AspectRatio>
+        ),
+      },
+      {
+        title: 'Radius Options',
+        content: (
+          <Stack gap={12}>
+            {(['none', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((r) => (
+              <Stack key={r} gap={4}>
+                <Text size="xs" tone="muted">{r}</Text>
+                <AspectRatio ratio={16 / 9} radius={r}>
+                  <View style={{ flex: 1, backgroundColor: '#F5F5F5', alignItems: 'center', justifyContent: 'center' }}>
+                    <Text size="xs" tone="muted">radius: {r}</Text>
+                  </View>
+                </AspectRatio>
+              </Stack>
+            ))}
+          </Stack>
+        ),
+      },
+    ],
   },
 ];
 
