@@ -13,6 +13,9 @@ export const rawColorTokens = {
     900: '#171717',
     950: '#09090B',
   },
+  warm: {
+    50: '#F8F7F2',
+  },
   brand: {
     50: '#EBF7ED',
     100: '#D1EED6',

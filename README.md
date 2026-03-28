@@ -1,10 +1,17 @@
 # Fresh Design System
 
-The canonical source of truth for how Fresh products should look, feel, and behave.
+The canonical source of truth for how Fresh products look, feel, and behave.
 
 This monorepo contains design tokens, UI components, screen recipes, brand guidelines,
 and agent rules — all in code. It serves two audiences: **PMs and designers** who
 prototype here, and **engineers** who translate those prototypes into production.
+
+## Component Showcase
+
+**[→ View the live component showcase](https://fresh-design-system-v2.vercel.app)**
+
+Browse every component, variant, and state in the browser — no setup required.
+The showcase is automatically redeployed from `main` on every push.
 
 ## Quick Start
 
@@ -55,7 +62,7 @@ Peer dependencies: `react`, `react-native`, `react-native-svg`.
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `@fresh-ds/tokens`  | Colours, spacing, radius, typography, elevation, motion. Light and dark themes.                                                               |
 | `@fresh-ds/ui-core` | Primitives (`Box`, `Text`, `Stack`, `Pressable`, `Icon`), theme provider, utilities.                                                          |
-| `@fresh-ds/ui`      | Branded components (`Button`, `TextField`, `Card`, `Badge`, `Avatar`, `Switch`, `Progress`, `Separator`, `Skeleton`, `Label`, `AspectRatio`). |
+| `@fresh-ds/ui`      | Branded components (`Button`, `TextField`, `Card`, `Badge`, `Avatar`, `Switch`, `Progress`, `Separator`, `Skeleton`, `Label`, `AspectRatio`). All components include real-world variants sourced from the nurse app. |
 | `@fresh-ds/recipes` | Screen blocks (`PageHeader`, `SectionHeader`, `SelectionCard`, `SummaryCard`, `StickyActionFooter`).                                          |
 
 See [Component Status](docs/component-status.md) for the full inventory and roadmap.
@@ -82,7 +89,7 @@ npm install
 
 # Prototyping canvas
 npm run dev:starter              # Mobile
-npm run dev:starter:web          # Desktop web
+npm run dev:starter:web          # Component showcase on http://localhost:8000
 
 # Drugbook reference example
 npm run dev:drugbook             # Mobile
@@ -104,7 +111,7 @@ npm run test
 | [Brand Reference](docs/brand.md)             | What Fresh looks and feels like in one page   |
 | [Visual Recipe](docs/visual-recipe.md)       | Spacing, radius, typography, and colour rules |
 | [Component Status](docs/component-status.md) | What components exist and what is planned     |
-| [Icon Catalog](docs/icons.md)                | All 37 registered icons with usage            |
+| [Icon Catalog](docs/icons.md)                | All 65 registered icons with usage            |
 | [Screen Patterns](docs/screen-patterns.md)   | 4 ready-made screen templates with code       |
 
 ### For PMs and designers

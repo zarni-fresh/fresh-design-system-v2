@@ -1,6 +1,7 @@
 import { forwardRef, type ComponentPropsWithoutRef, type ElementRef } from 'react';
 import {
   ActivityIndicator,
+  Platform,
   type PressableStateCallbackType,
   type StyleProp,
   type ViewStyle,
@@ -34,6 +35,7 @@ export type ButtonProps = Omit<ComponentPropsWithoutRef<typeof Pressable>, 'chil
     label: string;
     leadingIcon?: IconName;
     loading?: boolean;
+    shadow?: boolean;
     size?: ButtonSize;
     style?: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
     trailingIcon?: IconName;
@@ -51,6 +53,7 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
       label,
       leadingIcon,
       loading = false,
+      shadow = false,
       size = 'md',
       style,
       trailingIcon,
@@ -79,8 +82,12 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
           ? palette.backgroundHover
           : palette.background;
       const isChrome = variant === 'ghost' || variant === 'link';
-      const baseShadow =
-        isChrome || variant === 'outline' ? theme.elevation[0] : theme.elevation[1];
+      const wantsShadow = shadow || (!isChrome && variant !== 'outline');
+      const baseShadow = wantsShadow
+        ? Platform.OS === 'web'
+          ? ({ boxShadow: '0 2px 4px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04)' } as ViewStyle)
+          : theme.elevation[1]
+        : theme.elevation[0];
       const baseStyle: ViewStyle = {
         alignItems: 'center',
         backgroundColor,

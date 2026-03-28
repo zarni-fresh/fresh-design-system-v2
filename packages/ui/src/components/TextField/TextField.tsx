@@ -2,7 +2,6 @@ import { forwardRef, type ElementRef, type ReactNode, useState } from 'react';
 import { TextInput, type StyleProp, type TextInputProps, type TextStyle } from 'react-native';
 import {
   Box,
-  getFocusRingStyle,
   Icon,
   type IconName,
   Stack,
@@ -74,7 +73,7 @@ export const TextField = forwardRef<ElementRef<typeof TextInput>, TextFieldProps
       (label ? `${label}${required ? ', required' : ''}` : (placeholder ?? 'Input field'));
 
     return (
-      <Stack className={containerClassName} gap={1.5}>
+      <Stack className={containerClassName} gap={12}>
         {label ? (
           <Label required={required} size={metrics.labelSize}>
             {label}
@@ -100,10 +99,6 @@ export const TextField = forwardRef<ElementRef<typeof TextInput>, TextFieldProps
               paddingHorizontal: metrics.paddingHorizontal,
               paddingVertical: metrics.paddingVertical,
             },
-            getFocusRingStyle(theme, {
-              active: isFocused,
-              color: inputPalette.border,
-            }),
           ]}
         >
           {leadingIcon ? (

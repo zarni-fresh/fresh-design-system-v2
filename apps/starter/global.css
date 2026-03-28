@@ -41,3 +41,13 @@ button {
   margin: 0;
   padding: 0;
 }
+
+input,
+textarea {
+  outline: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}

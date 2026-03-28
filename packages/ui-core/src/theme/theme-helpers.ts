@@ -109,7 +109,7 @@ export const getInputPalette = (
     border: invalid
       ? theme.color.input.borderInvalid
       : valid
-        ? theme.color.feedback.success.border
+        ? theme.color.border.strong
         : focused
           ? theme.color.input.borderFocus
           : theme.color.input.border,

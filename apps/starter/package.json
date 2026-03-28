@@ -9,7 +9,7 @@
     "native:sync": "expo prebuild",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web --clear",
+    "web": "expo start --web --clear --port 8000",
     "build": "expo export --platform all --output-dir dist",
     "lint": "eslint App.tsx index.ts metro.config.js babel.config.js tailwind.config.ts --ext .ts,.tsx,.js",
     "typecheck": "tsc -p tsconfig.json --noEmit",

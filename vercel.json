@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd apps/starter && npx expo export --platform web --output-dir dist",
+  "outputDirectory": "apps/starter/dist",
+  "installCommand": "npm install",
+  "framework": null,
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

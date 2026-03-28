@@ -40,6 +40,7 @@ export type SemanticColorTokens = {
     inverse: string;
     overlay: string;
     subtle: string;
+    warm: string;
   };
   surface: {
     accent: string;
@@ -150,6 +151,7 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
         inverse: rawColorTokens.neutral[950],
         overlay: toRgba(rawColorTokens.neutral[950], 0.46),
         subtle: rawColorTokens.neutral[50],
+        warm: rawColorTokens.warm[50],
       },
       surface: {
         accent: rawColorTokens.accent[50],
@@ -186,10 +188,10 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
           foreground: rawColorTokens.neutral[0],
         },
         secondary: {
-          background: rawColorTokens.neutral[100],
-          backgroundHover: rawColorTokens.neutral[200],
-          backgroundPressed: rawColorTokens.neutral[300],
-          border: rawColorTokens.neutral[200],
+          background: rawColorTokens.neutral[0],
+          backgroundHover: rawColorTokens.neutral[50],
+          backgroundPressed: rawColorTokens.neutral[100],
+          border: rawColorTokens.neutral[300],
           foreground: rawColorTokens.neutral[900],
         },
         outline: {
@@ -283,6 +285,7 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
         inverse: rawColorTokens.neutral[0],
         overlay: toRgba(rawColorTokens.neutral[950], 0.72),
         subtle: rawColorTokens.neutral[900],
+        warm: rawColorTokens.neutral[900],
       },
       surface: {
         accent: toRgba(rawColorTokens.accent[400], 0.16),
@@ -319,9 +322,9 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
           foreground: rawColorTokens.neutral[0],
         },
         secondary: {
-          background: rawColorTokens.neutral[800],
-          backgroundHover: rawColorTokens.neutral[700],
-          backgroundPressed: rawColorTokens.neutral[600],
+          background: toRgba(rawColorTokens.neutral[0], 0.08),
+          backgroundHover: toRgba(rawColorTokens.neutral[0], 0.12),
+          backgroundPressed: toRgba(rawColorTokens.neutral[0], 0.16),
           border: rawColorTokens.neutral[700],
           foreground: rawColorTokens.neutral[0],
         },
