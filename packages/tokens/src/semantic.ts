@@ -1,11 +1,19 @@
 import {
+  borderWidthTokens,
+  breakpointTokens,
+  componentTokens,
   elevationTokens,
+  focusRingTokens,
+  iconSizeTokens,
   motionTokens,
+  opacityTokens,
   radiusTokens,
   rawColorTokens,
   rawTokenNaming,
   spacingTokens,
+  textStyleTokens,
   typographyTokens,
+  zIndexTokens,
 } from './raw';
 
 export type ThemeMode = 'light' | 'dark';
@@ -90,8 +98,16 @@ export type SemanticTheme = {
   spacing: typeof spacingTokens;
   radius: typeof radiusTokens;
   typography: typeof typographyTokens;
+  textStyle: typeof textStyleTokens;
   elevation: typeof elevationTokens;
   motion: typeof motionTokens;
+  zIndex: typeof zIndexTokens;
+  opacity: typeof opacityTokens;
+  borderWidth: typeof borderWidthTokens;
+  iconSize: typeof iconSizeTokens;
+  breakpoint: typeof breakpointTokens;
+  focusRing: typeof focusRingTokens;
+  component: typeof componentTokens;
 };
 
 const toRgba = (hex: string, alpha: number) => {
@@ -248,8 +264,16 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
     spacing: spacingTokens,
     radius: radiusTokens,
     typography: typographyTokens,
+    textStyle: textStyleTokens,
     elevation: elevationTokens,
     motion: motionTokens,
+    zIndex: zIndexTokens,
+    opacity: opacityTokens,
+    borderWidth: borderWidthTokens,
+    iconSize: iconSizeTokens,
+    breakpoint: breakpointTokens,
+    focusRing: focusRingTokens,
+    component: componentTokens,
   },
   dark: {
     mode: 'dark',
@@ -373,8 +397,16 @@ export const semanticTokens: Record<ThemeMode, SemanticTheme> = {
     spacing: spacingTokens,
     radius: radiusTokens,
     typography: typographyTokens,
+    textStyle: textStyleTokens,
     elevation: elevationTokens,
     motion: motionTokens,
+    zIndex: zIndexTokens,
+    opacity: opacityTokens,
+    borderWidth: borderWidthTokens,
+    iconSize: iconSizeTokens,
+    breakpoint: breakpointTokens,
+    focusRing: focusRingTokens,
+    component: componentTokens,
   },
 } as const;
 

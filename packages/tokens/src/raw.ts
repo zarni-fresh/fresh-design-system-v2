@@ -195,15 +195,169 @@ export const motionTokens = {
   },
 } as const;
 
+export const zIndexTokens = {
+  base: 0,
+  dropdown: 1000,
+  sticky: 1100,
+  overlay: 1200,
+  modal: 1300,
+  toast: 1400,
+} as const;
+
+export const opacityTokens = {
+  disabled: 0.38,
+  hover: 0.08,
+  pressed: 0.12,
+  overlay: 0.46,
+  overlayDark: 0.72,
+} as const;
+
+export const borderWidthTokens = {
+  none: 0,
+  thin: 1,
+  default: 1,
+  thick: 2,
+} as const;
+
+export const iconSizeTokens = {
+  xs: 14,
+  sm: 16,
+  md: 20,
+  lg: 24,
+  xl: 32,
+} as const;
+
+export const breakpointTokens = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  content: 720,
+} as const;
+
+export const textStyleTokens = {
+  display: {
+    fontSize: 36,
+    lineHeight: 44,
+    fontWeight: '700' as const,
+  },
+  heading1: {
+    fontSize: 30,
+    lineHeight: 38,
+    fontWeight: '700' as const,
+  },
+  heading2: {
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: '600' as const,
+  },
+  heading3: {
+    fontSize: 18,
+    lineHeight: 28,
+    fontWeight: '600' as const,
+  },
+  body: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '400' as const,
+  },
+  bodyLarge: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '400' as const,
+  },
+  caption: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '400' as const,
+  },
+  label: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '500' as const,
+  },
+  labelLarge: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '500' as const,
+  },
+  button: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '600' as const,
+  },
+  overline: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: '600' as const,
+  },
+} as const;
+
+export const focusRingTokens = {
+  width: 2,
+  offset: 2,
+} as const;
+
+export const componentTokens = {
+  button: {
+    height: { sm: 36, md: 40, lg: 48 },
+    paddingX: { sm: 12, md: 16, lg: 18 },
+    paddingY: { sm: 8, md: 10, lg: 12 },
+    iconSize: { sm: 15, md: 16, lg: 18 },
+    gap: { sm: 6, md: 8, lg: 8 },
+    radius: { sm: 'md' as const, md: 'lg' as const, lg: 'lg' as const },
+  },
+  input: {
+    height: { sm: 36, md: 40, lg: 48 },
+    paddingX: { sm: 10, md: 12, lg: 14 },
+    paddingY: { sm: 8, md: 10, lg: 12 },
+    radius: 'lg' as const,
+  },
+  card: {
+    padding: { sm: 12, md: 16, lg: 20 },
+    radius: 'xl' as const,
+    gap: 12,
+  },
+  badge: {
+    height: { sm: 20, md: 24, lg: 28 },
+    paddingX: { sm: 6, md: 8, lg: 10 },
+    radius: 'pill' as const,
+  },
+  avatar: {
+    size: { sm: 28, md: 36, lg: 48, xl: 64 },
+    radius: 'pill' as const,
+  },
+  switch: {
+    width: 44,
+    height: 24,
+    thumbSize: 20,
+  },
+} as const;
+
 export const rawTokenNaming = {
   color: 'Use family + scale, for example neutral.900 or accent.600.',
   spacing: 'Use numeric steps that map to density-aware space values, for example 4 or 6.',
   radius: 'Use shape intent names from none to pill instead of component-specific corner labels.',
   typography:
     'Use semantic size and weight labels so brand typography can swap in later without renaming callers.',
+  textStyle:
+    'Use named text styles (heading1, body, label) instead of assembling fontSize + lineHeight + fontWeight individually.',
   elevation:
     'Use shallow numbered layers for reusable surfaces. Do not mint one-off shadow presets in component code.',
   motion: 'Use intent-based duration and easing labels rather than animation-specific names.',
+  zIndex:
+    'Use named layers (dropdown, modal, toast) to prevent z-index conflicts between unrelated components.',
+  opacity:
+    'Use named opacity values for consistent disabled, hover, and overlay treatments across components.',
+  borderWidth: 'Use named border widths instead of hardcoding pixel values in component code.',
+  iconSize:
+    'Use named icon sizes (xs through xl) so icons scale consistently with their surrounding context.',
+  breakpoint:
+    'Use named breakpoints for responsive layout decisions. Use content for readable text containers.',
+  focusRing:
+    'Use focus ring tokens for consistent keyboard navigation indicators across all interactive components.',
+  component:
+    'Use component tokens for sizing, padding, and radius so all instances of a component type stay in sync.',
 } as const;
 
 export const rawTokens = {
@@ -211,8 +365,16 @@ export const rawTokens = {
   spacing: spacingTokens,
   radius: radiusTokens,
   typography: typographyTokens,
+  textStyle: textStyleTokens,
   elevation: elevationTokens,
   motion: motionTokens,
+  zIndex: zIndexTokens,
+  opacity: opacityTokens,
+  borderWidth: borderWidthTokens,
+  iconSize: iconSizeTokens,
+  breakpoint: breakpointTokens,
+  focusRing: focusRingTokens,
+  component: componentTokens,
 } as const;
 
 export type RawTokens = typeof rawTokens;

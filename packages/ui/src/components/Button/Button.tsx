@@ -125,6 +125,7 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
           fullWidth,
         })}
         disabled={isDisabled}
+        style={{ outline: 'none' } as ViewStyle}
         {...props}
       >
         {(state) => (
