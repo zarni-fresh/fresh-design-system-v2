@@ -55,7 +55,7 @@ const skeletonDimensions = {
 
 export const getSkeletonMetrics = (shape: SkeletonShape, size: SkeletonSize) => {
   const metric = skeletonDimensions[shape][size];
-  const borderRadius = shape === 'circle' ? 999 : shape === 'line' ? 999 : 12;
+  const borderRadius = shape === 'circle' ? 999 : shape === 'line' ? metric.height / 2 : 12;
 
   return {
     borderRadius,

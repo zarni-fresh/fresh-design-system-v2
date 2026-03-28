@@ -3,7 +3,7 @@ import type { TextProps } from '@fresh-ds/ui-core';
 
 export const avatarShapeOptions = ['circle', 'rounded'] as const;
 export const avatarSizeOptions = ['sm', 'md', 'lg', 'xl'] as const;
-export const avatarToneOptions = ['neutral', 'accent'] as const;
+export const avatarToneOptions = ['neutral', 'accent', 'success', 'warning', 'danger'] as const;
 
 export type AvatarShape = (typeof avatarShapeOptions)[number];
 export type AvatarSize = (typeof avatarSizeOptions)[number];
@@ -37,17 +37,21 @@ export const getAvatarMetrics = (
 };
 
 export const getAvatarPalette = (theme: SemanticTheme, tone: AvatarTone) => {
-  if (tone === 'accent') {
+  if (tone === 'neutral') {
     return {
-      background: theme.color.feedback.accent.background,
-      border: theme.color.feedback.accent.border,
-      foreground: theme.color.content.accent,
+      background: theme.color.surface.subtle,
+      border: theme.color.border.default,
+      foreground: theme.color.content.primary,
     };
   }
 
+  const feedbackTone = tone === 'accent' ? 'accent' : tone;
+  const feedback = theme.color.feedback[feedbackTone];
+  const contentKey = tone === 'accent' ? 'accent' : tone;
+
   return {
-    background: theme.color.surface.subtle,
-    border: theme.color.border.default,
-    foreground: theme.color.content.primary,
+    background: feedback.background,
+    border: feedback.border,
+    foreground: theme.color.content[contentKey],
   };
 };

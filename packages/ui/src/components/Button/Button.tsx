@@ -78,23 +78,20 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
         : isHovered
           ? palette.backgroundHover
           : palette.background;
+      const isChrome = variant === 'ghost' || variant === 'link';
       const baseShadow =
-        variant === 'ghost'
-          ? theme.elevation[0]
-          : variant === 'outline'
-            ? theme.elevation[0]
-            : theme.elevation[1];
+        isChrome || variant === 'outline' ? theme.elevation[0] : theme.elevation[1];
       const baseStyle: ViewStyle = {
         alignItems: 'center',
         backgroundColor,
         borderColor: palette.border,
-        borderRadius: metrics.borderRadius,
-        borderWidth: variant === 'ghost' ? 0 : 1,
+        borderRadius: variant === 'link' ? 0 : metrics.borderRadius,
+        borderWidth: isChrome ? 0 : 1,
         justifyContent: 'center',
-        minHeight: metrics.minHeight,
+        minHeight: variant === 'link' ? undefined : metrics.minHeight,
         opacity: isDisabled ? 0.56 : 1,
-        paddingHorizontal: metrics.paddingHorizontal,
-        paddingVertical: metrics.paddingVertical,
+        paddingHorizontal: variant === 'link' ? 0 : metrics.paddingHorizontal,
+        paddingVertical: variant === 'link' ? 0 : metrics.paddingVertical,
         width: fullWidth ? '100%' : undefined,
       };
 
@@ -140,8 +137,9 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
                 size={metrics.textSize}
                 style={{
                   color: palette.foreground,
+                  textDecorationLine: variant === 'link' ? 'underline' : 'none',
                 }}
-                weight="semibold"
+                weight={variant === 'link' ? 'medium' : 'semibold'}
               >
                 {label}
               </Text>

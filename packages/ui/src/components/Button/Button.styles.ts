@@ -1,5 +1,5 @@
 import type { SemanticTheme } from '@fresh-ds/tokens';
-import { cva, getActionPalette } from '@fresh-ds/ui-core';
+import { cva, getActionPalette, type ActionTone } from '@fresh-ds/ui-core';
 import type { TextProps } from '@fresh-ds/ui-core';
 
 export const buttonVariantOptions = [
@@ -8,6 +8,7 @@ export const buttonVariantOptions = [
   'outline',
   'ghost',
   'destructive',
+  'link',
 ] as const;
 
 export const buttonSizeOptions = ['sm', 'md', 'lg'] as const;
@@ -15,7 +16,7 @@ export const buttonSizeOptions = ['sm', 'md', 'lg'] as const;
 export type ButtonVariant = (typeof buttonVariantOptions)[number];
 export type ButtonSize = (typeof buttonSizeOptions)[number];
 
-export const buttonLayout = cva('flex-row items-center justify-center border', {
+export const buttonLayout = cva('flex-row items-center justify-center', {
   variants: {
     fullWidth: {
       false: '',
@@ -78,5 +79,15 @@ export const getButtonMetrics = (theme: SemanticTheme, size: ButtonSize) => {
 };
 
 export const getButtonPalette = (theme: SemanticTheme, variant: ButtonVariant) => {
-  return getActionPalette(theme, variant);
+  if (variant === 'link') {
+    return {
+      background: 'transparent',
+      backgroundHover: 'transparent',
+      backgroundPressed: 'transparent',
+      border: 'transparent',
+      foreground: theme.color.content.accent,
+    };
+  }
+
+  return getActionPalette(theme, variant as ActionTone);
 };

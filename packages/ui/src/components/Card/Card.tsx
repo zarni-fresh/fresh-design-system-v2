@@ -1,5 +1,15 @@
 import { forwardRef, type ElementRef, type ReactNode } from 'react';
-import { Box, type BoxProps, Stack, Text, type TextProps, useFreshTheme } from '@fresh-ds/ui-core';
+import { type PressableStateCallbackType, type ViewStyle } from 'react-native';
+import {
+  Box,
+  type BoxProps,
+  flattenStyle,
+  Pressable,
+  Stack,
+  Text,
+  type TextProps,
+  useFreshTheme,
+} from '@fresh-ds/ui-core';
 import {
   cardLayout,
   getCardMetrics,
@@ -12,33 +22,59 @@ import {
 
 export type CardProps = BoxProps & {
   children?: ReactNode;
+  onPress?: () => void;
   padding?: CardPadding;
   variant?: CardVariant;
 };
 
 export const Card = forwardRef<ElementRef<typeof Box>, CardProps>(
-  ({ children, padding = 'md', style, variant = 'outlined', ...props }, ref) => {
+  ({ children, onPress, padding = 'md', style, variant = 'outlined', ...props }, ref) => {
     const { theme } = useFreshTheme();
     const metrics = getCardMetrics(theme, padding);
     const palette = getCardPalette(theme, variant);
 
+    const cardStyle: ViewStyle = {
+      backgroundColor: palette.backgroundColor,
+      borderColor: palette.borderColor,
+      borderRadius: metrics.borderRadius,
+      borderWidth: 1,
+      padding: metrics.padding,
+    };
+
+    if (onPress) {
+      return (
+        <Pressable
+          accessibilityRole="button"
+          className={cardLayout()}
+          onPress={onPress}
+          style={{ outline: 'none' } as ViewStyle}
+        >
+          {(state: PressableStateCallbackType) => {
+            const interactionState = state as PressableStateCallbackType & {
+              hovered?: boolean;
+            };
+            const isHovered = interactionState.hovered;
+            const isPressed = state.pressed;
+
+            return (
+              <Box
+                style={flattenStyle([
+                  cardStyle,
+                  palette.shadow,
+                  isPressed ? { opacity: 0.88 } : isHovered ? { ...theme.elevation[2] } : undefined,
+                  style,
+                ])}
+              >
+                {children}
+              </Box>
+            );
+          }}
+        </Pressable>
+      );
+    }
+
     return (
-      <Box
-        ref={ref}
-        className={cardLayout()}
-        style={[
-          {
-            backgroundColor: palette.backgroundColor,
-            borderColor: palette.borderColor,
-            borderRadius: metrics.borderRadius,
-            borderWidth: 1,
-            padding: metrics.padding,
-          },
-          palette.shadow,
-          style,
-        ]}
-        {...props}
-      >
+      <Box ref={ref} className={cardLayout()} style={[cardStyle, palette.shadow, style]} {...props}>
         {children}
       </Box>
     );

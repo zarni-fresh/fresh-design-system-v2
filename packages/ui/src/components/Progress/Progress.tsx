@@ -12,6 +12,7 @@ import {
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
 export type ProgressProps = Omit<ComponentPropsWithoutRef<typeof Box>, 'children'> & {
+  indeterminate?: boolean;
   label?: string;
   max?: number;
   showValueLabel?: boolean;
@@ -22,6 +23,7 @@ export type ProgressProps = Omit<ComponentPropsWithoutRef<typeof Box>, 'children
 
 export const Progress = ({
   accessibilityLabel,
+  indeterminate = false,
   label,
   max = 100,
   showValueLabel = false,
@@ -40,7 +42,7 @@ export const Progress = ({
 
   return (
     <Stack gap={2}>
-      {label || showValueLabel ? (
+      {label || (showValueLabel && !indeterminate) ? (
         <Stack align="center" direction="horizontal" justify="space-between">
           {label ? (
             <Text size="sm" weight="medium">
@@ -49,7 +51,7 @@ export const Progress = ({
           ) : (
             <Box />
           )}
-          {showValueLabel ? (
+          {showValueLabel && !indeterminate ? (
             <Text
               size="sm"
               style={{
@@ -66,11 +68,9 @@ export const Progress = ({
       <Box
         accessibilityLabel={accessibilityLabel ?? label ?? 'Progress'}
         accessibilityRole="progressbar"
-        accessibilityValue={{
-          max: safeMax,
-          min: 0,
-          now: normalizedValue,
-        }}
+        accessibilityValue={
+          indeterminate ? undefined : { max: safeMax, min: 0, now: normalizedValue }
+        }
         style={[
           {
             backgroundColor: palette.track,
@@ -83,14 +83,26 @@ export const Progress = ({
         ]}
         {...props}
       >
-        <Box
-          style={{
-            backgroundColor: palette.fill,
-            borderRadius: metrics.borderRadius,
-            height: '100%',
-            width: `${percent}%`,
-          }}
-        />
+        {indeterminate ? (
+          <Box
+            style={{
+              backgroundColor: palette.fill,
+              borderRadius: metrics.borderRadius,
+              height: '100%',
+              opacity: 0.7,
+              width: '40%',
+            }}
+          />
+        ) : (
+          <Box
+            style={{
+              backgroundColor: palette.fill,
+              borderRadius: metrics.borderRadius,
+              height: '100%',
+              width: `${percent}%`,
+            }}
+          />
+        )}
       </Box>
     </Stack>
   );

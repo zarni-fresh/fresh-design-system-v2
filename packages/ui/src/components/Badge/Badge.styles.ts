@@ -5,7 +5,7 @@ import type { TextProps } from '@fresh-ds/ui-core';
 export const badgeVariantOptions = ['neutral', 'accent', 'success', 'warning', 'danger'] as const;
 
 export const badgeEmphasisOptions = ['solid', 'subtle', 'outline'] as const;
-export const badgeSizeOptions = ['sm', 'md'] as const;
+export const badgeSizeOptions = ['sm', 'md', 'lg'] as const;
 
 export type BadgeVariant = (typeof badgeVariantOptions)[number];
 export type BadgeEmphasis = (typeof badgeEmphasisOptions)[number];
@@ -25,6 +25,12 @@ const badgeMetricMap = {
     paddingHorizontal: 10,
     paddingVertical: 4,
     textSize: 'xs',
+  },
+  lg: {
+    borderRadius: 'lg',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    textSize: 'sm',
   },
 } as const satisfies Record<
   BadgeSize,

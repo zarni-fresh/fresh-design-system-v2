@@ -30,6 +30,7 @@ export type TextFieldProps = Omit<TextInputProps, 'style'> & {
   required?: boolean;
   rightAdornment?: ReactNode;
   size?: TextFieldSize;
+  valid?: boolean;
 };
 
 export const TextField = forwardRef<ElementRef<typeof TextInput>, TextFieldProps>(
@@ -52,6 +53,7 @@ export const TextField = forwardRef<ElementRef<typeof TextInput>, TextFieldProps
       rightAdornment,
       selectionColor,
       size = 'md',
+      valid = false,
       ...props
     },
     ref
@@ -65,6 +67,7 @@ export const TextField = forwardRef<ElementRef<typeof TextInput>, TextFieldProps
       disabled,
       focused: isFocused,
       invalid: isInvalid,
+      valid: valid && !isInvalid,
     });
     const resolvedAccessibilityLabel =
       accessibilityLabel ??

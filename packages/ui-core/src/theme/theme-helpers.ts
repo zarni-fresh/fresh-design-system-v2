@@ -95,20 +95,24 @@ export const getInputPalette = (
   options?: {
     disabled?: boolean;
     invalid?: boolean;
+    valid?: boolean;
     focused?: boolean;
   }
 ) => {
   const disabled = options?.disabled ?? false;
   const invalid = options?.invalid ?? false;
+  const valid = options?.valid ?? false;
   const focused = options?.focused ?? false;
 
   return {
     background: disabled ? theme.color.input.backgroundDisabled : theme.color.input.background,
     border: invalid
       ? theme.color.input.borderInvalid
-      : focused
-        ? theme.color.input.borderFocus
-        : theme.color.input.border,
+      : valid
+        ? theme.color.feedback.success.border
+        : focused
+          ? theme.color.input.borderFocus
+          : theme.color.input.border,
     placeholder: theme.color.input.placeholder,
     text: disabled ? theme.color.content.disabled : theme.color.input.text,
   };

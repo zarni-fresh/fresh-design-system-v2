@@ -14,6 +14,6 @@ export const getSeparatorColor = (theme: SemanticTheme, emphasis: SeparatorEmpha
       return theme.color.border.strong;
     case 'default':
     default:
-      return theme.color.border.input;
+      return theme.color.border.default;
   }
 };
