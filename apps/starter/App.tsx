@@ -381,330 +381,42 @@ function AvatarDropdownDemo() {
 
 const componentRegistry: ComponentEntry[] = [
   {
-    name: 'Button',
+    name: 'Aspect Ratio',
     description:
-      'Primary interactive element for actions. Supports 6 variants, 3 sizes, icons, and loading state.',
+      'Container that maintains a fixed aspect ratio. Useful for images and media.',
     category: 'core',
     sections: [
       {
-        title: 'Primary',
-        content: <Button label="Primary" onPress={() => {}} variant="primary" />,
+        title: 'Landscape (16:9)',
+        content: <AspectRatioPreview label="16:9" ratio={16 / 9} />,
       },
       {
-        title: 'Secondary',
-        content: <Button label="Secondary" onPress={() => {}} variant="secondary" />,
+        title: 'Square (1:1)',
+        content: <AspectRatioPreview label="1:1" radius="2xl" ratio={1} />,
       },
       {
-        title: 'Outline',
-        content: <Button label="Outline" onPress={() => {}} variant="outline" />,
-      },
-      {
-        title: 'Ghost',
-        content: <Button label="Ghost" onPress={() => {}} variant="ghost" />,
-      },
-      {
-        title: 'Destructive',
-        content: <Button label="Destructive" onPress={() => {}} variant="destructive" />,
-      },
-      {
-        title: 'Link',
-        content: <Button label="Link" onPress={() => {}} variant="link" />,
-      },
-      {
-        title: 'Small',
-        content: <Button label="Small" onPress={() => {}} size="sm" variant="primary" />,
-      },
-      {
-        title: 'Medium',
-        content: <Button label="Medium" onPress={() => {}} size="md" variant="primary" />,
-      },
-      {
-        title: 'Large',
-        content: <Button label="Large" onPress={() => {}} size="lg" variant="primary" />,
-      },
-      {
-        title: 'With Spinner',
-        content: <Button label="Loading..." loading onPress={() => {}} variant="primary" />,
-      },
-      {
-        title: 'With Leading Icon',
-        content: <Button label="Add Item" leadingIcon="plus" onPress={() => {}} variant="primary" />,
-      },
-      {
-        title: 'With Trailing Icon',
-        content: <Button label="Next" onPress={() => {}} trailingIcon="arrow-right" variant="primary" />,
-      },
-    ],
-  },
-  {
-    name: 'TextField',
-    description:
-      'Single-line text input with label, helper text, error, and success states.',
-    category: 'core',
-    sections: [
-      {
-        title: 'Default',
-        content: <TextField label="Form name" placeholder="Enter a name..." />,
-      },
-      {
-        title: 'With Helper Text',
-        content: <TextField helperText="This will be shown to patients" label="Form name" placeholder="Enter a name..." />,
-      },
-      {
-        title: 'Error',
-        content: <TextField errorMessage="This field is required" label="Form name" placeholder="Enter a name..." />,
-      },
-      {
-        title: 'Valid',
-        content: <TextField label="Form name" placeholder="Enter a name..." valid value="Weight Loss Intake" />,
-      },
-      {
-        title: 'Disabled',
-        content: <TextField editable={false} label="Form name" placeholder="Enter a name..." value="Weight Loss Intake" />,
-      },
-    ],
-  },
-  {
-    name: 'Card',
-    description:
-      'Section cards used across patient profile screens. Combines title, optional action, separator, and body content. Supports filled and empty states.',
-    category: 'core',
-    sections: [
-      {
-        title: 'Personal — Filled',
+        title: 'Portrait (9:16)',
         content: (
-          <ProfileSectionCard
-            title="Personal"
-            action={
-              <Button
-                label="Edit"
-                onPress={() => {}}
-                size="sm"
-                trailingIcon="square-pen"
-                variant="ghost"
-              />
-            }
-          >
-            <Stack gap={16}>
-              <DetailRow label="First Name" value="James" />
-              <DetailRow label="Last Name" value="Wilson" />
-              <DetailRow label="Date of Birth" value="12 Jan 1985" />
-              <DetailRow label="Gender" value="Male" />
-              <DetailRow label="Address" value="42 Harbour St, Sydney NSW 2000" />
-              <DetailRow label="Email" value="james.wilson@email.com" />
-              <DetailRow label="Phone" value="0412 345 678" />
-            </Stack>
-          </ProfileSectionCard>
-        ),
-      },
-      {
-        title: 'Medicare & IHI — Filled',
-        content: (
-          <ProfileSectionCard title="Medicare & IHI">
-            <Stack gap={16}>
-              <DetailRow label="Medicare Number" value="2345 67890 1  /  Ref: 1" />
-              <DetailRow label="IHI Number" value="8003 6088 3456 7890" />
-            </Stack>
-          </ProfileSectionCard>
-        ),
-      },
-      {
-        title: 'Appointments — Filled',
-        content: (
-          <ProfileSectionCard
-            title="Appointments"
-            action={
-              <Button
-                label="View all"
-                onPress={() => {}}
-                shadow
-                size="sm"
-                variant="outline"
-              />
-            }
-          >
-            <AppointmentsFilledCard
-              date="10/17/2025"
-              items={[
-                { type: 'Anti-Wrinkle', title: 'Botox', detail: 'Forehead - 20 units' },
-                { type: 'Fractional CO2 Laser', title: 'Lumenis UltraPulse', detail: 'Periorbital - 50 mJ\nCheeks - 90 mJ' },
-                { type: 'Anti-Wrinkle', title: 'Botox', detail: 'Glabella - 15 units' },
-              ]}
-            />
-          </ProfileSectionCard>
-        ),
-      },
-      {
-        title: 'Appointments — Empty',
-        content: (
-          <ProfileSectionCard
-            title="Appointments"
-            action={
-              <Button
-                label="View all"
-                onPress={() => {}}
-                shadow
-                size="sm"
-                variant="outline"
-              />
-            }
-          >
-            <AppointmentsEmptyState />
-          </ProfileSectionCard>
-        ),
-      },
-    ],
-  },
-  {
-    name: 'Badge',
-    description:
-      'Compact semantic label for status and categorization. 5 variants, 3 emphasis levels, 3 sizes.',
-    category: 'core',
-    sections: [
-      {
-        title: 'Neutral',
-        content: <Badge label="Neutral" variant="neutral" />,
-      },
-      {
-        title: 'Accent',
-        content: <Badge label="Accent" variant="accent" />,
-      },
-      {
-        title: 'Success',
-        content: <Badge label="Success" variant="success" />,
-      },
-      {
-        title: 'Warning',
-        content: <Badge label="Warning" variant="warning" />,
-      },
-      {
-        title: 'Danger',
-        content: <Badge label="Danger" variant="danger" />,
-      },
-      {
-        title: 'Emphasis — Solid',
-        content: <Badge emphasis="solid" label="Solid" variant="accent" />,
-      },
-      {
-        title: 'Emphasis — Outline',
-        content: <Badge emphasis="outline" label="Outline" variant="accent" />,
-      },
-      {
-        title: 'Emphasis — Subtle',
-        content: <Badge emphasis="subtle" label="Subtle" variant="accent" />,
-      },
-      {
-        title: 'Size — Small',
-        content: <Badge label="Small" size="sm" variant="neutral" />,
-      },
-      {
-        title: 'Size — Medium',
-        content: <Badge label="Medium" size="md" variant="neutral" />,
-      },
-      {
-        title: 'Size — Large',
-        content: <Badge label="Large" size="lg" variant="neutral" />,
-      },
-    ],
-  },
-  {
-    name: 'Switch',
-    description:
-      'Toggle control for binary settings. Used in form behaviour rows with label, description, and validation states.',
-    category: 'core',
-    sections: [
-      {
-        title: 'Default',
-        content: <Switch defaultChecked tone="neutral" />,
-      },
-      {
-        title: 'With Label',
-        content: (
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text size="sm" weight="medium">Required question</Text>
-            <Switch defaultChecked tone="neutral" />
+          <View style={{ width: 200 }}>
+            <AspectRatioPreview label="9:16" ratio={9 / 16} />
           </View>
         ),
       },
       {
-        title: 'Card',
-        content: (
-          <SwitchCard
-            defaultChecked
-            title="Required question"
-          />
-        ),
+        title: 'Photo (4:3)',
+        content: <AspectRatioPreview label="4:3" ratio={4 / 3} />,
       },
       {
-        title: 'With Description',
+        title: 'Radius Options',
         content: (
-          <SwitchCard
-            defaultChecked
-            description='Patients must answer before they can continue.'
-            title="Required question"
-          />
-        ),
-      },
-      {
-        title: 'Allow Other Option',
-        content: (
-          <SwitchCard
-            description='Adds a dedicated free-text response paired with the Other option.'
-            title='Allow "Other" option'
-          />
-        ),
-      },
-      {
-        title: 'Disabled — Off',
-        content: (
-          <SwitchCard
-            description="This setting cannot be changed for this question type."
-            disabled
-            title="Required question"
-          />
-        ),
-      },
-      {
-        title: 'Disabled — On',
-        content: (
-          <SwitchCard
-            defaultChecked
-            description="This setting cannot be changed for this question type."
-            disabled
-            title="Required question"
-          />
-        ),
-      },
-      {
-        title: 'Invalid',
-        content: (
-          <SwitchCard
-            description="Patients must answer before they can continue."
-            invalid
-            title="Required question"
-          />
-        ),
-      },
-      {
-        title: 'Size — Small',
-        content: (
-          <SwitchCard
-            defaultChecked
-            description="Patients must answer before they can continue."
-            size="sm"
-            title="Required question"
-          />
-        ),
-      },
-      {
-        title: 'Size — Default',
-        content: (
-          <SwitchCard
-            defaultChecked
-            description="Patients must answer before they can continue."
-            size="md"
-            title="Required question"
-          />
+          <Stack gap={12}>
+            {(['none', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((r) => (
+              <Stack key={r} gap={4}>
+                <Text size="xs" tone="muted">{r}</Text>
+                <AspectRatioPreview label={`radius: ${r}`} radius={r} ratio={16 / 9} />
+              </Stack>
+            ))}
+          </Stack>
         ),
       },
     ],
@@ -831,6 +543,255 @@ const componentRegistry: ComponentEntry[] = [
       {
         title: 'Dropdown',
         content: <AvatarDropdownDemo />,
+      },
+    ],
+  },
+  {
+    name: 'Badge',
+    description:
+      'Compact semantic label for status and categorization. 5 variants, 3 emphasis levels, 3 sizes.',
+    category: 'core',
+    sections: [
+      {
+        title: 'Neutral',
+        content: <Badge label="Neutral" variant="neutral" />,
+      },
+      {
+        title: 'Accent',
+        content: <Badge label="Accent" variant="accent" />,
+      },
+      {
+        title: 'Success',
+        content: <Badge label="Success" variant="success" />,
+      },
+      {
+        title: 'Warning',
+        content: <Badge label="Warning" variant="warning" />,
+      },
+      {
+        title: 'Danger',
+        content: <Badge label="Danger" variant="danger" />,
+      },
+      {
+        title: 'Emphasis — Solid',
+        content: <Badge emphasis="solid" label="Solid" variant="accent" />,
+      },
+      {
+        title: 'Emphasis — Outline',
+        content: <Badge emphasis="outline" label="Outline" variant="accent" />,
+      },
+      {
+        title: 'Emphasis — Subtle',
+        content: <Badge emphasis="subtle" label="Subtle" variant="accent" />,
+      },
+      {
+        title: 'Size — Small',
+        content: <Badge label="Small" size="sm" variant="neutral" />,
+      },
+      {
+        title: 'Size — Medium',
+        content: <Badge label="Medium" size="md" variant="neutral" />,
+      },
+      {
+        title: 'Size — Large',
+        content: <Badge label="Large" size="lg" variant="neutral" />,
+      },
+    ],
+  },
+  {
+    name: 'Button',
+    description:
+      'Primary interactive element for actions. Supports 6 variants, 3 sizes, icons, and loading state.',
+    category: 'core',
+    sections: [
+      {
+        title: 'Primary',
+        content: <Button label="Primary" onPress={() => {}} variant="primary" />,
+      },
+      {
+        title: 'Secondary',
+        content: <Button label="Secondary" onPress={() => {}} variant="secondary" />,
+      },
+      {
+        title: 'Outline',
+        content: <Button label="Outline" onPress={() => {}} variant="outline" />,
+      },
+      {
+        title: 'Ghost',
+        content: <Button label="Ghost" onPress={() => {}} variant="ghost" />,
+      },
+      {
+        title: 'Destructive',
+        content: <Button label="Destructive" onPress={() => {}} variant="destructive" />,
+      },
+      {
+        title: 'Link',
+        content: <Button label="Link" onPress={() => {}} variant="link" />,
+      },
+      {
+        title: 'Small',
+        content: <Button label="Small" onPress={() => {}} size="sm" variant="primary" />,
+      },
+      {
+        title: 'Medium',
+        content: <Button label="Medium" onPress={() => {}} size="md" variant="primary" />,
+      },
+      {
+        title: 'Large',
+        content: <Button label="Large" onPress={() => {}} size="lg" variant="primary" />,
+      },
+      {
+        title: 'With Spinner',
+        content: <Button label="Loading..." loading onPress={() => {}} variant="primary" />,
+      },
+      {
+        title: 'With Leading Icon',
+        content: <Button label="Add Item" leadingIcon="plus" onPress={() => {}} variant="primary" />,
+      },
+      {
+        title: 'With Trailing Icon',
+        content: <Button label="Next" onPress={() => {}} trailingIcon="arrow-right" variant="primary" />,
+      },
+    ],
+  },
+  {
+    name: 'Card',
+    description:
+      'Section cards used across patient profile screens. Combines title, optional action, separator, and body content. Supports filled and empty states.',
+    category: 'core',
+    sections: [
+      {
+        title: 'Personal — Filled',
+        content: (
+          <ProfileSectionCard
+            title="Personal"
+            action={
+              <Button
+                label="Edit"
+                onPress={() => {}}
+                size="sm"
+                trailingIcon="square-pen"
+                variant="ghost"
+              />
+            }
+          >
+            <Stack gap={16}>
+              <DetailRow label="First Name" value="James" />
+              <DetailRow label="Last Name" value="Wilson" />
+              <DetailRow label="Date of Birth" value="12 Jan 1985" />
+              <DetailRow label="Gender" value="Male" />
+              <DetailRow label="Address" value="42 Harbour St, Sydney NSW 2000" />
+              <DetailRow label="Email" value="james.wilson@email.com" />
+              <DetailRow label="Phone" value="0412 345 678" />
+            </Stack>
+          </ProfileSectionCard>
+        ),
+      },
+      {
+        title: 'Medicare & IHI — Filled',
+        content: (
+          <ProfileSectionCard title="Medicare & IHI">
+            <Stack gap={16}>
+              <DetailRow label="Medicare Number" value="2345 67890 1  /  Ref: 1" />
+              <DetailRow label="IHI Number" value="8003 6088 3456 7890" />
+            </Stack>
+          </ProfileSectionCard>
+        ),
+      },
+      {
+        title: 'Appointments — Filled',
+        content: (
+          <ProfileSectionCard
+            title="Appointments"
+            action={
+              <Button
+                label="View all"
+                onPress={() => {}}
+                shadow
+                size="sm"
+                variant="outline"
+              />
+            }
+          >
+            <AppointmentsFilledCard
+              date="10/17/2025"
+              items={[
+                { type: 'Anti-Wrinkle', title: 'Botox', detail: 'Forehead - 20 units' },
+                { type: 'Fractional CO2 Laser', title: 'Lumenis UltraPulse', detail: 'Periorbital - 50 mJ\nCheeks - 90 mJ' },
+                { type: 'Anti-Wrinkle', title: 'Botox', detail: 'Glabella - 15 units' },
+              ]}
+            />
+          </ProfileSectionCard>
+        ),
+      },
+      {
+        title: 'Appointments — Empty',
+        content: (
+          <ProfileSectionCard
+            title="Appointments"
+            action={
+              <Button
+                label="View all"
+                onPress={() => {}}
+                shadow
+                size="sm"
+                variant="outline"
+              />
+            }
+          >
+            <AppointmentsEmptyState />
+          </ProfileSectionCard>
+        ),
+      },
+    ],
+  },
+  {
+    name: 'Label',
+    description:
+      'Form field label with optional required indicator and tone support.',
+    category: 'core',
+    sections: [
+      {
+        title: 'Default',
+        content: <Label>Patient name</Label>,
+      },
+      {
+        title: 'Required',
+        content: <Label required>Email address</Label>,
+      },
+      {
+        title: 'Optional',
+        content: <Label optionalLabel="Optional" tone="muted">Slack channel</Label>,
+      },
+      {
+        title: 'Tones',
+        content: (
+          <Stack gap={8}>
+            <Label>Default tone</Label>
+            <Label tone="muted">Muted tone</Label>
+            <Label tone="danger">Danger tone</Label>
+          </Stack>
+        ),
+      },
+      {
+        title: 'Sizes',
+        content: (
+          <Stack gap={8}>
+            <Label size="sm">Small label</Label>
+            <Label size="md">Medium label</Label>
+            <Label size="lg">Large label</Label>
+          </Stack>
+        ),
+      },
+      {
+        title: 'With Field',
+        content: (
+          <Stack gap={16}>
+            <TextField label="First Name" placeholder="Enter first name..." required value="James" />
+            <TextField label="Last Name" placeholder="Enter last name..." required value="Wilson" />
+            <TextField label="Notes" placeholder="Add notes..." />
+          </Stack>
+        ),
       },
     ],
   },
@@ -1021,96 +982,136 @@ const componentRegistry: ComponentEntry[] = [
     ],
   },
   {
-    name: 'Label',
+    name: 'Switch',
     description:
-      'Form field label with optional required indicator and tone support.',
+      'Toggle control for binary settings. Used in form behaviour rows with label, description, and validation states.',
     category: 'core',
     sections: [
       {
         title: 'Default',
-        content: <Label>Patient name</Label>,
+        content: <Switch defaultChecked tone="neutral" />,
       },
       {
-        title: 'Required',
-        content: <Label required>Email address</Label>,
-      },
-      {
-        title: 'Optional',
-        content: <Label optionalLabel="Optional" tone="muted">Slack channel</Label>,
-      },
-      {
-        title: 'Tones',
+        title: 'With Label',
         content: (
-          <Stack gap={8}>
-            <Label>Default tone</Label>
-            <Label tone="muted">Muted tone</Label>
-            <Label tone="danger">Danger tone</Label>
-          </Stack>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Text size="sm" weight="medium">Required question</Text>
+            <Switch defaultChecked tone="neutral" />
+          </View>
         ),
       },
       {
-        title: 'Sizes',
+        title: 'Card',
         content: (
-          <Stack gap={8}>
-            <Label size="sm">Small label</Label>
-            <Label size="md">Medium label</Label>
-            <Label size="lg">Large label</Label>
-          </Stack>
+          <SwitchCard
+            defaultChecked
+            title="Required question"
+          />
         ),
       },
       {
-        title: 'With Field',
+        title: 'With Description',
         content: (
-          <Stack gap={16}>
-            <TextField label="First Name" placeholder="Enter first name..." required value="James" />
-            <TextField label="Last Name" placeholder="Enter last name..." required value="Wilson" />
-            <TextField label="Notes" placeholder="Add notes..." />
-          </Stack>
+          <SwitchCard
+            defaultChecked
+            description='Patients must answer before they can continue.'
+            title="Required question"
+          />
+        ),
+      },
+      {
+        title: 'Allow Other Option',
+        content: (
+          <SwitchCard
+            description='Adds a dedicated free-text response paired with the Other option.'
+            title='Allow "Other" option'
+          />
+        ),
+      },
+      {
+        title: 'Disabled — Off',
+        content: (
+          <SwitchCard
+            description="This setting cannot be changed for this question type."
+            disabled
+            title="Required question"
+          />
+        ),
+      },
+      {
+        title: 'Disabled — On',
+        content: (
+          <SwitchCard
+            defaultChecked
+            description="This setting cannot be changed for this question type."
+            disabled
+            title="Required question"
+          />
+        ),
+      },
+      {
+        title: 'Invalid',
+        content: (
+          <SwitchCard
+            description="Patients must answer before they can continue."
+            invalid
+            title="Required question"
+          />
+        ),
+      },
+      {
+        title: 'Size — Small',
+        content: (
+          <SwitchCard
+            defaultChecked
+            description="Patients must answer before they can continue."
+            size="sm"
+            title="Required question"
+          />
+        ),
+      },
+      {
+        title: 'Size — Default',
+        content: (
+          <SwitchCard
+            defaultChecked
+            description="Patients must answer before they can continue."
+            size="md"
+            title="Required question"
+          />
         ),
       },
     ],
   },
   {
-    name: 'AspectRatio',
+    name: 'Text Field',
     description:
-      'Container that maintains a fixed aspect ratio. Useful for images and media.',
+      'Single-line text input with label, helper text, error, and success states.',
     category: 'core',
     sections: [
       {
-        title: 'Landscape (16:9)',
-        content: <AspectRatioPreview label="16:9" ratio={16 / 9} />,
+        title: 'Default',
+        content: <TextField label="Form name" placeholder="Enter a name..." />,
       },
       {
-        title: 'Square (1:1)',
-        content: <AspectRatioPreview label="1:1" radius="2xl" ratio={1} />,
+        title: 'With Helper Text',
+        content: <TextField helperText="This will be shown to patients" label="Form name" placeholder="Enter a name..." />,
       },
       {
-        title: 'Portrait (9:16)',
-        content: (
-          <View style={{ width: 200 }}>
-            <AspectRatioPreview label="9:16" ratio={9 / 16} />
-          </View>
-        ),
+        title: 'Error',
+        content: <TextField errorMessage="This field is required" label="Form name" placeholder="Enter a name..." />,
       },
       {
-        title: 'Photo (4:3)',
-        content: <AspectRatioPreview label="4:3" ratio={4 / 3} />,
+        title: 'Valid',
+        content: <TextField label="Form name" placeholder="Enter a name..." valid value="Weight Loss Intake" />,
       },
       {
-        title: 'Radius Options',
-        content: (
-          <Stack gap={12}>
-            {(['none', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((r) => (
-              <Stack key={r} gap={4}>
-                <Text size="xs" tone="muted">{r}</Text>
-                <AspectRatioPreview label={`radius: ${r}`} radius={r} ratio={16 / 9} />
-              </Stack>
-            ))}
-          </Stack>
-        ),
+        title: 'Disabled',
+        content: <TextField editable={false} label="Form name" placeholder="Enter a name..." value="Weight Loss Intake" />,
       },
     ],
   },
+
 ];
 
 function SidebarItem({
