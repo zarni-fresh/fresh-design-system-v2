@@ -8,7 +8,7 @@ prototype here, and **engineers** who translate those prototypes into production
 
 ## Component Showcase
 
-**[→ View the live component showcase](https://fresh-design-system-v2.vercel.app)**
+**[→ View the live component showcase](https://fresh-design-system.vercel.app)**
 
 Browse every component, variant, and state in the browser — no setup required.
 The showcase is automatically redeployed from `main` on every push.
