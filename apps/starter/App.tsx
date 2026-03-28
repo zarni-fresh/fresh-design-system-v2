@@ -1051,15 +1051,15 @@ const componentRegistry: ComponentEntry[] = [
         title: 'With Field',
         content: (
           <Stack gap={16}>
-            <Stack gap={4}>
+            <Stack gap={12}>
               <Label required>First Name</Label>
               <TextField placeholder="Enter first name..." value="James" />
             </Stack>
-            <Stack gap={4}>
+            <Stack gap={12}>
               <Label required>Last Name</Label>
               <TextField placeholder="Enter last name..." value="Wilson" />
             </Stack>
-            <Stack gap={4}>
+            <Stack gap={12}>
               <Label optionalLabel="Optional" tone="muted">Notes</Label>
               <TextField placeholder="Add notes..." />
             </Stack>
